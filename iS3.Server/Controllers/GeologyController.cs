@@ -36,5 +36,25 @@ namespace iS3.Server.Controllers
             }
             return b;
         }
+
+        /// <summary>
+        /// 根据id获取钻孔数据（授权）
+        /// </summary>
+        /// <param name="id">钻孔id</param>
+        /// <returns>
+        /// id：钻孔id号；name：钻孔名称；deep：钻孔深度；isVisible：钻孔是否可见
+        /// </returns>
+        [Route("demo2/{id}")]
+        [HttpGet]
+        [Authorize]
+        public Demo Borehole2(int id)
+        {
+            Demo b = boreholes.FirstOrDefault((p) => p.id == id);
+            if (b == null)
+            {
+                throw new Exception(string.Format("没有找到id={0}的对象", id));
+            }
+            return b;
+        }
     }
 }
