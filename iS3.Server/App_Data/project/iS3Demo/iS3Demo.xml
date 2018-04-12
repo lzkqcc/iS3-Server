@@ -1,0 +1,54 @@
+﻿<Project>
+  <is3:ProjectDefinition xmlns="http://schemas.microsoft.com/client/2007"
+                        xmlns:is3="clr-namespace:IS3.Core;assembly=IS3.Core"
+                        xmlns:g="clr-namespace:IS3.Core.Graphics;assembly=IS3.Core"
+                        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                        GeometryServiceUrl="http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
+                        ID="iS3Demo"
+                        ProjectTitle="iS3DemoProject"
+                        DatabaseName="iS3Demo"
+                        DefaultMapID="BaseMap">
+  </is3:ProjectDefinition>
+  <Domain Name="Geology" Type="Geology">
+    <ObjsDefinition>
+      <Borehole HasGeometry="true" Name="AllBoreholes" GISLayerName="GeoBorehole" 
+                TableNameSQL="Boreholes,BoreholeStrataInfo" OrderSQL="[Name]"/>
+      <Stratum  Name="AllStratum"  TableNameSQL="Strata" />
+      <SoilProperty Name="AllSoilProperties" TableNameSQL="SoilProperties" />
+    </ObjsDefinition>
+    <TreeDefinition>
+      <Geology  DisplayName="Geology" Desc="See geology report for complete information.">
+        <EngineeringGeology DisplayName="Engineering Geology" Desc="Engineering geology information">
+          <Borehole DisplayName="Boreholes" Desc="Select a borehole for detail."
+                    RefDomainName="Geology" RefObjsName="AllBoreholes" />
+          <Stratum DisplayName="Stratum" Desc="Select a strata for detail."
+                   RefDomainName="Geology" RefObjsName="AllStratum" />
+          <SoilProperty DisplayName="Soil Properties" Desc="Select a soil for detail."
+                        RefDomainName="Geology" RefObjsName="AllSoilProperties"/>
+          
+        </EngineeringGeology>
+      </Geology>
+    </TreeDefinition>
+  </Domain>
+  <Domain Name="Monitoring" Type="Monitoring">
+    <ObjsDefinition>
+      <MonPoint HasGeometry="true" Name="AllMonPoint"
+                GISLayerName="MonPoint"
+                TableNameSQL="Mon,MonData"
+                OrderSQL="[Name],[time]"/>
+    </ObjsDefinition>
+    <TreeDefinition>
+      <Root>
+        <Monitoring DisplayName="检测记录">
+          <MonPoint DisplayName="监测点"
+                    RefDomainName="Monitoring"
+                    RefObjsName="AllMonPoint"/>
+        </Monitoring>
+      </Root>
+    </TreeDefinition>
+  </Domain>
+</Project>
+
+
+
+

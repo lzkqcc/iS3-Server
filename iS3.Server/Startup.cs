@@ -25,14 +25,6 @@ namespace iS3.Server
 
             WebApiConfig.Register(config);
 
-            // json indent
-            var json = config.Formatters.JsonFormatter;
-            json.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
-
-            // xml indent
-            var xml = config.Formatters.XmlFormatter;
-            xml.Indent = true;
-
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
         }

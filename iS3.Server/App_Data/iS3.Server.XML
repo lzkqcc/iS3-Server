@@ -396,7 +396,32 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
-        <member name="M:iS3.Server.Controllers.GeologyController.Borehole(System.Int32)">
+        <member name="T:iS3.Server.Controllers.GeologyController">
+            <summary>
+            地质数据相关接口
+            </summary>
+        </member>
+        <member name="M:iS3.Server.Controllers.GeologyController.getBoreholeById(System.String,System.Int32)">
+            <summary>
+            根据id获取工程钻孔数据
+            </summary>
+            <param name="project">项目名称</param>
+            <param name="id">钻孔id</param>
+            <returns> </returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.GeologyController.getBoreholeByProject(System.String)">
+            <summary>
+            获取Project工程的所有钻孔
+            </summary>
+            <param name="project">工程名称</param>
+            <returns></returns>
+        </member>
+        <member name="T:iS3.Server.Controllers.ZDemoController">
+            <summary>
+            一些测试接口
+            </summary>
+        </member>
+        <member name="M:iS3.Server.Controllers.ZDemoController.Borehole(System.Int32)">
             <summary>
             根据id获取钻孔数据
             </summary>
@@ -405,7 +430,7 @@
             id：钻孔id号；name：钻孔名称；deep：钻孔深度；isVisible：钻孔是否可见
             </returns>
         </member>
-        <member name="M:iS3.Server.Controllers.GeologyController.Borehole2(System.Int32)">
+        <member name="M:iS3.Server.Controllers.ZDemoController.Borehole2(System.Int32)">
             <summary>
             根据id获取钻孔数据（授权）
             </summary>

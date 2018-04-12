@@ -5,56 +5,58 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-using iS3.Server.Models.Geology;
+using iS3.Server.Repository;
+using IS3.Geology;
+using iS3.Server.Utility;
+using iS3.Server.DTO.Geology;
 
 namespace iS3.Server.Controllers
 {
+    /// <summary>
+    /// 地质数据相关接口
+    /// </summary>
     [RoutePrefix("api/geology")]
     public class GeologyController : ApiController
     {
-        Demo[] boreholes = new Demo[] 
-        {
-            new Demo(1, "b1", 3.33, true),
-            new Demo(2, "b2", 2.33, false)
-        };
-
         /// <summary>
-        /// 根据id获取钻孔数据
+        /// 根据id获取工程钻孔数据
         /// </summary>
+        /// <param name="project">项目名称</param>
         /// <param name="id">钻孔id</param>
-        /// <returns>
-        /// id：钻孔id号；name：钻孔名称；deep：钻孔深度；isVisible：钻孔是否可见
-        /// </returns>
-        [Route("demo/{id}")]
+        /// <returns> </returns>
+        [Route("borehole")]
         [HttpGet]
-        public Demo Borehole(int id)
+        public BoreholeDTO getBoreholeById(string project, int id)
         {
-            Demo b = boreholes.FirstOrDefault((p) => p.id == id);
-            if (b == null)
-            {
-                throw new Exception(string.Format("没有找到id={0}的对象", id));
-            }
-            return b;
+            if (!FileUtil.projectExit(project))
+                throw new iS3Exception(string.Format("{0}工程不存在", project));
+
+            GeologyRepo repo = new GeologyRepo(project);
+            Borehole b = repo.getBoreholeById(id);
+
+            if ( b == null)
+                throw new iS3Exception(string.Format("没有找到id={0}的对象", id));
+            return new BoreholeDTO(b);
         }
 
         /// <summary>
-        /// 根据id获取钻孔数据（授权）
+        /// 获取Project工程的所有钻孔
         /// </summary>
-        /// <param name="id">钻孔id</param>
-        /// <returns>
-        /// id：钻孔id号；name：钻孔名称；deep：钻孔深度；isVisible：钻孔是否可见
-        /// </returns>
-        [Route("demo2/{id}")]
+        /// <param name="project">工程名称</param>
+        /// <returns></returns>
+        [Route("borehole")]
         [HttpGet]
-        [Authorize]
-        public Demo Borehole2(int id)
+        public List<BoreholeDTO> getBoreholeByProject(string project)
         {
-            Demo b = boreholes.FirstOrDefault((p) => p.id == id);
-            if (b == null)
-            {
-                throw new Exception(string.Format("没有找到id={0}的对象", id));
-            }
-            return b;
+            if (!FileUtil.projectExit(project))
+                throw new iS3Exception(string.Format("{0}工程不存在", project));
+
+            GeologyRepo repo = new GeologyRepo(project);
+            List<Borehole> bs = repo.getAllBorehole();
+
+            if (bs == null)
+                throw new iS3Exception(string.Format("没有找到{0}工程的钻孔数据", project));
+            return BoreholeDTO.transferList(bs);
         }
     }
 }
