@@ -18,14 +18,6 @@ namespace iS3.Server
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            // json indent
-            var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
-            json.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
-
-            // xml indent
-            var xml = GlobalConfiguration.Configuration.Formatters.XmlFormatter;
-            xml.Indent = true;
         }
     }
 }
