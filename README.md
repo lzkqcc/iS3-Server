@@ -4,9 +4,9 @@ iS3-Server offers some basic functions for common use in infrastructure engineer
 
 ## Requirement
 
-* .Net Framework 4.5
+* .Net Framework 4.5.2
 
-## How to install
+## How to run
 
 ### Installed from UI
 
@@ -21,3 +21,13 @@ iS3-Server offers some basic functions for common use in infrastructure engineer
 2. `cd iS3-Server`
 3. `.nuget/NuGet restore`
 4. Double click `iS3.Server.sln`, open in Visual Studio and Press `F5` to run in debug mode.
+
+## How to publish
+
+Before publish the project, the config file should be created.
+
+* publish in **Debug** mode: Copy `iS3.Server/Web.Demo.config`, rename to `iS3.Server/Web.Debug.config`, and fill the information
+* publish in **Release** mode: Copy `iS3.Server/Web.Demo.config`, rename to `iS3.Server/Web.Release.config`, and fill the information
+
+More informaiton please refer to [web config introduction](https://deanhume.com/working-with-multiple-web-config-files/).
+
