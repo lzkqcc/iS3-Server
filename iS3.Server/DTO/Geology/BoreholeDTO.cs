@@ -8,34 +8,34 @@ namespace iS3.Server.DTO.Geology
 {
     public class BoreholeGeologyDTO
     {
-        public double top { get; set; }
+        public double Top { get; set; }
         public double Base { get; set; }
-        public int stratumID { get; set; }
+        public int StratumID { get; set; }
 
         public BoreholeGeologyDTO() { }
         public BoreholeGeologyDTO(BoreholeGeology bg)
         {
-            top = bg.Top;
+            Top = bg.Top;
             Base = bg.Base;
-            stratumID = bg.StratumID;
+            StratumID = bg.StratumID;
         }
     }
     
     public class BoreholeDTO : DGObjectDTO
     {
-        public double top { get; set; }
+        public double Top { get; set; }
         public double Base { get; set; }
-        public double? mileage { get; set; }
-        public string type { get; set; }
+        public double? Mileage { get; set; }
+        public string Type { get; set; }
         public List<BoreholeGeologyDTO> geologies { get; set; }
 
         public BoreholeDTO() { geologies = new List<BoreholeGeologyDTO>(); }
         public BoreholeDTO(Borehole b) : this()
         {
-            top = b.Top;
+            Top = b.Top;
             Base = b.Base;
-            mileage = b.Mileage;
-            type = b.Type;
+            Mileage = b.Mileage;
+            Type = b.Type;
             foreach (BoreholeGeology bg in b.Geologies)
             {
                 geologies.Add(new BoreholeGeologyDTO(bg));

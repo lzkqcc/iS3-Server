@@ -416,6 +416,81 @@
             <param name="project">工程名称</param>
             <returns></returns>
         </member>
+        <member name="M:iS3.Server.Controllers.GeologyController.getStratumById(System.String,System.Int32)">
+            <summary>
+            根据id获取地层数据
+            </summary>
+            <param name="project">项目名称</param>
+            <param name="id">地层id</param>
+            <returns> </returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.GeologyController.getStratumByProject(System.String)">
+            <summary>
+            获取Project工程的所有地层
+            </summary>
+            <param name="project">工程名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.GeologyController.getSoilPropertyById(System.String,System.Int32)">
+            <summary>
+            根据id获取土层参数
+            </summary>
+            <param name="project">项目名称</param>
+            <param name="id">土层参数id</param>
+            <returns> </returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.GeologyController.getSoilPropertyByProject(System.String)">
+            <summary>
+            获取Project工程的所有土层参数
+            </summary>
+            <param name="project">工程名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.GeologyController.getPhreaticWaterById(System.String,System.Int32)">
+            <summary>
+            根据id获取潜水层
+            </summary>
+            <param name="project">项目名称</param>
+            <param name="id">潜水层id</param>
+            <returns> </returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.GeologyController.getPhreaticWaterByProject(System.String)">
+            <summary>
+            获取Project工程的所有潜水层
+            </summary>
+            <param name="project">工程名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.GeologyController.getConfinedWaterById(System.String,System.Int32)">
+            <summary>
+            根据id获取承压水
+            </summary>
+            <param name="project">项目名称</param>
+            <param name="id">承压水id</param>
+            <returns> </returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.GeologyController.getConfinedWaterByProject(System.String)">
+            <summary>
+            获取Project工程的所有承压水
+            </summary>
+            <param name="project">工程名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.GeologyController.getWaterPropertyById(System.String,System.Int32)">
+            <summary>
+            根据id获取地下水参数
+            </summary>
+            <param name="project">项目名称</param>
+            <param name="id">地下水参数id</param>
+            <returns> </returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.GeologyController.getWaterPropertyByProject(System.String)">
+            <summary>
+            获取Project工程的所有承压水
+            </summary>
+            <param name="project">工程名称</param>
+            <returns></returns>
+        </member>
         <member name="T:iS3.Server.Controllers.ZDemoController">
             <summary>
             一些测试接口
