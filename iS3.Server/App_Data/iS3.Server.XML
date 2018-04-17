@@ -514,6 +514,24 @@
             id：钻孔id号；name：钻孔名称；deep：钻孔深度；isVisible：钻孔是否可见
             </returns>
         </member>
+        <member name="M:iS3.Server.Controllers.ZDemoController.Borehole3(System.Int32)">
+            <summary>
+            根据id获取钻孔数据
+            </summary>
+            <param name="id">钻孔id</param>
+            <returns>
+            id：钻孔id号；name：钻孔名称；deep：钻孔深度；isVisible：钻孔是否可见
+            </returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.ZDemoController.Borehole4(System.Int32)">
+            <summary>
+            根据id获取钻孔数据（授权）
+            </summary>
+            <param name="id">钻孔id</param>
+            <returns>
+            id：钻孔id号；name：钻孔名称；deep：钻孔深度；isVisible：钻孔是否可见
+            </returns>
+        </member>
         <member name="M:iS3.Server.Filters.ApiErrorHandleAttribute.OnException(System.Web.Http.Filters.HttpActionExecutedContext)">
             <summary>
             API发生错误时拦截处理
