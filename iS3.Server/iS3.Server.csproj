@@ -43,6 +43,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="IS3.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\IS3.Core.0.1.1\lib\net45\IS3.Core.dll</HintPath>
@@ -80,8 +86,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Cors">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
@@ -155,7 +162,9 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -176,6 +185,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\GeologyController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\ZDemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DTO\DGObjectDTO.cs" />
@@ -190,11 +200,14 @@
     </Compile>
     <Compile Include="Models\Geology\Demo.cs" />
     <Compile Include="Models\IS3Result.cs" />
+    <Compile Include="Models\Project\ProjectContext.cs" />
+    <Compile Include="Models\Project\ProjectList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider .cs" />
     <Compile Include="Repository\CentralRepo.cs" />
     <Compile Include="Repository\DGObjectRepo.cs" />
     <Compile Include="Repository\GeologyRepo.cs" />
+    <Compile Include="Repository\ProjectRepo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utility\DBUtil.cs" />
     <Compile Include="Utility\FileUtil.cs" />

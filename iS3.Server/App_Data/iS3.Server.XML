@@ -491,6 +491,27 @@
             <param name="project">工程名称</param>
             <returns></returns>
         </member>
+        <member name="T:iS3.Server.Controllers.ProjectController">
+            <summary>
+            工程概况相关接口
+            </summary>
+        </member>
+        <member name="M:iS3.Server.Controllers.ProjectController.getProjectListById(System.Int32)">
+            <summary>
+            根据id获取工程信息
+            </summary>
+            <param name="id">项目名称</param>
+            <param name="id">钻孔id</param>
+            <returns> </returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.ProjectController.putProjectList(iS3.Server.Models.Project.ProjectList)">
+            <summary>
+            添加工程信息
+            </summary>
+            <param name="id">项目名称</param>
+            <param name="id">钻孔id</param>
+            <returns> </returns>
+        </member>
         <member name="T:iS3.Server.Controllers.ZDemoController">
             <summary>
             一些测试接口
