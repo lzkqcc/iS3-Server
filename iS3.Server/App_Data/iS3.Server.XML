@@ -512,6 +512,26 @@
             <param name="id">钻孔id</param>
             <returns> </returns>
         </member>
+        <member name="T:iS3.Server.Controllers.StructureController">
+            <summary>
+            地质数据相关接口
+            </summary>
+        </member>
+        <member name="M:iS3.Server.Controllers.StructureController.getPillarById(System.String,System.Int32)">
+            <summary>
+            根据id获取工程柱子信息
+            </summary>
+            <param name="project">项目名称</param>
+            <param name="id">柱子id</param>
+            <returns> </returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.StructureController.getBoreholeByProject(System.String)">
+            <summary>
+            获取Project工程的所有柱子
+            </summary>
+            <param name="project">工程名称</param>
+            <returns></returns>
+        </member>
         <member name="T:iS3.Server.Controllers.ZDemoController">
             <summary>
             一些测试接口
