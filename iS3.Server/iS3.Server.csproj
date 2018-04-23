@@ -201,9 +201,71 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Geology\Demo.cs" />
-    <Compile Include="Models\IS3Result.cs" />
-    <Compile Include="Models\Project\ProjectContext.cs" />
-    <Compile Include="Models\Project\ProjectList.cs" />
+    <Compile Include="Models\iS3Context.cs" />
+    <Compile Include="Models\iS3Result.cs" />
+    <Compile Include="Models\Project\Base_DataSourceInfo.cs">
+      <DependentUpon>DB_iS3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Base_DataSourceType.cs">
+      <DependentUpon>DB_iS3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Boreholes.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\DB_iS3.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_iS3.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\DB_iS3.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_iS3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\DB_iS3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_iS3.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\DB_iS3_Project.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_iS3_Project.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\DB_iS3_Project.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\DB_iS3_Project.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_iS3_Project.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Permission_RoleInfo.cs">
+      <DependentUpon>DB_iS3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Permission_Role_User.cs">
+      <DependentUpon>DB_iS3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Permission_UserInfo.cs">
+      <DependentUpon>DB_iS3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Permission_User_Project.cs">
+      <DependentUpon>DB_iS3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Project_PersonnelInfo.cs">
+      <DependentUpon>DB_iS3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Project_UnitInfo.cs">
+      <DependentUpon>DB_iS3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\System_ModuleInfo.cs">
+      <DependentUpon>DB_iS3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\System_ProjectList.cs">
+      <DependentUpon>DB_iS3.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider .cs" />
     <Compile Include="Repository\CentralRepo.cs" />
@@ -225,6 +287,26 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Project\DB_iS3.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_iS3.edmx</DependentUpon>
+      <LastGenOutput>DB_iS3.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Project\DB_iS3.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_iS3.edmx</DependentUpon>
+      <LastGenOutput>DB_iS3.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Project\DB_iS3_Project.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_iS3_Project.edmx</DependentUpon>
+      <LastGenOutput>DB_iS3_Project.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Project\DB_iS3_Project.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_iS3_Project.edmx</DependentUpon>
+      <LastGenOutput>DB_iS3_Project.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -238,6 +320,20 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <EntityDeploy Include="Models\Project\DB_iS3.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB_iS3.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Project\DB_iS3.edmx.diagram">
+      <DependentUpon>DB_iS3.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Project\DB_iS3_Project.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB_iS3_Project.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Project\DB_iS3_Project.edmx.diagram">
+      <DependentUpon>DB_iS3_Project.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\iS3-Server.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -245,7 +341,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

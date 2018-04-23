@@ -500,16 +500,21 @@
             <summary>
             根据id获取工程信息
             </summary>
-            <param name="id">项目名称</param>
-            <param name="id">钻孔id</param>
+            <param name="id">项目id</param>
             <returns> </returns>
         </member>
-        <member name="M:iS3.Server.Controllers.ProjectController.putProjectList(iS3.Server.Models.Project.ProjectList)">
+        <member name="M:iS3.Server.Controllers.ProjectController.putProjectList(iS3.Server.Models.Project.System_ProjectList)">
             <summary>
             添加工程信息
             </summary>
-            <param name="id">项目名称</param>
-            <param name="id">钻孔id</param>
+            <param name="project">项目</param>
+            <returns> </returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.ProjectController.deleteProjectList(iS3.Server.Models.Project.System_ProjectList)">
+            <summary>
+            删除工程信息
+            </summary>
+            <param name="project">项目</param>
             <returns> </returns>
         </member>
         <member name="T:iS3.Server.Controllers.StructureController">

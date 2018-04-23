@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_iS3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Base_DataSourceInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="DSType" Type="int" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Port" Type="int" />
+          <Property Name="DBName" Type="varchar" MaxLength="20" />
+          <Property Name="UserID" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="Remark" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Base_DataSourceType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="CODE" Type="varchar" MaxLength="20" />
+          <Property Name="Remark" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Permission_RoleInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="Desc" Type="varchar" MaxLength="30" />
+          <Property Name="CreateUserID" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="ModifyUserID" Type="int" />
+          <Property Name="ModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Permission_Role-User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="User_ID" Type="int" />
+          <Property Name="Role_ID" Type="int" />
+          <Property Name="CreateUserID" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ModifyUserID" Type="int" />
+          <Property Name="ModifyDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Permission_UserInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="LoginName" Type="varchar" MaxLength="20" />
+          <Property Name="LoginPassword" Type="varchar" MaxLength="20" />
+          <Property Name="RealName" Type="varchar" MaxLength="20" />
+          <Property Name="MobilePhone" Type="varchar" MaxLength="20" />
+          <Property Name="Remark" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Permission_User-Project">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="ProjectID" Type="int" />
+        </EntityType>
+        <EntityType Name="Project_PersonnelInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="UnitID" Type="int" />
+          <Property Name="Telephone" Type="varchar" MaxLength="20" />
+          <Property Name="EMail" Type="varchar" MaxLength="50" />
+          <Property Name="Remark" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Project_UnitInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Telephone" Type="varchar" MaxLength="20" />
+          <Property Name="Fax" Type="varchar" MaxLength="20" />
+          <Property Name="EMail" Type="varchar" MaxLength="20" />
+          <Property Name="Remark" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="System_ModuleInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="CODE" Type="nvarchar" MaxLength="20" />
+          <Property Name="ModuleType" Type="nvarchar" MaxLength="20" />
+          <Property Name="ModuleAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="System_ProjectList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="CODE" Type="varchar" MaxLength="20" />
+          <Property Name="ProjectTitle" Type="varchar" MaxLength="30" />
+          <Property Name="DBID" Type="int" />
+          <Property Name="FileService" Type="varchar" MaxLength="50" />
+          <Property Name="AnalysisService" Type="varchar" MaxLength="50" />
+          <Property Name="DefaultMapID" Type="int" />
+          <Property Name="X" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Y" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ModuleIDs" Type="varchar" MaxLength="50" />
+          <Property Name="Remark" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <Association Name="FK_PERMISSI_REF_ROLEI_PERMISSI">
+          <End Role="Permission_RoleInfo" Type="Self.Permission_RoleInfo" Multiplicity="0..1" />
+          <End Role="Permission_Role-User" Type="Self.Permission_Role-User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission_RoleInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Permission_Role-User">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERMISSI_REF_USERI_PERMISSI">
+          <End Role="Permission_UserInfo" Type="Self.Permission_UserInfo" Multiplicity="0..1" />
+          <End Role="Permission_Role-User" Type="Self.Permission_Role-User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission_UserInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Permission_Role-User">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROJECT__REF_UNITI_PROJECT_">
+          <End Role="Project_UnitInfo" Type="Self.Project_UnitInfo" Multiplicity="0..1" />
+          <End Role="Project_PersonnelInfo" Type="Self.Project_PersonnelInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_UnitInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Project_PersonnelInfo">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_iS3ModelStoreContainer">
+          <EntitySet Name="Base_DataSourceInfo" EntityType="Self.Base_DataSourceInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Base_DataSourceType" EntityType="Self.Base_DataSourceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission_RoleInfo" EntityType="Self.Permission_RoleInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission_Role-User" EntityType="Self.Permission_Role-User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission_UserInfo" EntityType="Self.Permission_UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission_User-Project" EntityType="Self.Permission_User-Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project_PersonnelInfo" EntityType="Self.Project_PersonnelInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project_UnitInfo" EntityType="Self.Project_UnitInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="System_ModuleInfo" EntityType="Self.System_ModuleInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="System_ProjectList" EntityType="Self.System_ProjectList" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_PERMISSI_REF_ROLEI_PERMISSI" Association="Self.FK_PERMISSI_REF_ROLEI_PERMISSI">
+            <End Role="Permission_RoleInfo" EntitySet="Permission_RoleInfo" />
+            <End Role="Permission_Role-User" EntitySet="Permission_Role-User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERMISSI_REF_USERI_PERMISSI" Association="Self.FK_PERMISSI_REF_USERI_PERMISSI">
+            <End Role="Permission_UserInfo" EntitySet="Permission_UserInfo" />
+            <End Role="Permission_Role-User" EntitySet="Permission_Role-User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROJECT__REF_UNITI_PROJECT_" Association="Self.FK_PROJECT__REF_UNITI_PROJECT_">
+            <End Role="Project_UnitInfo" EntitySet="Project_UnitInfo" />
+            <End Role="Project_PersonnelInfo" EntitySet="Project_PersonnelInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_iS3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Base_DataSourceInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DSType" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Port" Type="Int32" />
+          <Property Name="DBName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Base_DataSourceType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Permission_RoleInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Desc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CreateUserID" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifyUserID" Type="Int32" />
+          <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Permission_Role_User" Relationship="Self.FK_PERMISSI_REF_ROLEI_PERMISSI" FromRole="Permission_RoleInfo" ToRole="Permission_Role_User" />
+        </EntityType>
+        <EntityType Name="Permission_Role_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" />
+          <Property Name="Role_ID" Type="Int32" />
+          <Property Name="CreateUserID" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyUserID" Type="Int32" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Permission_RoleInfo" Relationship="Self.FK_PERMISSI_REF_ROLEI_PERMISSI" FromRole="Permission_Role_User" ToRole="Permission_RoleInfo" />
+          <NavigationProperty Name="Permission_UserInfo" Relationship="Self.FK_PERMISSI_REF_USERI_PERMISSI" FromRole="Permission_Role_User" ToRole="Permission_UserInfo" />
+        </EntityType>
+        <EntityType Name="Permission_UserInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="LoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LoginPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RealName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MobilePhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Permission_Role_User" Relationship="Self.FK_PERMISSI_REF_USERI_PERMISSI" FromRole="Permission_UserInfo" ToRole="Permission_Role_User" />
+        </EntityType>
+        <EntityType Name="Permission_User_Project">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="ProjectID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Project_PersonnelInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UnitID" Type="Int32" />
+          <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Project_UnitInfo" Relationship="Self.FK_PROJECT__REF_UNITI_PROJECT_" FromRole="Project_PersonnelInfo" ToRole="Project_UnitInfo" />
+        </EntityType>
+        <EntityType Name="Project_UnitInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EMail" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Project_PersonnelInfo" Relationship="Self.FK_PROJECT__REF_UNITI_PROJECT_" FromRole="Project_UnitInfo" ToRole="Project_PersonnelInfo" />
+        </EntityType>
+        <EntityType Name="System_ModuleInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ModuleType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ModuleAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="System_ProjectList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectTitle" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DBID" Type="Int32" />
+          <Property Name="FileService" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AnalysisService" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DefaultMapID" Type="Int32" />
+          <Property Name="X" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Y" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ModuleIDs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_PERMISSI_REF_ROLEI_PERMISSI">
+          <End Role="Permission_RoleInfo" Type="Self.Permission_RoleInfo" Multiplicity="0..1" />
+          <End Role="Permission_Role_User" Type="Self.Permission_Role_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission_RoleInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Permission_Role_User">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERMISSI_REF_USERI_PERMISSI">
+          <End Role="Permission_UserInfo" Type="Self.Permission_UserInfo" Multiplicity="0..1" />
+          <End Role="Permission_Role_User" Type="Self.Permission_Role_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission_UserInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Permission_Role_User">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROJECT__REF_UNITI_PROJECT_">
+          <End Role="Project_UnitInfo" Type="Self.Project_UnitInfo" Multiplicity="0..1" />
+          <End Role="Project_PersonnelInfo" Type="Self.Project_PersonnelInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_UnitInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Project_PersonnelInfo">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_iS3Context" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Base_DataSourceInfo" EntityType="Self.Base_DataSourceInfo" />
+          <EntitySet Name="Base_DataSourceType" EntityType="Self.Base_DataSourceType" />
+          <EntitySet Name="Permission_RoleInfo" EntityType="Self.Permission_RoleInfo" />
+          <EntitySet Name="Permission_Role_User" EntityType="Self.Permission_Role_User" />
+          <EntitySet Name="Permission_UserInfo" EntityType="Self.Permission_UserInfo" />
+          <EntitySet Name="Permission_User_Project" EntityType="Self.Permission_User_Project" />
+          <EntitySet Name="Project_PersonnelInfo" EntityType="Self.Project_PersonnelInfo" />
+          <EntitySet Name="Project_UnitInfo" EntityType="Self.Project_UnitInfo" />
+          <EntitySet Name="System_ModuleInfo" EntityType="Self.System_ModuleInfo" />
+          <EntitySet Name="System_ProjectList" EntityType="Self.System_ProjectList" />
+          <AssociationSet Name="FK_PERMISSI_REF_ROLEI_PERMISSI" Association="Self.FK_PERMISSI_REF_ROLEI_PERMISSI">
+            <End Role="Permission_RoleInfo" EntitySet="Permission_RoleInfo" />
+            <End Role="Permission_Role_User" EntitySet="Permission_Role_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERMISSI_REF_USERI_PERMISSI" Association="Self.FK_PERMISSI_REF_USERI_PERMISSI">
+            <End Role="Permission_UserInfo" EntitySet="Permission_UserInfo" />
+            <End Role="Permission_Role_User" EntitySet="Permission_Role_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROJECT__REF_UNITI_PROJECT_" Association="Self.FK_PROJECT__REF_UNITI_PROJECT_">
+            <End Role="Project_UnitInfo" EntitySet="Project_UnitInfo" />
+            <End Role="Project_PersonnelInfo" EntitySet="Project_PersonnelInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_iS3ModelStoreContainer" CdmEntityContainer="DB_iS3Context">
+          <EntitySetMapping Name="Base_DataSourceInfo">
+            <EntityTypeMapping TypeName="DB_iS3Model.Base_DataSourceInfo">
+              <MappingFragment StoreEntitySet="Base_DataSourceInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DSType" ColumnName="DSType" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="DBName" ColumnName="DBName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_DataSourceType">
+            <EntityTypeMapping TypeName="DB_iS3Model.Base_DataSourceType">
+              <MappingFragment StoreEntitySet="Base_DataSourceType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permission_RoleInfo">
+            <EntityTypeMapping TypeName="DB_iS3Model.Permission_RoleInfo">
+              <MappingFragment StoreEntitySet="Permission_RoleInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ModifyUserID" ColumnName="ModifyUserID" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permission_Role_User">
+            <EntityTypeMapping TypeName="DB_iS3Model.Permission_Role_User">
+              <MappingFragment StoreEntitySet="Permission_Role-User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ModifyUserID" ColumnName="ModifyUserID" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permission_UserInfo">
+            <EntityTypeMapping TypeName="DB_iS3Model.Permission_UserInfo">
+              <MappingFragment StoreEntitySet="Permission_UserInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="LoginPassword" ColumnName="LoginPassword" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permission_User_Project">
+            <EntityTypeMapping TypeName="DB_iS3Model.Permission_User_Project">
+              <MappingFragment StoreEntitySet="Permission_User-Project">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project_PersonnelInfo">
+            <EntityTypeMapping TypeName="DB_iS3Model.Project_PersonnelInfo">
+              <MappingFragment StoreEntitySet="Project_PersonnelInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project_UnitInfo">
+            <EntityTypeMapping TypeName="DB_iS3Model.Project_UnitInfo">
+              <MappingFragment StoreEntitySet="Project_UnitInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="System_ModuleInfo">
+            <EntityTypeMapping TypeName="DB_iS3Model.System_ModuleInfo">
+              <MappingFragment StoreEntitySet="System_ModuleInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="ModuleType" ColumnName="ModuleType" />
+                <ScalarProperty Name="ModuleAddress" ColumnName="ModuleAddress" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="System_ProjectList">
+            <EntityTypeMapping TypeName="DB_iS3Model.System_ProjectList">
+              <MappingFragment StoreEntitySet="System_ProjectList">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="ProjectTitle" ColumnName="ProjectTitle" />
+                <ScalarProperty Name="DBID" ColumnName="DBID" />
+                <ScalarProperty Name="FileService" ColumnName="FileService" />
+                <ScalarProperty Name="AnalysisService" ColumnName="AnalysisService" />
+                <ScalarProperty Name="DefaultMapID" ColumnName="DefaultMapID" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+                <ScalarProperty Name="ModuleIDs" ColumnName="ModuleIDs" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

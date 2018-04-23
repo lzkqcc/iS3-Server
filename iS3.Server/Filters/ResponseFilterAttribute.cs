@@ -27,7 +27,7 @@ namespace iS3.Server.Filters
             object data = actionExecutedContext.ActionContext.Response.Content.ReadAsAsync<object>().Result;
 
             actionExecutedContext.Response = actionExecutedContext.Request
-                .CreateResponse(code, new IS3Result(true, data, String.Empty));
+                .CreateResponse(code, new iS3Result(true, data, String.Empty));
         }
     }
 }

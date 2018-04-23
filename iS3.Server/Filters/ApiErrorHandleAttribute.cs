@@ -22,7 +22,7 @@ namespace iS3.Server.Filters
             // 取得异常错误信息
             String errorMessage = actionExecutedContext.Exception.Message;
 
-            IS3Result result = new IS3Result(false, null, errorMessage);
+            iS3Result result = new iS3Result(false, null, errorMessage);
 
             actionExecutedContext.Response = actionExecutedContext.Request
                 .CreateResponse(System.Net.HttpStatusCode.OK, result);

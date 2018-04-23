@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="iS3DemoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'iS3Demo.dbo.Boreholes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Boreholes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="OBJECTID" Type="smallint" />
+          <Property Name="ID" Type="smallint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="StratumSection" Type="smallint" />
+          <Property Name="SectionSequence" Type="smallint" />
+          <Property Name="BoreholeType" Type="nvarchar" MaxLength="255" />
+          <Property Name="TopElevation" Type="float" />
+          <Property Name="BoreholeLength" Type="float" />
+          <Property Name="Mileage" Type="nvarchar" MaxLength="255" />
+          <Property Name="Xcoordinate" Type="float" />
+          <Property Name="Ycoordinate" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'iS3Demo.dbo.Leakage' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Leakage">
+          <Property Name="OBJECTID" Type="nvarchar" MaxLength="255" />
+          <Property Name="StartMilage" Type="nvarchar" MaxLength="255" />
+          <Property Name="EndMilage" Type="nvarchar" MaxLength="255" />
+          <Property Name="MetroLine" Type="int" />
+          <Property Name="LineNo" Type="int" />
+          <Property Name="StartRingNo" Type="float" />
+          <Property Name="EndRingNo" Type="float" />
+          <Property Name="SLCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="StartAngle" Type="float" />
+          <Property Name="EndAngle" Type="float" />
+          <Property Name="Shape" Type="nvarchar" MaxLength="255" />
+          <Property Name="Area" Type="float" />
+          <Property Name="Speed" Type="float" />
+          <Property Name="Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="p" Type="nvarchar" MaxLength="255" />
+          <Property Name="pH" Type="nvarchar" MaxLength="255" />
+          <Property Name="WaterSample" Type="nvarchar" MaxLength="255" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Document" Type="nvarchar" MaxLength="255" />
+          <Property Name="Discription" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <EntityContainer Name="iS3DemoModelStoreContainer">
+          <EntitySet Name="Boreholes" EntityType="Self.Boreholes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Boreholes].[OBJECTID] AS [OBJECTID], 
+    [Boreholes].[ID] AS [ID], 
+    [Boreholes].[Name] AS [Name], 
+    [Boreholes].[FullName] AS [FullName], 
+    [Boreholes].[Description] AS [Description], 
+    [Boreholes].[StratumSection] AS [StratumSection], 
+    [Boreholes].[SectionSequence] AS [SectionSequence], 
+    [Boreholes].[BoreholeType] AS [BoreholeType], 
+    [Boreholes].[TopElevation] AS [TopElevation], 
+    [Boreholes].[BoreholeLength] AS [BoreholeLength], 
+    [Boreholes].[Mileage] AS [Mileage], 
+    [Boreholes].[Xcoordinate] AS [Xcoordinate], 
+    [Boreholes].[Ycoordinate] AS [Ycoordinate]
+    FROM [dbo].[Boreholes] AS [Boreholes]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="iS3DemoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Boreholes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="OBJECTID" Type="Int16" />
+          <Property Name="ID" Type="Int16" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="StratumSection" Type="Int16" />
+          <Property Name="SectionSequence" Type="Int16" />
+          <Property Name="BoreholeType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TopElevation" Type="Double" />
+          <Property Name="BoreholeLength" Type="Double" />
+          <Property Name="Mileage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Xcoordinate" Type="Double" />
+          <Property Name="Ycoordinate" Type="Double" />
+        </EntityType>
+        <EntityContainer Name="DB_iS3_Project" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Boreholes" EntityType="Self.Boreholes" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="iS3DemoModelStoreContainer" CdmEntityContainer="DB_iS3_Project">
+          <EntitySetMapping Name="Boreholes">
+            <EntityTypeMapping TypeName="iS3DemoModel.Boreholes">
+              <MappingFragment StoreEntitySet="Boreholes">
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StratumSection" ColumnName="StratumSection" />
+                <ScalarProperty Name="SectionSequence" ColumnName="SectionSequence" />
+                <ScalarProperty Name="BoreholeType" ColumnName="BoreholeType" />
+                <ScalarProperty Name="TopElevation" ColumnName="TopElevation" />
+                <ScalarProperty Name="BoreholeLength" ColumnName="BoreholeLength" />
+                <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+                <ScalarProperty Name="Xcoordinate" ColumnName="Xcoordinate" />
+                <ScalarProperty Name="Ycoordinate" ColumnName="Ycoordinate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

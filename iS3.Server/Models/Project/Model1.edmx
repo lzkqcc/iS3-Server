@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_iS3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="System_ProjectList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="CODE" Type="varchar" MaxLength="20" />
+          <Property Name="ProjectTitle" Type="varchar" MaxLength="30" />
+          <Property Name="DBID" Type="int" />
+          <Property Name="FileService" Type="varchar" MaxLength="50" />
+          <Property Name="AnalysisService" Type="varchar" MaxLength="50" />
+          <Property Name="DefaultMapID" Type="int" />
+          <Property Name="X" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Y" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ModuleIDs" Type="varchar" MaxLength="50" />
+          <Property Name="Remark" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <EntityContainer Name="DB_iS3ModelStoreContainer">
+          <EntitySet Name="System_ProjectList" EntityType="Self.System_ProjectList" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_iS3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="System_ProjectList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectTitle" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DBID" Type="Int32" />
+          <Property Name="FileService" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AnalysisService" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DefaultMapID" Type="Int32" />
+          <Property Name="X" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Y" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ModuleIDs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="DB_iS3Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="System_ProjectList" EntityType="Self.System_ProjectList" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_iS3ModelStoreContainer" CdmEntityContainer="DB_iS3Entities">
+          <EntitySetMapping Name="System_ProjectList">
+            <EntityTypeMapping TypeName="DB_iS3Model.System_ProjectList">
+              <MappingFragment StoreEntitySet="System_ProjectList">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="ProjectTitle" ColumnName="ProjectTitle" />
+                <ScalarProperty Name="DBID" ColumnName="DBID" />
+                <ScalarProperty Name="FileService" ColumnName="FileService" />
+                <ScalarProperty Name="AnalysisService" ColumnName="AnalysisService" />
+                <ScalarProperty Name="DefaultMapID" ColumnName="DefaultMapID" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+                <ScalarProperty Name="ModuleIDs" ColumnName="ModuleIDs" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

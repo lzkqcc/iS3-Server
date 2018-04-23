@@ -12,11 +12,21 @@ namespace iS3.Server.Utility
         public string password { get; set; }
         public DBUtil(string name)
         {
-            string conn = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            string conn = System.Configuration.ConfigurationManager.ConnectionStrings[name].ConnectionString;
             string[] ss = conn.Split(';');
-            ip = ss[0].Split('=')[1];
-            user = ss[3].Split('=')[1];
-            password = ss[4].Split('=')[1];
+            foreach(string s in ss)
+            {
+                string[] kv = s.Split('=');
+
+                if (kv[0].ToLower().Equals("data source"))
+                    ip = kv[1];
+
+                if (kv[0].ToLower().Equals("user id"))
+                    user = kv[1];
+
+                if (kv[0].ToLower().Equals("password"))
+                    password = kv[1];
+            }
         }
     }
 }
