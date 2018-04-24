@@ -32,6 +32,7 @@ namespace iS3.Server.DTO.Geology
         public BoreholeDTO() { geologies = new List<BoreholeGeologyDTO>(); }
         public BoreholeDTO(Borehole b) : this()
         {
+            id = b.id;
             Top = b.Top;
             Base = b.Base;
             Mileage = b.Mileage;
