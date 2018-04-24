@@ -35,18 +35,27 @@ namespace iS3.Server.Controllers
         }
 
         /// <summary>
-        /// 获取Project工程的所有钻孔
+        /// 获取Project工程钻孔
         /// </summary>
-        /// <param name="project">工程名称</param>
-        /// <returns></returns>
+        /// <param name="project">项目名称</param>
+        /// <param name="ids">（可选）钻孔id，如api/geology/borehole?project={project}&amp;ids=1&amp;ids=2，不提供ids默认取所有钻孔</param>
+        /// <returns> </returns>
         [Route("borehole")]
         [HttpGet]
-        public List<BoreholeDTO> getBoreholeByProject(string project)
+        public List<BoreholeDTO> getBoreholeByIds([FromUri]string project, [FromUri]int[] ids)
         {
-            List<Borehole> bs = getAllByProject<Borehole>(project);
-            return BoreholeDTO.transferList(bs);
+            if (ids.Length == 0)
+            {
+                List<Borehole> bs = getAllByProject<Borehole>(project);
+                return BoreholeDTO.transferList(bs);
+            }
+            else
+            {
+                List<Borehole> bs = getObjectByIds<Borehole>(project, ids);
+                return BoreholeDTO.transferList(bs);
+            }
         }
-
+      
         /// <summary>
         /// 根据id获取地层数据
         /// </summary>
@@ -222,6 +231,30 @@ namespace iS3.Server.Controllers
                 throw new iS3Exception(string.Format("没有找到id={0}的对象", id));
             
             return obj;
+        }
+
+        private List<T> getObjectByIds<T>(string project, int[] ids)
+          where T : DGObject, new()
+        {
+            if (!FileUtil.projectExit(project))
+                throw new iS3Exception(string.Format("{0}工程不存在", project));
+
+            GeologyRepo repo = new GeologyRepo(project);
+
+            List<T> objs = new List<T>();
+            foreach (int id in ids)
+            {
+                T obj = repo.getObjectById<T>(id);
+                if (obj == null)
+                {
+                    T obj1 = new T();
+                    obj1.id = id;
+                    objs.Add((T)obj1);
+                }
+                else
+                    objs.Add((T)obj);
+            }
+            return objs;
         }
 
         private List<T> getAllByProject<T>(string project)
