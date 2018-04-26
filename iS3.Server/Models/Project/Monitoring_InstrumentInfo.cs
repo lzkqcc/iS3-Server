@@ -12,15 +12,11 @@ namespace iS3.Server.Models.Project
     using System;
     using System.Collections.Generic;
     
-    public partial class Permission_Role_User
+    public partial class Monitoring_InstrumentInfo
     {
         public int ID { get; set; }
-        public Nullable<int> CreateUserID { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<int> ModifyUserID { get; set; }
-        public Nullable<System.DateTime> ModifyDate { get; set; }
-    
-        public virtual Permission_RoleInfo Permission_RoleInfo { get; set; }
-        public virtual Permission_UserInfo Permission_UserInfo { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> UnitID { get; set; }
+        public string Remark { get; set; }
     }
 }

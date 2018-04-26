@@ -23,10 +23,10 @@ namespace iS3.Server
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             Runtime.dataPath = Server.MapPath(@"~/App_Data/project");
-            DBUtil db = new DBUtil("DefaultConnection");
-            string ipaddress = db.ip;
-            string user = db.user;
-            string password = db.password;
+            DBUtil db = new DBUtil();
+            string ipaddress = DBUtil.ip;
+            string user = DBUtil.user;
+            string password = DBUtil.password;
 
             Globals.iS3Service = new IS3Service();
             IDataService sqlserver = new DataServiceSqlServer();

@@ -4,8 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="03ad88b3049f4c7da616631a38860149" Name="Diagram1">
-        <EntityTypeShape EntityType="iS3DemoModel.Boreholes" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="d8c01b6a0ecc4b73b1a4dd9f1a63de32" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Base_DataSourceInfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Base_DataSourceType" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Monitoring_InstrumentInfo" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Monitoring_MonGroupInfo" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Monitoring_MonPointInfo" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Monitoring_MonProjectInfo" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Project_ObjectsDefinition" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Project_ProjectInfo" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

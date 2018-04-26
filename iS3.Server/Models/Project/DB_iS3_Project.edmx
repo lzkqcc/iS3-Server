@@ -4,117 +4,383 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="iS3DemoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'iS3Demo.dbo.Boreholes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Boreholes">
+      <Schema Namespace="DB_iS3_DemoProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Base_DataSourceInfo">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="OBJECTID" Type="smallint" />
-          <Property Name="ID" Type="smallint" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="FullName" Type="nvarchar" MaxLength="255" />
-          <Property Name="Description" Type="nvarchar" MaxLength="255" />
-          <Property Name="StratumSection" Type="smallint" />
-          <Property Name="SectionSequence" Type="smallint" />
-          <Property Name="BoreholeType" Type="nvarchar" MaxLength="255" />
-          <Property Name="TopElevation" Type="float" />
-          <Property Name="BoreholeLength" Type="float" />
-          <Property Name="Mileage" Type="nvarchar" MaxLength="255" />
-          <Property Name="Xcoordinate" Type="float" />
-          <Property Name="Ycoordinate" Type="float" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="DSType" Type="int" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Port" Type="int" />
+          <Property Name="DBName" Type="varchar" MaxLength="20" />
+          <Property Name="UserID" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="Remark" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Base_DataSourceType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="CODE" Type="varchar" MaxLength="20" />
+          <Property Name="Remark" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Monitoring_InstrumentInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="UnitID" Type="int" />
+          <Property Name="Remark" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Monitoring_MonGroupInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="MonGroupType" Type="int" />
+          <Property Name="MonPointIDs" Type="varchar" MaxLength="100" />
+          <Property Name="MonProjectID" Type="int" />
+          <Property Name="RefSpecifications" Type="varchar(max)" />
+          <Property Name="PerInfoIDs" Type="varchar" MaxLength="100" />
+          <Property Name="Remark" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Monitoring_MonPointInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="MonPointType" Type="int" />
+          <Property Name="XCoordinate" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="YCoordinate" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="ZCoordinate" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="MonGroupID" Type="int" />
+          <Property Name="SensorName" Type="varchar" MaxLength="50" />
+          <Property Name="IniValue" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="STime" Type="datetime" />
+          <Property Name="PerInfoID" Type="int" />
+          <Property Name="Remark" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Monitoring_MonProjectInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="Type" Type="int" />
+          <Property Name="UnitID" Type="int" />
+          <Property Name="PerInfoID" Type="int" />
+          <Property Name="MonInstInfoIDs" Type="varchar" MaxLength="100" />
+          <Property Name="PlanFile" Type="varchar(max)" />
+          <Property Name="MonGroupIDs" Type="varchar" MaxLength="100" />
+          <Property Name="Remark" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Project_ObjectsDefinition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name_Chs" Type="varchar" MaxLength="20" />
+          <Property Name="Name_En" Type="varchar" MaxLength="20" />
+          <Property Name="Code" Type="varchar" MaxLength="20" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Domain" Type="varchar" MaxLength="50" />
+          <Property Name="GISLayerID" Type="int" />
+          <Property Name="DBID" Type="int" />
+          <Property Name="TableNameSQL" Type="varchar" MaxLength="50" />
+          <Property Name="OrderSQL" Type="varchar" MaxLength="50" />
+          <Property Name="ConditionSQL" Type="varchar" MaxLength="50" />
+          <Property Name="Remark" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Project_ProjectInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ProjectName" Type="varchar(max)" />
+          <Property Name="ProjectAddress" Type="varchar(max)" />
+          <Property Name="ConstructionUnit" Type="varchar(max)" />
+          <Property Name="GeologicalSurveyUnit" Type="varchar(max)" />
+          <Property Name="DesignUnit" Type="varchar(max)" />
+          <Property Name="SupervisionUnits" Type="varchar(max)" />
+          <Property Name="GeneralContractUnit" Type="varchar(max)" />
+          <Property Name="ContractAmount" Type="decimal" Precision="15" Scale="4" />
+          <Property Name="ContractPeriod" Type="int" />
+          <Property Name="Remark" Type="varchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'iS3Demo.dbo.Leakage' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Leakage">
-          <Property Name="OBJECTID" Type="nvarchar" MaxLength="255" />
-          <Property Name="StartMilage" Type="nvarchar" MaxLength="255" />
-          <Property Name="EndMilage" Type="nvarchar" MaxLength="255" />
-          <Property Name="MetroLine" Type="int" />
-          <Property Name="LineNo" Type="int" />
-          <Property Name="StartRingNo" Type="float" />
-          <Property Name="EndRingNo" Type="float" />
-          <Property Name="SLCode" Type="nvarchar" MaxLength="255" />
-          <Property Name="StartAngle" Type="float" />
-          <Property Name="EndAngle" Type="float" />
-          <Property Name="Shape" Type="nvarchar" MaxLength="255" />
-          <Property Name="Area" Type="float" />
-          <Property Name="Speed" Type="float" />
-          <Property Name="Status" Type="nvarchar" MaxLength="255" />
-          <Property Name="p" Type="nvarchar" MaxLength="255" />
-          <Property Name="pH" Type="nvarchar" MaxLength="255" />
-          <Property Name="WaterSample" Type="nvarchar" MaxLength="255" />
-          <Property Name="Date" Type="datetime" />
-          <Property Name="Document" Type="nvarchar" MaxLength="255" />
-          <Property Name="Discription" Type="nvarchar" MaxLength="255" />
+warning 6013: The table/view 'DB_iS3_DemoProject.dbo.Project_TreeDefinition' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Project_TreeDefinition">
+          <Property Name="ID" Type="int" />
+          <Property Name="Name_Chs" Type="varchar" MaxLength="20" />
+          <Property Name="Name_En" Type="varchar" MaxLength="20" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="RefObjID" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="60" />
         </EntityType>-->
-        <EntityContainer Name="iS3DemoModelStoreContainer">
-          <EntitySet Name="Boreholes" EntityType="Self.Boreholes" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Boreholes].[OBJECTID] AS [OBJECTID], 
-    [Boreholes].[ID] AS [ID], 
-    [Boreholes].[Name] AS [Name], 
-    [Boreholes].[FullName] AS [FullName], 
-    [Boreholes].[Description] AS [Description], 
-    [Boreholes].[StratumSection] AS [StratumSection], 
-    [Boreholes].[SectionSequence] AS [SectionSequence], 
-    [Boreholes].[BoreholeType] AS [BoreholeType], 
-    [Boreholes].[TopElevation] AS [TopElevation], 
-    [Boreholes].[BoreholeLength] AS [BoreholeLength], 
-    [Boreholes].[Mileage] AS [Mileage], 
-    [Boreholes].[Xcoordinate] AS [Xcoordinate], 
-    [Boreholes].[Ycoordinate] AS [Ycoordinate]
-    FROM [dbo].[Boreholes] AS [Boreholes]</DefiningQuery>
-          </EntitySet>
+        <EntityContainer Name="DB_iS3_DemoProjectModelStoreContainer">
+          <EntitySet Name="Base_DataSourceInfo" EntityType="Self.Base_DataSourceInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Base_DataSourceType" EntityType="Self.Base_DataSourceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Monitoring_InstrumentInfo" EntityType="Self.Monitoring_InstrumentInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Monitoring_MonGroupInfo" EntityType="Self.Monitoring_MonGroupInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Monitoring_MonPointInfo" EntityType="Self.Monitoring_MonPointInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Monitoring_MonProjectInfo" EntityType="Self.Monitoring_MonProjectInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project_ObjectsDefinition" EntityType="Self.Project_ObjectsDefinition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project_ProjectInfo" EntityType="Self.Project_ProjectInfo" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="iS3DemoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Boreholes">
+      <Schema Namespace="DB_iS3_DemoProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Base_DataSourceInfo">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="OBJECTID" Type="Int16" />
-          <Property Name="ID" Type="Int16" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="StratumSection" Type="Int16" />
-          <Property Name="SectionSequence" Type="Int16" />
-          <Property Name="BoreholeType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="TopElevation" Type="Double" />
-          <Property Name="BoreholeLength" Type="Double" />
-          <Property Name="Mileage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Xcoordinate" Type="Double" />
-          <Property Name="Ycoordinate" Type="Double" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DSType" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Port" Type="Int32" />
+          <Property Name="DBName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="DB_iS3_Project" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Boreholes" EntityType="Self.Boreholes" />
+        <EntityType Name="Base_DataSourceType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Monitoring_InstrumentInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UnitID" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Monitoring_MonGroupInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MonGroupType" Type="Int32" />
+          <Property Name="MonPointIDs" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MonProjectID" Type="Int32" />
+          <Property Name="RefSpecifications" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PerInfoIDs" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Monitoring_MonPointInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MonPointType" Type="Int32" />
+          <Property Name="XCoordinate" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="YCoordinate" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="ZCoordinate" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="MonGroupID" Type="Int32" />
+          <Property Name="SensorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IniValue" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="STime" Type="DateTime" Precision="3" />
+          <Property Name="PerInfoID" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Monitoring_MonProjectInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="UnitID" Type="Int32" />
+          <Property Name="PerInfoID" Type="Int32" />
+          <Property Name="MonInstInfoIDs" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PlanFile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MonGroupIDs" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Project_ObjectsDefinition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name_Chs" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Name_En" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Domain" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GISLayerID" Type="Int32" />
+          <Property Name="DBID" Type="Int32" />
+          <Property Name="TableNameSQL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderSQL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConditionSQL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Project_ProjectInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ConstructionUnit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GeologicalSurveyUnit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DesignUnit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SupervisionUnits" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GeneralContractUnit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ContractAmount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="ContractPeriod" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Base_DataSourceInfo" EntityType="Self.Base_DataSourceInfo" />
+          <EntitySet Name="Base_DataSourceType" EntityType="Self.Base_DataSourceType" />
+          <EntitySet Name="Monitoring_InstrumentInfo" EntityType="Self.Monitoring_InstrumentInfo" />
+          <EntitySet Name="Monitoring_MonGroupInfo" EntityType="Self.Monitoring_MonGroupInfo" />
+          <EntitySet Name="Monitoring_MonPointInfo" EntityType="Self.Monitoring_MonPointInfo" />
+          <EntitySet Name="Monitoring_MonProjectInfo" EntityType="Self.Monitoring_MonProjectInfo" />
+          <EntitySet Name="Project_ObjectsDefinition" EntityType="Self.Project_ObjectsDefinition" />
+          <EntitySet Name="Project_ProjectInfo" EntityType="Self.Project_ProjectInfo" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="iS3DemoModelStoreContainer" CdmEntityContainer="DB_iS3_Project">
-          <EntitySetMapping Name="Boreholes">
-            <EntityTypeMapping TypeName="iS3DemoModel.Boreholes">
-              <MappingFragment StoreEntitySet="Boreholes">
-                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+        <EntityContainerMapping StorageEntityContainer="DB_iS3_DemoProjectModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Base_DataSourceInfo">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Base_DataSourceInfo">
+              <MappingFragment StoreEntitySet="Base_DataSourceInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DSType" ColumnName="DSType" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="DBName" ColumnName="DBName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_DataSourceType">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Base_DataSourceType">
+              <MappingFragment StoreEntitySet="Base_DataSourceType">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Monitoring_InstrumentInfo">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Monitoring_InstrumentInfo">
+              <MappingFragment StoreEntitySet="Monitoring_InstrumentInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Monitoring_MonGroupInfo">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Monitoring_MonGroupInfo">
+              <MappingFragment StoreEntitySet="Monitoring_MonGroupInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="StratumSection" ColumnName="StratumSection" />
-                <ScalarProperty Name="SectionSequence" ColumnName="SectionSequence" />
-                <ScalarProperty Name="BoreholeType" ColumnName="BoreholeType" />
-                <ScalarProperty Name="TopElevation" ColumnName="TopElevation" />
-                <ScalarProperty Name="BoreholeLength" ColumnName="BoreholeLength" />
-                <ScalarProperty Name="Mileage" ColumnName="Mileage" />
-                <ScalarProperty Name="Xcoordinate" ColumnName="Xcoordinate" />
-                <ScalarProperty Name="Ycoordinate" ColumnName="Ycoordinate" />
+                <ScalarProperty Name="MonGroupType" ColumnName="MonGroupType" />
+                <ScalarProperty Name="MonPointIDs" ColumnName="MonPointIDs" />
+                <ScalarProperty Name="MonProjectID" ColumnName="MonProjectID" />
+                <ScalarProperty Name="RefSpecifications" ColumnName="RefSpecifications" />
+                <ScalarProperty Name="PerInfoIDs" ColumnName="PerInfoIDs" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Monitoring_MonPointInfo">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Monitoring_MonPointInfo">
+              <MappingFragment StoreEntitySet="Monitoring_MonPointInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MonPointType" ColumnName="MonPointType" />
+                <ScalarProperty Name="XCoordinate" ColumnName="XCoordinate" />
+                <ScalarProperty Name="YCoordinate" ColumnName="YCoordinate" />
+                <ScalarProperty Name="ZCoordinate" ColumnName="ZCoordinate" />
+                <ScalarProperty Name="MonGroupID" ColumnName="MonGroupID" />
+                <ScalarProperty Name="SensorName" ColumnName="SensorName" />
+                <ScalarProperty Name="IniValue" ColumnName="IniValue" />
+                <ScalarProperty Name="STime" ColumnName="STime" />
+                <ScalarProperty Name="PerInfoID" ColumnName="PerInfoID" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Monitoring_MonProjectInfo">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Monitoring_MonProjectInfo">
+              <MappingFragment StoreEntitySet="Monitoring_MonProjectInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="PerInfoID" ColumnName="PerInfoID" />
+                <ScalarProperty Name="MonInstInfoIDs" ColumnName="MonInstInfoIDs" />
+                <ScalarProperty Name="PlanFile" ColumnName="PlanFile" />
+                <ScalarProperty Name="MonGroupIDs" ColumnName="MonGroupIDs" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project_ObjectsDefinition">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Project_ObjectsDefinition">
+              <MappingFragment StoreEntitySet="Project_ObjectsDefinition">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name_Chs" ColumnName="Name_Chs" />
+                <ScalarProperty Name="Name_En" ColumnName="Name_En" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="GISLayerID" ColumnName="GISLayerID" />
+                <ScalarProperty Name="DBID" ColumnName="DBID" />
+                <ScalarProperty Name="TableNameSQL" ColumnName="TableNameSQL" />
+                <ScalarProperty Name="OrderSQL" ColumnName="OrderSQL" />
+                <ScalarProperty Name="ConditionSQL" ColumnName="ConditionSQL" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project_ProjectInfo">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Project_ProjectInfo">
+              <MappingFragment StoreEntitySet="Project_ProjectInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="ProjectAddress" ColumnName="ProjectAddress" />
+                <ScalarProperty Name="ConstructionUnit" ColumnName="ConstructionUnit" />
+                <ScalarProperty Name="GeologicalSurveyUnit" ColumnName="GeologicalSurveyUnit" />
+                <ScalarProperty Name="DesignUnit" ColumnName="DesignUnit" />
+                <ScalarProperty Name="SupervisionUnits" ColumnName="SupervisionUnits" />
+                <ScalarProperty Name="GeneralContractUnit" ColumnName="GeneralContractUnit" />
+                <ScalarProperty Name="ContractAmount" ColumnName="ContractAmount" />
+                <ScalarProperty Name="ContractPeriod" ColumnName="ContractPeriod" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -133,7 +399,7 @@ warning 6013: The table/view 'iS3Demo.dbo.Leakage' does not have a primary key d
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

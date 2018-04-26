@@ -226,8 +226,6 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="User_ID" Type="Int32" />
-          <Property Name="Role_ID" Type="Int32" />
           <Property Name="CreateUserID" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="ModifyUserID" Type="Int32" />
@@ -261,7 +259,6 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="UnitID" Type="Int32" />
           <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="EMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -311,40 +308,16 @@
         <Association Name="FK_PERMISSI_REF_ROLEI_PERMISSI">
           <End Role="Permission_RoleInfo" Type="Self.Permission_RoleInfo" Multiplicity="0..1" />
           <End Role="Permission_Role_User" Type="Self.Permission_Role_User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Permission_RoleInfo">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Permission_Role_User">
-              <PropertyRef Name="Role_ID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="FK_PERMISSI_REF_USERI_PERMISSI">
           <End Role="Permission_UserInfo" Type="Self.Permission_UserInfo" Multiplicity="0..1" />
           <End Role="Permission_Role_User" Type="Self.Permission_Role_User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Permission_UserInfo">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Permission_Role_User">
-              <PropertyRef Name="User_ID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="FK_PROJECT__REF_UNITI_PROJECT_">
           <End Role="Project_UnitInfo" Type="Self.Project_UnitInfo" Multiplicity="0..1" />
           <End Role="Project_PersonnelInfo" Type="Self.Project_PersonnelInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Project_UnitInfo">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Project_PersonnelInfo">
-              <PropertyRef Name="UnitID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DB_iS3Context" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Base_DataSourceInfo" EntityType="Self.Base_DataSourceInfo" />
           <EntitySet Name="Base_DataSourceType" EntityType="Self.Base_DataSourceType" />
           <EntitySet Name="Permission_RoleInfo" EntityType="Self.Permission_RoleInfo" />
@@ -373,7 +346,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DB_iS3ModelStoreContainer" CdmEntityContainer="DB_iS3Context">
+        <EntityContainerMapping StorageEntityContainer="DB_iS3ModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Base_DataSourceInfo">
             <EntityTypeMapping TypeName="DB_iS3Model.Base_DataSourceInfo">
               <MappingFragment StoreEntitySet="Base_DataSourceInfo">
@@ -415,8 +388,6 @@
             <EntityTypeMapping TypeName="DB_iS3Model.Permission_Role_User">
               <MappingFragment StoreEntitySet="Permission_Role-User">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
-                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
                 <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="ModifyUserID" ColumnName="ModifyUserID" />
@@ -450,7 +421,6 @@
               <MappingFragment StoreEntitySet="Project_PersonnelInfo">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
                 <ScalarProperty Name="Telephone" ColumnName="Telephone" />
                 <ScalarProperty Name="EMail" ColumnName="EMail" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
@@ -500,6 +470,33 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="FK_PERMISSI_REF_ROLEI_PERMISSI" TypeName="DB_iS3Model.FK_PERMISSI_REF_ROLEI_PERMISSI" StoreEntitySet="Permission_Role-User">
+            <EndProperty Name="Permission_RoleInfo">
+              <ScalarProperty Name="ID" ColumnName="Role_ID" />
+            </EndProperty>
+            <EndProperty Name="Permission_Role_User">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Role_ID" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_PERMISSI_REF_USERI_PERMISSI" TypeName="DB_iS3Model.FK_PERMISSI_REF_USERI_PERMISSI" StoreEntitySet="Permission_Role-User">
+            <EndProperty Name="Permission_UserInfo">
+              <ScalarProperty Name="ID" ColumnName="User_ID" />
+            </EndProperty>
+            <EndProperty Name="Permission_Role_User">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="User_ID" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_PROJECT__REF_UNITI_PROJECT_" TypeName="DB_iS3Model.FK_PROJECT__REF_UNITI_PROJECT_" StoreEntitySet="Project_PersonnelInfo">
+            <EndProperty Name="Project_UnitInfo">
+              <ScalarProperty Name="ID" ColumnName="UnitID" />
+            </EndProperty>
+            <EndProperty Name="Project_PersonnelInfo">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="UnitID" />
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -515,7 +512,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

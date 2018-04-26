@@ -12,15 +12,19 @@ namespace iS3.Server.Models.Project
     using System;
     using System.Collections.Generic;
     
-    public partial class Permission_Role_User
+    public partial class Project_ObjectsDefinition
     {
         public int ID { get; set; }
-        public Nullable<int> CreateUserID { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<int> ModifyUserID { get; set; }
-        public Nullable<System.DateTime> ModifyDate { get; set; }
-    
-        public virtual Permission_RoleInfo Permission_RoleInfo { get; set; }
-        public virtual Permission_UserInfo Permission_UserInfo { get; set; }
+        public string Name_Chs { get; set; }
+        public string Name_En { get; set; }
+        public string Code { get; set; }
+        public Nullable<int> Type { get; set; }
+        public string Domain { get; set; }
+        public Nullable<int> GISLayerID { get; set; }
+        public Nullable<int> DBID { get; set; }
+        public string TableNameSQL { get; set; }
+        public string OrderSQL { get; set; }
+        public string ConditionSQL { get; set; }
+        public string Remark { get; set; }
     }
 }

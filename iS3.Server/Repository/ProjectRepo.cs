@@ -35,7 +35,7 @@ namespace iS3.Server.Repository
             var res = db.System_ProjectList.Add(p);
             db.SaveChanges();
 
-            DB_iS3_ProjectContext ctx = new DB_iS3_ProjectContext("DB_iS3_" + p.CODE);
+            DB_iS3_ProjectContext ctx = new DB_iS3_ProjectContext(p.CODE);
             ctx.Database.CreateIfNotExists();
 
             return true;
@@ -49,11 +49,14 @@ namespace iS3.Server.Repository
             if (p.CODE == null)
                 throw new iS3Exception("项目代号不能为空");
 
-            db.System_ProjectList.Attach(p);
-            db.System_ProjectList.Remove(p);
+            var deleteRec = db.System_ProjectList.FirstOrDefault(pro => pro.ID == p.ID && pro.CODE == p.CODE);
+            if (deleteRec != null)
+            {
+                db.System_ProjectList.Remove(deleteRec);
+            }
             db.SaveChanges();
 
-            DB_iS3_ProjectContext ctx = new DB_iS3_ProjectContext("DB_iS3_" + p.CODE);
+            DB_iS3_ProjectContext ctx = new DB_iS3_ProjectContext(p.CODE);
             ctx.Database.Delete();
 
             return true;

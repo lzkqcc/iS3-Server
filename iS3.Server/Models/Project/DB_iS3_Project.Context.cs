@@ -16,7 +16,7 @@ namespace iS3.Server.Models.Project
     public partial class DB_iS3_ProjectContext : iS3Context
     {
         public DB_iS3_ProjectContext(string project)
-            : base(project, "Models.Project.DB_iS3_Project")
+            : base("DB_iS3_" + project, "Models.Project.DB_iS3_Project")
         {
         }
     
@@ -25,6 +25,13 @@ namespace iS3.Server.Models.Project
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Boreholes> Boreholes { get; set; }
+        public virtual DbSet<Base_DataSourceInfo> Base_DataSourceInfo { get; set; }
+        public virtual DbSet<Base_DataSourceType> Base_DataSourceType { get; set; }
+        public virtual DbSet<Monitoring_InstrumentInfo> Monitoring_InstrumentInfo { get; set; }
+        public virtual DbSet<Monitoring_MonGroupInfo> Monitoring_MonGroupInfo { get; set; }
+        public virtual DbSet<Monitoring_MonPointInfo> Monitoring_MonPointInfo { get; set; }
+        public virtual DbSet<Monitoring_MonProjectInfo> Monitoring_MonProjectInfo { get; set; }
+        public virtual DbSet<Project_ObjectsDefinition> Project_ObjectsDefinition { get; set; }
+        public virtual DbSet<Project_ProjectInfo> Project_ProjectInfo { get; set; }
     }
 }

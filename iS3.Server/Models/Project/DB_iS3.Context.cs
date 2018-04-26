@@ -12,7 +12,7 @@ namespace iS3.Server.Models.Project
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class DB_iS3Context : iS3Context
     {
         public DB_iS3Context()

@@ -20,13 +20,12 @@ namespace iS3.Server.Models
         private static string ConnectString(string db, string path)
 
         {
-            DBUtil conn = new DBUtil("DefaultConnection");
             SqlConnectionStringBuilder sqlString = new SqlConnectionStringBuilder()
             {
-                DataSource = conn.ip,
+                DataSource = DBUtil.ip,
                 InitialCatalog = db,
-                UserID = conn.user,
-                Password = conn.password,
+                UserID = DBUtil.user,
+                Password = DBUtil.password,
                 //PersistSecurityInfo = true,
                 //IntegratedSecurity = true,
                 //MultipleActiveResultSets = true

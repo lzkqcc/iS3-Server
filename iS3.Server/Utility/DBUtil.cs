@@ -7,12 +7,12 @@ namespace iS3.Server.Utility
 {
     public class DBUtil
     {
-        public string ip { get; set; }
-        public string user { get; set; }
-        public string password { get; set; }
-        public DBUtil(string name)
+        public static string ip { get; set; }
+        public static string user { get; set; }
+        public static string password { get; set; }
+        public DBUtil()
         {
-            string conn = System.Configuration.ConfigurationManager.ConnectionStrings[name].ConnectionString;
+            string conn = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             string[] ss = conn.Split(';');
             foreach(string s in ss)
             {

@@ -12,15 +12,18 @@ namespace iS3.Server.Models.Project
     using System;
     using System.Collections.Generic;
     
-    public partial class Permission_Role_User
+    public partial class Project_ProjectInfo
     {
         public int ID { get; set; }
-        public Nullable<int> CreateUserID { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<int> ModifyUserID { get; set; }
-        public Nullable<System.DateTime> ModifyDate { get; set; }
-    
-        public virtual Permission_RoleInfo Permission_RoleInfo { get; set; }
-        public virtual Permission_UserInfo Permission_UserInfo { get; set; }
+        public string ProjectName { get; set; }
+        public string ProjectAddress { get; set; }
+        public string ConstructionUnit { get; set; }
+        public string GeologicalSurveyUnit { get; set; }
+        public string DesignUnit { get; set; }
+        public string SupervisionUnits { get; set; }
+        public string GeneralContractUnit { get; set; }
+        public Nullable<decimal> ContractAmount { get; set; }
+        public Nullable<int> ContractPeriod { get; set; }
+        public string Remark { get; set; }
     }
 }

@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="abcc1ddb1eeb4b7db1780743523a3d06" Name="Diagram1">
+      <Diagram DiagramId="ef6314743ead44a0830a530903e5f2bf" Name="Diagram1">
         <EntityTypeShape EntityType="DB_iS3Model.Base_DataSourceInfo" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_iS3Model.Base_DataSourceType" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_iS3Model.Permission_RoleInfo" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_iS3Model.Permission_Role_User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_iS3Model.Permission_UserInfo" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3Model.Permission_UserInfo" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_iS3Model.Permission_User_Project" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_iS3Model.Project_PersonnelInfo" Width="1.5" PointX="5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3Model.Project_PersonnelInfo" Width="1.5" PointX="5" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_iS3Model.Project_UnitInfo" Width="1.5" PointX="2.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_iS3Model.System_ModuleInfo" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_iS3Model.System_ProjectList" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />

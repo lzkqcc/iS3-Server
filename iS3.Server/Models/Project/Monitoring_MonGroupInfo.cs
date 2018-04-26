@@ -12,20 +12,16 @@ namespace iS3.Server.Models.Project
     using System;
     using System.Collections.Generic;
     
-    public partial class Boreholes
+    public partial class Monitoring_MonGroupInfo
     {
-        public Nullable<short> OBJECTID { get; set; }
-        public short ID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
-        public string FullName { get; set; }
         public string Description { get; set; }
-        public Nullable<short> StratumSection { get; set; }
-        public Nullable<short> SectionSequence { get; set; }
-        public string BoreholeType { get; set; }
-        public Nullable<double> TopElevation { get; set; }
-        public Nullable<double> BoreholeLength { get; set; }
-        public string Mileage { get; set; }
-        public Nullable<double> Xcoordinate { get; set; }
-        public Nullable<double> Ycoordinate { get; set; }
+        public Nullable<int> MonGroupType { get; set; }
+        public string MonPointIDs { get; set; }
+        public Nullable<int> MonProjectID { get; set; }
+        public string RefSpecifications { get; set; }
+        public string PerInfoIDs { get; set; }
+        public string Remark { get; set; }
     }
 }
