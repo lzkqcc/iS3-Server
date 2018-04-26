@@ -497,26 +497,54 @@
             工程概况相关接口
             </summary>
         </member>
-        <member name="M:iS3.Server.Controllers.ProjectController.getProjectListById(System.Int32)">
+        <member name="M:iS3.Server.Controllers.ProjectController.getProjectListById(System.String)">
             <summary>
-            根据id获取工程信息
+            根据CODE获取工程信息
             </summary>
-            <param name="id">项目id</param>
+            <param name="CODE">项目CODE</param>
             <returns> </returns>
         </member>
         <member name="M:iS3.Server.Controllers.ProjectController.putProjectList(iS3.Server.Models.Project.System_ProjectList)">
             <summary>
             添加工程信息
             </summary>
-            <param name="project">项目</param>
+            <param name="project">System_ProjectList对象</param>
             <returns> </returns>
         </member>
-        <member name="M:iS3.Server.Controllers.ProjectController.deleteProjectList(iS3.Server.Models.Project.System_ProjectList)">
+        <member name="M:iS3.Server.Controllers.ProjectController.deleteProjectList(iS3.Server.DTO.Project.SimpleProjectDTO)">
             <summary>
-            删除工程信息
+            删除项目
             </summary>
-            <param name="project">项目</param>
-            <returns> </returns>
+            <param name="project">项目对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.ProjectController.getProjectListById">
+            <summary>
+            获取模块信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.ProjectController.putProjectInfo(System.String,iS3.Server.DTO.Project.Project_ProjectInfoDTO)">
+            <summary>
+            创建项目信息数据
+            </summary>
+            <param name="code">项目code</param>
+            <param name="info">Project_ProjectInfo对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.ProjectController.putProjectInfo(System.String)">
+            <summary>
+            获取项目信息数据
+            </summary>
+            <param name="CODE">项目CODE</param>
+            <returns></returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.ProjectController.geProjectUnit(System.String)">
+            <summary>
+            获取单位信息数据
+            </summary>
+            <param name="CODE">项目CODE</param>
+            <returns></returns>
         </member>
         <member name="T:iS3.Server.Controllers.StructureController">
             <summary>

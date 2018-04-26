@@ -43,6 +43,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -189,11 +195,14 @@
     <Compile Include="Controllers\StructureController.cs" />
     <Compile Include="Controllers\ZDemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DTO\AutoMapperConfig.cs" />
     <Compile Include="DTO\DGObjectDTO.cs" />
     <Compile Include="DTO\Geology\BoreholeDTO.cs" />
     <Compile Include="DTO\Geology\SoilPropertyDTO.cs" />
     <Compile Include="DTO\Geology\StratumDTO.cs" />
     <Compile Include="DTO\Geology\WaterDTO.cs" />
+    <Compile Include="DTO\Project\Project_ProjectInfoDTO.cs" />
+    <Compile Include="DTO\Project\SimpleProjectDTO.cs" />
     <Compile Include="DTO\Structure\PillarDTO.cs" />
     <Compile Include="Filters\ApiErrorHandleAttribute.cs" />
     <Compile Include="Filters\ResponseFilterAttribute.cs" />
@@ -425,6 +434,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

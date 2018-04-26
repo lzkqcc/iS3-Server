@@ -9,6 +9,7 @@ using System.Web.Routing;
 using IS3.Core;
 using IS3.Servers;
 using iS3.Server.Utility;
+using iS3.Server.DTO;
 
 namespace iS3.Server
 {
@@ -22,6 +23,7 @@ namespace iS3.Server
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            // iS3 core
             Runtime.dataPath = Server.MapPath(@"~/App_Data/project");
             DBUtil db = new DBUtil();
             string ipaddress = DBUtil.ip;
@@ -36,6 +38,9 @@ namespace iS3.Server
 
             Globals.iS3Service.SetNowDataService(DbServiceType.SQLSERVER);
             Globals.iS3Service.DataService.initializeDataService(ipaddress, user, password);
+
+            // automapper
+            AutoMapperConfig.Initialize();
         }
     }
 }

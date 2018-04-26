@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Web.Http;
 using iS3.Server.Models.Project;
 using iS3.Server.Repository;
+using iS3.Server.Utility;
+using iS3.Server.DTO.Project;
 
 namespace iS3.Server.Controllers
 {
@@ -16,44 +18,100 @@ namespace iS3.Server.Controllers
     public class ProjectController : ApiController
     {
         /// <summary>
-        /// 根据id获取工程信息
+        /// 根据CODE获取工程信息
         /// </summary>
-        /// <param name="id">项目id</param>
+        /// <param name="CODE">项目CODE</param>
         /// <returns> </returns>
-        [Route("info")]
+        [Route("list")]
         [HttpGet]
-        public System_ProjectList getProjectListById(int id)
+        public System_ProjectList getProjectListById(string CODE)
         {
             ProjectRepo repo = new ProjectRepo();
-            return repo.GetProjectListById(id);
+            System_ProjectList res = repo.GetProjectListByCode(CODE);
+            if (res == null)
+                throw new iS3Exception("未查询到该工程");
+            return res;
         }
 
         /// <summary>
         /// 添加工程信息
         /// </summary>
-        /// <param name="project">项目</param>
+        /// <param name="project">System_ProjectList对象</param>
         /// <returns> </returns>
-        [Route("info")]
+        [Route("list")]
         [HttpPut]
         [Authorize]
-        public bool putProjectList(System_ProjectList project)
+        public string putProjectList(System_ProjectList project)
         {
             ProjectRepo repo = new ProjectRepo();
             return repo.PutProjectList(project);
         }
 
         /// <summary>
-        /// 删除工程信息
+        /// 删除项目
         /// </summary>
-        /// <param name="project">项目</param>
-        /// <returns> </returns>
-        [Route("info")]
+        /// <param name="project">项目对象</param>
+        /// <returns></returns>
+        [Route("list")]
         [HttpDelete]
         [Authorize]
-        public bool deleteProjectList(System_ProjectList project)
+        public string deleteProjectList(SimpleProjectDTO project)
         {
             ProjectRepo repo = new ProjectRepo();
-            return repo.DeleteProjectList(project);
+            return repo.DeleteProjectList(project.ID, project.CODE);
+        }
+
+        /// <summary>
+        /// 获取模块信息
+        /// </summary>
+        /// <returns></returns>
+        [Route("module")]
+        [HttpGet]
+        public List<System_ModuleInfo> getProjectListById()
+        {
+            ProjectRepo repo = new ProjectRepo();
+            return repo.GetModule(); 
+        }
+
+        /// <summary>
+        /// 创建项目信息数据
+        /// </summary>
+        /// <param name="code">项目code</param>
+        /// <param name="info">Project_ProjectInfo对象</param>
+        /// <returns></returns>
+        [Route("info/{code}")]
+        [HttpPut]
+        [Authorize]
+        public string putProjectInfo(string code, Project_ProjectInfoDTO info)
+        {
+            ProjectRepo repo = new ProjectRepo();
+            return repo.PutProjectInfo(code, info);
+        }
+
+        /// <summary>
+        /// 获取项目信息数据
+        /// </summary>
+        /// <param name="CODE">项目CODE</param>
+        /// <returns></returns>
+        [Route("info/{CODE}")]
+        [HttpGet]
+        public Project_ProjectInfoDTO putProjectInfo(string CODE)
+        {
+            ProjectRepo repo = new ProjectRepo();
+            return repo.GetProjectInfo(CODE);
+        }
+
+        /// <summary>
+        /// 获取单位信息数据
+        /// </summary>
+        /// <param name="CODE">项目CODE</param>
+        /// <returns></returns>
+        [Route("unit/{CODE}")]
+        [HttpGet]
+        public List<Project_UnitInfo> geProjectUnit(string CODE)
+        {
+            ProjectRepo repo = new ProjectRepo();
+            return repo.GetProjectUnit(CODE);
         }
     }
 }
