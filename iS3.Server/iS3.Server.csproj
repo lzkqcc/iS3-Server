@@ -190,10 +190,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\GeologyController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\StructureController.cs" />
-    <Compile Include="Controllers\ZDemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DTO\AutoMapperConfig.cs" />
     <Compile Include="DTO\DGObjectDTO.cs" />

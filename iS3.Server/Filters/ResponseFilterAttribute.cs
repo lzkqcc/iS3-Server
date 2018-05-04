@@ -9,6 +9,10 @@ using iS3.Server.Models;
 
 namespace iS3.Server.Filters
 {
+    public class SkipResponseFilterAttribute : Attribute
+    {
+    }
+
     public class ResponseFilterAttribute : ActionFilterAttribute
     {
         /// <summary>
@@ -20,6 +24,11 @@ namespace iS3.Server.Filters
             // 若发生异常不处理
             if (actionExecutedContext.Exception != null)
                 return;
+
+            if (actionExecutedContext.ActionContext.ActionDescriptor.GetCustomAttributes<ResponseFilterAttribute>(false).Any())
+            {
+                return;
+            }
 
             base.OnActionExecuted(actionExecutedContext);
 
