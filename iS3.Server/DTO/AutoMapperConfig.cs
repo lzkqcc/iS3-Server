@@ -5,6 +5,7 @@ using System.Web;
 using AutoMapper;
 using iS3.Server.Models.Project;
 using iS3.Server.DTO.Project;
+using IS3.Core;
 using System.Text;
 
 namespace iS3.Server.DTO
@@ -21,6 +22,9 @@ namespace iS3.Server.DTO
 
             // Class
             Mapper.CreateMap<Project_ProjectInfo, Project_ProjectInfoDTO>().ReverseMap();
+            Mapper.CreateMap<Tree, TreeDTO>().ReverseMap();
+            Mapper.CreateMap<ProjectDefinition, ProjectDefinitionDTO>().ReverseMap();
+            Mapper.CreateMap<Domain, DomainDTO>().ReverseMap();
         }
 
         class ListToStringConvertert : ITypeConverter<List<int>, string>

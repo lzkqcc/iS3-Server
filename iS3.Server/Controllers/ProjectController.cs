@@ -8,6 +8,7 @@ using iS3.Server.Models.Project;
 using iS3.Server.Repository;
 using iS3.Server.Utility;
 using iS3.Server.DTO.Project;
+using IS3.Core;
 
 namespace iS3.Server.Controllers
 {
@@ -16,7 +17,7 @@ namespace iS3.Server.Controllers
     /// </summary>
     [RoutePrefix("api/project")]
     public class ProjectController : ApiController
-    {
+    {   
         /// <summary>
         /// 根据CODE获取工程信息
         /// </summary>
@@ -95,7 +96,7 @@ namespace iS3.Server.Controllers
         /// <returns></returns>
         [Route("info/{CODE}")]
         [HttpGet]
-        public Project_ProjectInfoDTO putProjectInfo(string CODE)
+        public Project_ProjectInfoDTO getProjectInfo(string CODE)
         {
             ProjectRepo repo = new ProjectRepo();
             return repo.GetProjectInfo(CODE);
@@ -112,6 +113,32 @@ namespace iS3.Server.Controllers
         {
             ProjectRepo repo = new ProjectRepo();
             return repo.GetProjectUnit(CODE);
+        }
+
+        /// <summary>
+        /// 根据项目CODE获取ProjectDefinition
+        /// </summary>
+        /// <param name="CODE">项目CODE</param>
+        /// <returns></returns>
+        [Route("definition/{CODE}")]
+        [HttpGet]
+        public ProjectDefinitionDTO getProjectDefiniton(string CODE)
+        {
+            ProjectRepo repo = new ProjectRepo();
+            return repo.GetProjectDefinition(CODE);
+        }
+
+        /// <summary>
+        /// 根据项目CODE获取Domain
+        /// </summary>
+        /// <param name="CODE">项目CODE</param>
+        /// <returns></returns>
+        [Route("domain/{CODE}")]
+        [HttpGet]
+        public Dictionary<string, DomainDTO> getProjectDomains(string CODE)
+        {
+            ProjectRepo repo = new ProjectRepo();
+            return repo.GetProjectDomains(CODE);
         }
     }
 }

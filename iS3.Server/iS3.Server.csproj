@@ -103,6 +103,9 @@
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http.Cors">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.0.0\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Http.Owin">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.0.0\lib\net45\System.Web.Http.Owin.dll</HintPath>
     </Reference>
@@ -201,8 +204,11 @@
     <Compile Include="DTO\Geology\SoilPropertyDTO.cs" />
     <Compile Include="DTO\Geology\StratumDTO.cs" />
     <Compile Include="DTO\Geology\WaterDTO.cs" />
+    <Compile Include="DTO\Project\DomainDTO.cs" />
+    <Compile Include="DTO\Project\ProjectDefinitionDTO.cs" />
     <Compile Include="DTO\Project\Project_ProjectInfoDTO.cs" />
     <Compile Include="DTO\Project\SimpleProjectDTO.cs" />
+    <Compile Include="DTO\Project\TreeDTO.cs" />
     <Compile Include="DTO\Structure\PillarDTO.cs" />
     <Compile Include="Filters\ApiErrorHandleAttribute.cs" />
     <Compile Include="Filters\ResponseFilterAttribute.cs" />
@@ -305,6 +311,7 @@
   <ItemGroup>
     <Content Include="App_Data\iS3.Server.XML" />
     <Content Include="App_Data\project\iS3Demo\iS3Demo.xml" />
+    <Content Include="App_Data\project\SHML12\SHML12.xml" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

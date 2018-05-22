@@ -561,7 +561,7 @@
             <param name="info">Project_ProjectInfo对象</param>
             <returns></returns>
         </member>
-        <member name="M:iS3.Server.Controllers.ProjectController.putProjectInfo(System.String)">
+        <member name="M:iS3.Server.Controllers.ProjectController.getProjectInfo(System.String)">
             <summary>
             获取项目信息数据
             </summary>
@@ -571,6 +571,20 @@
         <member name="M:iS3.Server.Controllers.ProjectController.geProjectUnit(System.String)">
             <summary>
             获取单位信息数据
+            </summary>
+            <param name="CODE">项目CODE</param>
+            <returns></returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.ProjectController.getProjectDefiniton(System.String)">
+            <summary>
+            根据项目CODE获取ProjectDefinition
+            </summary>
+            <param name="CODE">项目CODE</param>
+            <returns></returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.ProjectController.getProjectDomains(System.String)">
+            <summary>
+            根据项目CODE获取Domain
             </summary>
             <param name="CODE">项目CODE</param>
             <returns></returns>
@@ -594,47 +608,6 @@
             </summary>
             <param name="project">工程名称</param>
             <returns></returns>
-        </member>
-        <member name="T:iS3.Server.Controllers.ZDemoController">
-            <summary>
-            一些测试接口
-            </summary>
-        </member>
-        <member name="M:iS3.Server.Controllers.ZDemoController.Borehole(System.Int32)">
-            <summary>
-            根据id获取钻孔数据
-            </summary>
-            <param name="id">钻孔id</param>
-            <returns>
-            id：钻孔id号；name：钻孔名称；deep：钻孔深度；isVisible：钻孔是否可见
-            </returns>
-        </member>
-        <member name="M:iS3.Server.Controllers.ZDemoController.Borehole2(System.Int32)">
-            <summary>
-            根据id获取钻孔数据（授权）
-            </summary>
-            <param name="id">钻孔id</param>
-            <returns>
-            id：钻孔id号；name：钻孔名称；deep：钻孔深度；isVisible：钻孔是否可见
-            </returns>
-        </member>
-        <member name="M:iS3.Server.Controllers.ZDemoController.Borehole3(System.Int32)">
-            <summary>
-            根据id获取钻孔数据
-            </summary>
-            <param name="id">钻孔id</param>
-            <returns>
-            id：钻孔id号；name：钻孔名称；deep：钻孔深度；isVisible：钻孔是否可见
-            </returns>
-        </member>
-        <member name="M:iS3.Server.Controllers.ZDemoController.Borehole4(System.Int32)">
-            <summary>
-            根据id获取钻孔数据（授权）
-            </summary>
-            <param name="id">钻孔id</param>
-            <returns>
-            id：钻孔id号；name：钻孔名称；deep：钻孔深度；isVisible：钻孔是否可见
-            </returns>
         </member>
         <member name="M:iS3.Server.Filters.ApiErrorHandleAttribute.OnException(System.Web.Http.Filters.HttpActionExecutedContext)">
             <summary>

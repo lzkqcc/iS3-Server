@@ -8,6 +8,8 @@ using iS3.Server.DTO.Project;
 using System.Text;
 using AutoMapper;
 
+using IS3.Core;
+
 namespace iS3.Server.Repository
 {
     public class ProjectRepo
@@ -106,6 +108,31 @@ namespace iS3.Server.Repository
         public List<Project_UnitInfo> GetProjectUnit(string code)
         {
             return db.Project_UnitInfo.ToList();
+        }
+
+        public ProjectDefinitionDTO GetProjectDefinition(string code)
+        {
+            if (!FileUtil.projectExit(code))
+                throw new iS3Exception(string.Format("{0}工程不存在", code));
+            
+            Project project = new Project();
+            project.loadDefinition(code + ".xml");
+            return Mapper.Map<ProjectDefinitionDTO>(project.projDef);
+        }
+
+        public Dictionary<string, DomainDTO> GetProjectDomains(string code)
+        {
+            if (!FileUtil.projectExit(code))
+                throw new iS3Exception(string.Format("{0}工程不存在", code));
+            Project project = new Project();
+            project.loadDefinition(code + ".xml");
+
+            Dictionary<string, DomainDTO> res = new Dictionary<string, DomainDTO>();
+            foreach(KeyValuePair<string, Domain> pair in project.domains)
+            {
+                res[pair.Key] = Mapper.Map<DomainDTO>(pair.Value);
+            }
+            return res;
         }
     }
 }
