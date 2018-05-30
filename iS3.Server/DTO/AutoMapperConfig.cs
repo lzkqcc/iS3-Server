@@ -25,6 +25,10 @@ namespace iS3.Server.DTO
             Mapper.CreateMap<Tree, TreeDTO>().ReverseMap();
             Mapper.CreateMap<ProjectDefinition, ProjectDefinitionDTO>().ReverseMap();
             Mapper.CreateMap<Domain, DomainDTO>().ReverseMap();
+            Mapper.CreateMap<ProjectInformation, ProjectInformationDTO>().ReverseMap();
+            Mapper.CreateMap<EngineeringMap, EngineeringMapDTO>().ReverseMap();
+            Mapper.CreateMap<LayerDef, LayerDefDTO>().ReverseMap();
+
         }
 
         class ListToStringConvertert : ITypeConverter<List<int>, string>

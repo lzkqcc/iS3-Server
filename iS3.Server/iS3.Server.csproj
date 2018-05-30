@@ -205,6 +205,8 @@
     <Compile Include="DTO\Geology\StratumDTO.cs" />
     <Compile Include="DTO\Geology\WaterDTO.cs" />
     <Compile Include="DTO\Project\DomainDTO.cs" />
+    <Compile Include="DTO\Project\EngineeringMapDTO.cs" />
+    <Compile Include="DTO\Project\LayerDefDTO.cs" />
     <Compile Include="DTO\Project\ProjectDefinitionDTO.cs" />
     <Compile Include="DTO\Project\Project_ProjectInfoDTO.cs" />
     <Compile Include="DTO\Project\SimpleProjectDTO.cs" />

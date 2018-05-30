@@ -17,6 +17,10 @@ namespace iS3.Server.DTO.Geology
         public StratumDTO() { }
         public StratumDTO(Stratum st)
         {
+            id = st.id;
+            name = st.name;
+            fullName = st.name;
+            description = st.description;
             GeologyAge = st.GeologyAge;
             FormationType = st.FormationType;
             Compaction = st.Compaction;

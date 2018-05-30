@@ -16,7 +16,39 @@
                              InnerDiamter="5.5"/>
     </is3:ProjectDefinition.SubProjectInfos>
     <is3:ProjectDefinition.EngineeringMaps>
-      
+      <is3:EngineeringMap MapID="BaseMap"
+                    LocalTileFileName1="Shanghai_LOD16_CityBlocks.tpk"
+                    LocalTileFileName2="SHMetroLine13.tpk"
+                    LocalGeoDbFileName="SHMetroLine13.geodatabase"
+                    MinimumResolution="0.1"
+                    MapType="FootPrintMap"
+                    XMin="13501500" YMin="3658000"
+                    XMax="13520000" YMax="3665000">
+        <is3:EngineeringMap.LocalGdbLayersDef>
+          <is3:LayerDef Name="env_bul1" />
+          <is3:LayerDef Name="env_bul2" />
+          <is3:LayerDef Name="env_pip" />
+          <is3:LayerDef Name="des_sta" />
+          <is3:LayerDef Name="DES_TUN" GeometryType="Polygon"
+                        OutlineColor="Blue"
+                        Color="Blue" FillStyle="Solid"
+                        IsVisible="True"/>
+          <is3:LayerDef Name="GEO_BHL" GeometryType="Point"
+                        OutlineColor="Black" MarkerSize="8"
+                        Color="Green" FillStyle="Solid"/>
+          <is3:LayerDef Name="DES_RIN" GeometryType="Polygon"
+                        OutlineColor="Blue"
+                        Color="LightGray" FillStyle="Solid"
+                        IsVisible="False"/>
+        </is3:EngineeringMap.LocalGdbLayersDef>
+      </is3:EngineeringMap>
+      <is3:EngineeringMap MapID="ProfileMap"
+                    LocalTileFileName1="Empty.tpk"
+                    MinimumResolution="0.1"
+                    MapType="GeneralProfileMap"
+                    XMin="0" YMin="0"
+                    XMax="300" YMax="300">
+      </is3:EngineeringMap>
     </is3:ProjectDefinition.EngineeringMaps>
   </is3:ProjectDefinition>
 
@@ -79,83 +111,5 @@
         </Tunnel>
       </Structure>
     </TreeDefinition>
-  </Domain>
-
-  <Domain Name="Monitoring" Type="Monitoring">
-    <ObjsDefinition>
-      <MonPoint HasGeometry="true" Name="AllDipMons" GISLayerName="MON_DIP"
-                TableNameSQL="Mon_Segment,Mon_SegmentData" OrderSQL="[ID],[time]" 
-                ConditionSQL=",@Last(1000)"/>
-      <MonPoint HasGeometry="true" Name="AllJFMons" GISLayerName="MON_JF"
-                TableNameSQL="Mon_Segment,Mon_SegmentData" OrderSQL="[ID],[time]" 
-                ConditionSQL=",@Last(1000)"/>
-      <MonPoint HasGeometry="true" Name="AllGWs" GISLayerName="MON_GW"
-               TableNameSQL="Mon_Segment,Mon_SegmentData" OrderSQL="[ID],[time]" 
-                ConditionSQL=",@Last(1000)"/>
-
-      <MonGroup HasGeometry="true" Name="MON_DipGroup"  GISLayerName="MON_DPGP"
-               TableNameSQL="Mon_SegmentGroup"  OrderSQL="[ID],[time]"/>
-      <MonGroup HasGeometry="true" Name="MON_JFGroup"  GISLayerName="MON_JFGP"
-                TableNameSQL="Mon_SegmentGroup"  OrderSQL="[ID],[time]"/>
-
-      <MonPoint HasGeometry="true" Name="AllTongjiGWs" GISLayerName="MON_GW_TJ"
-               TableNameSQL="Mon_Segment,Mon_SegmentData" OrderSQL="[ID],[time]" 
-                ConditionSQL=",@Last(1000)"/>
-      <MonPoint HasGeometry="true" Name="AllTongjiDipMons" GISLayerName="MON_DIP_TJ"
-                TableNameSQL="Mon_Segment,Mon_SegmentData" OrderSQL="[ID],[time]" 
-                ConditionSQL=",@Last(1000)"/>
-      <MonPoint HasGeometry="true" Name="AllTongjiJFMons" GISLayerName="MON_JF_TJ"
-                TableNameSQL="Mon_Segment,Mon_SegmentData" OrderSQL="[ID],[time]" 
-                ConditionSQL=",@Last(1000)"/>
-      <MonPoint HasGeometry="true" Name="AllTongjiLeakMons" GISLayerName="MON_LEAK_TJ"
-                TableNameSQL="Mon_Segment,Mon_SegmentData" OrderSQL="[ID],[time]" 
-                ConditionSQL=",@Last(1000)"/>
-      <MonPoint HasGeometry="true" Name="AllTongjiACEMons" GISLayerName="MON_ACE_TJ"
-                TableNameSQL="Mon_Segment,Mon_SegmentData" OrderSQL="[ID],[time]" 
-                ConditionSQL=",@Last(1000)"/>
-      <MonPoint HasGeometry="true" Name="AllTongjiLDIPMons" GISLayerName="MON_LDIP_TJ"
-               TableNameSQL="Mon_Segment,Mon_SegmentData" OrderSQL="[ID],[time]" 
-                ConditionSQL=",@Last(1000)"/>
-
-      <MonGroup HasGeometry="true" Name="MON_DipGroup_TJ"  GISLayerName="MON_DPGP_TJ"
-                 TableNameSQL="Mon_SegmentGroup"  OrderSQL="[ID],[time]"/>
-      <MonGroup HasGeometry="true" Name="MON_JFGroup_TJ"  GISLayerName="MON_JFGP_TJ"
-                TableNameSQL="Mon_SegmentGroup"  OrderSQL="[ID],[time]"/>
-      <MonGroup HasGeometry="true" Name="MON_ACEGroup"  GISLayerName="MON_ACGP_TJ"
-                TableNameSQL="Mon_SegmentGroup"  OrderSQL="[ID],[time]"/>
-      <MonGroup HasGeometry="true" Name="MON_LDIPGroup"  GISLayerName="MON_LDPGP"
-                TableNameSQL="Mon_SegmentGroup"  OrderSQL="[ID],[time]"/>
-    </ObjsDefinition>
-    <TreeDefinition>
-      <Monitoring DisplayName="Monitoring" Desc="Monitorings">
-        <StructureMonitoring DisplayName="盾构隧道结构变形监测">
-          <MonitoringItem DisplayName="悟莘传感器">
-            <MonPoint DisplayName="管片倾角变化监测" Desc="管片倾角变化监测"
-                    RefDomainName="Monitoring" RefObjsName="AllDipMons" Filter="[Description]='双倾角支点'"/>
-            <MonPoint DisplayName="管片接缝张开量监测" Desc="管片接缝张开量监测"
-                   RefDomainName="Monitoring" RefObjsName="AllJFMons" Filter="[Description]='接缝张开支点'"/>
-            <MonGroup DisplayName="倾角支点组"
-                       RefDomainName="Monitoring"  RefObjsName="MON_DipGroup" Filter="[Description]='双倾角支点'"/>
-            <MonGroup DisplayName="接缝张开支点组"
-                       RefDomainName="Monitoring"  RefObjsName="MON_JFGroup" Filter="[Description]='接缝张开支点'"/>
-          </MonitoringItem>
-          <MonitoringItem DisplayName ="同济大学自制传感器">
-            <MonPoint DisplayName="管片倾角变化监测" Desc="管片倾角变化监测"
-                       RefDomainName="Monitoring" RefObjsName="AllTongjiDipMons" Filter="[Description]='同济大学双倾角支点'"/>
-            <MonPoint DisplayName="管片接缝张开量监测" Desc="管片接缝张开量监测"
-                      RefDomainName="Monitoring" RefObjsName="AllTongjiJFMons" Filter="[Description]='同济大学接缝张开支点'"/>
-            <MonPoint DisplayName="管片渗漏水监测" Desc="管片渗漏水监测"
-                      RefDomainName="Monitoring" RefObjsName="AllTongjiLeakMons" Filter="[Description]='渗漏水支点'"/>
-            <MonPoint DisplayName="管片纵向相对倾角变化监测" Desc="管片纵向相对倾角变化监测"
-                      RefDomainName="Monitoring" RefObjsName="AllTongjiLDIPMons" Filter="[Description]='纵向倾角支点'"/>
-            <MonPoint DisplayName="振动加速度监测" Desc="振动加速度监测"
-                       RefDomainName="Monitoring" RefObjsName="AllTongjiACEMons" Filter="[Description]='加速度传感器支点'"/>
-          </MonitoringItem>
-        </StructureMonitoring>
-      </Monitoring>
-    </TreeDefinition>
-  </Domain>
-  <Domain Name="Analysis" Type="Unknown">
-
   </Domain>
 </Project>

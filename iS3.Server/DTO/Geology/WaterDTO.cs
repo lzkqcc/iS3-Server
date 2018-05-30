@@ -27,6 +27,10 @@ namespace iS3.Server.DTO.Geology
         public RiverWaterDTO() { }
         public RiverWaterDTO(RiverWater rw)
         {
+            id = rw.id;
+            name = rw.name;
+            fullName = rw.fullName;
+            description = rw.description;
             ObservationLocation = rw.ObservationLocation;
             HighestTidalLevel = rw.HighestTidalLevel;
             LowestTidalLevel = rw.LowestTidalLevel;
@@ -49,6 +53,10 @@ namespace iS3.Server.DTO.Geology
         public PhreaticWaterDTO() { }
         public PhreaticWaterDTO(PhreaticWater pw)
         {
+            id = pw.id;
+            name = pw.name;
+            fullName = pw.fullName;
+            description = pw.description;
             SiteName = pw.SiteName;
             AvBuriedDepth = pw.AvBuriedDepth;
             AvElevation = pw.AvElevation;
@@ -75,6 +83,10 @@ namespace iS3.Server.DTO.Geology
         public ConfinedWaterDTO() { }
         public ConfinedWaterDTO(ConfinedWater cw)
         {
+            id = cw.id;
+            name = cw.name;
+            fullName = cw.fullName;
+            description = cw.description;
             BoreholeName = cw.BoreholeName;
             SiteName = cw.SiteName;
             TopElevation = cw.TopElevation;
@@ -106,6 +118,10 @@ namespace iS3.Server.DTO.Geology
         public WaterPropertyDTO() { }
         public WaterPropertyDTO(WaterProperty wp)
         {
+            id = wp.id;
+            name = wp.name;
+            fullName = wp.fullName;
+            description = wp.description;
             BoreholeName = wp.BoreholeName;
             Cl = wp.Cl;
             SO4 = wp.SO4;
