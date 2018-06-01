@@ -4,7 +4,7 @@ iS3-Server offers some basic functions for common use in infrastructure engineer
 
 ## Requirement
 
-* .Net Framework 4.5.2
+* .Net Framework 4.5
 
 ## How to run
 

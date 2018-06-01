@@ -12,8 +12,7 @@ namespace iS3.Server.Repository
     {
         public GeologyRepo(string projectName)
         {
-            project = new Project();
-            project.loadDefinition(projectName + ".xml");
+            project = CentralRepo.getProject(projectName);
             domain = project.domains["Geology"];
         }
     }

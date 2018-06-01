@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
 
 using IS3.Core;
 using iS3.Server.DTO.Structure;
@@ -29,8 +30,10 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public PillarDTO getPillarById(string project, int id)
         {
+            throw new iS3Exception("NOT Implementation");
+
             Pillar p = getObjectById<Pillar>(project, id);
-            return new PillarDTO(p);
+            return Mapper.Map<PillarDTO>(p);
         }
 
         /// <summary>
@@ -42,8 +45,10 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public List<PillarDTO> getBoreholeByProject(string project)
         {
+            throw new iS3Exception("NOT Implementation");
+
             List<Pillar> ps = getAllByProject<Pillar>(project);
-            return PillarDTO.transferList(ps);
+            return Mapper.Map<List<PillarDTO>>(ps);
         }
 
         private T getObjectById<T>(string project, int id)

@@ -112,20 +112,13 @@ namespace iS3.Server.Repository
 
         public ProjectDefinitionDTO GetProjectDefinition(string code)
         {
-            if (!FileUtil.projectExit(code))
-                throw new iS3Exception(string.Format("{0}工程不存在", code));
-            
-            Project project = new Project();
-            project.loadDefinition(code + ".xml");
+            Project project = CentralRepo.getProject(code);
             return Mapper.Map<ProjectDefinitionDTO>(project.projDef);
         }
 
         public Dictionary<string, DomainDTO> GetProjectDomains(string code)
         {
-            if (!FileUtil.projectExit(code))
-                throw new iS3Exception(string.Format("{0}工程不存在", code));
-            Project project = new Project();
-            project.loadDefinition(code + ".xml");
+            Project project = CentralRepo.getProject(code);
 
             Dictionary<string, DomainDTO> res = new Dictionary<string, DomainDTO>();
             foreach(KeyValuePair<string, Domain> pair in project.domains)

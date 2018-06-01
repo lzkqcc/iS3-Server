@@ -11,8 +11,7 @@ namespace iS3.Server.Repository
     {
         public StructureRepo(string projectName)
         {
-            project = new Project();
-            project.loadDefinition(projectName + ".xml");
+            project = CentralRepo.getProject(projectName);
             domain = project.domains["Structure"];
         }
     }

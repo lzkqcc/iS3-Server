@@ -28,7 +28,9 @@ namespace iS3.Server.Repository
         {
             string klassName = typeof(T).Name;
             string name = domain.objsDefinitions.Values.FirstOrDefault((d) => d.Type == klassName).Name;
+
             domain.loadObjects(name);
+            
             DGObjects objs = domain[name];
 
             if (objs.count == 0) return null;

@@ -12,7 +12,5 @@ namespace iS3.Server.DTO
         public string name { get; set; }
         public string fullName { get; set; }
         public string description { get; set; }
-
-        public DGObjectDTO() { }
     }
 }

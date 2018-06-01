@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
 
 using iS3.Server.Repository;
 using IS3.Geology;
@@ -31,7 +32,7 @@ namespace iS3.Server.Controllers
         public BoreholeDTO getBoreholeById(string project, int id)
         {
             Borehole b = getObjectById<Borehole>(project, id);
-            return new BoreholeDTO(b);
+            return Mapper.Map<BoreholeDTO>(b);
         }
 
         /// <summary>
@@ -47,12 +48,12 @@ namespace iS3.Server.Controllers
             if (ids.Length == 0)
             {
                 List<Borehole> bs = getAllByProject<Borehole>(project);
-                return BoreholeDTO.transferList(bs);
+                return Mapper.Map<List<BoreholeDTO>>(bs);
             }
             else
             {
                 List<Borehole> bs = getObjectByIds<Borehole>(project, ids);
-                return BoreholeDTO.transferList(bs);
+                return Mapper.Map<List<BoreholeDTO>>(bs);
             }
         }
       
@@ -67,7 +68,7 @@ namespace iS3.Server.Controllers
         public StratumDTO getStratumById(string project, int id)
         {
             Stratum st = getObjectById<Stratum>(project, id);
-            return new StratumDTO(st);
+            return Mapper.Map<StratumDTO>(st);
         }
 
         /// <summary>
@@ -80,7 +81,7 @@ namespace iS3.Server.Controllers
         public List<StratumDTO> getStratumByProject(string project)
         {
             List<Stratum> sts = getAllByProject<Stratum>(project);
-            return StratumDTO.transferList(sts);
+            return Mapper.Map<List<StratumDTO>>(sts);
         }
 
         ///// <summary>
@@ -121,7 +122,7 @@ namespace iS3.Server.Controllers
         public SoilPropertyDTO getSoilPropertyById(string project, int id)
         {
             SoilProperty sp = getObjectById<SoilProperty>(project, id);
-            return new SoilPropertyDTO(sp);
+            return Mapper.Map<SoilPropertyDTO>(sp);
         }
 
         /// <summary>
@@ -134,7 +135,7 @@ namespace iS3.Server.Controllers
         public List<SoilPropertyDTO> getSoilPropertyByProject(string project)
         {
             List<SoilProperty> sps = getAllByProject<SoilProperty>(project);
-            return SoilPropertyDTO.transferList(sps);
+            return Mapper.Map<List<SoilPropertyDTO>>(sps);
         }
 
         /// <summary>
@@ -147,8 +148,10 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public PhreaticWaterDTO getPhreaticWaterById(string project, int id)
         {
+            throw new iS3Exception("NOT Implementation");
+
             PhreaticWater pw = getObjectById<PhreaticWater>(project, id);
-            return new PhreaticWaterDTO(pw);
+            return Mapper.Map<PhreaticWaterDTO>(pw);
         }
 
         /// <summary>
@@ -160,8 +163,10 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public List<PhreaticWaterDTO> getPhreaticWaterByProject(string project)
         {
+            throw new iS3Exception("NOT Implementation");
+
             List<PhreaticWater> pws = getAllByProject<PhreaticWater>(project);
-            return PhreaticWaterDTO.transferList(pws);
+            return Mapper.Map<List<PhreaticWaterDTO>>(pws);
         }
 
         /// <summary>
@@ -174,8 +179,10 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public ConfinedWaterDTO getConfinedWaterById(string project, int id)
         {
-            ConfinedWater pw = getObjectById<ConfinedWater>(project, id);
-            return new ConfinedWaterDTO(pw);
+            throw new iS3Exception("NOT Implementation");
+
+            ConfinedWater cw = getObjectById<ConfinedWater>(project, id);
+            return Mapper.Map<ConfinedWaterDTO>(cw);
         }
 
         /// <summary>
@@ -187,8 +194,10 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public List<ConfinedWaterDTO> getConfinedWaterByProject(string project)
         {
-            List<ConfinedWater> pws = getAllByProject<ConfinedWater>(project);
-            return ConfinedWaterDTO.transferList(pws);
+            throw new iS3Exception("NOT Implementation");
+
+            List<ConfinedWater> cws = getAllByProject<ConfinedWater>(project);
+            return Mapper.Map<List<ConfinedWaterDTO>>(cws);
         }
 
         /// <summary>
@@ -201,8 +210,10 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public WaterPropertyDTO getWaterPropertyById(string project, int id)
         {
-            WaterProperty pw = getObjectById<WaterProperty>(project, id);
-            return new WaterPropertyDTO(pw);
+            throw new iS3Exception("NOT Implementation");
+
+            WaterProperty wp = getObjectById<WaterProperty>(project, id);
+            return Mapper.Map<WaterPropertyDTO>(wp);
         }
 
         /// <summary>
@@ -214,8 +225,10 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public List<WaterPropertyDTO> getWaterPropertyByProject(string project)
         {
-            List<WaterProperty> pws = getAllByProject<WaterProperty>(project);
-            return WaterPropertyDTO.transferList(pws);
+            throw new iS3Exception("NOT Implementation");
+
+            List<WaterProperty> wps = getAllByProject<WaterProperty>(project);
+            return Mapper.Map<List<WaterPropertyDTO>>(wps);
         }
 
         private T getObjectById<T>(string project, int id) 
