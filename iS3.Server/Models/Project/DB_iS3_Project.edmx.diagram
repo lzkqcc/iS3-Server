@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d8c01b6a0ecc4b73b1a4dd9f1a63de32" Name="Diagram1">
+      <Diagram DiagramId="82aa1c4d44604f568f6a5fc8bc7cc480" Name="Diagram1">
         <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Base_DataSourceInfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Base_DataSourceType" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Monitoring_InstrumentInfo" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
@@ -13,6 +13,29 @@
         <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Monitoring_MonProjectInfo" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Project_ObjectsDefinition" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Project_ProjectInfo" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Geology_Boreholes" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Geology_BoreholeStrataInfo" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Geology_ConfinedWater" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Geology_PhreaticWater" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Geology_RiverWater" Width="1.5" PointX="6.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Geology_SoilProperties" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Geology_Strata" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Geology_StrataSection" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Geology_WaterProperties" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Structure_SegmentLinings" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Structure_Segments" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Structure_SLBaseType" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Structure_SLConstructionRecords" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Structure_SLConvergence" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Structure_SLCrack" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Structure_SLPostureRecords" Width="1.5" PointX="2.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Structure_SLQualityRecords" Width="1.5" PointX="4.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Structure_SLSettlement" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Structure_SLSpall" Width="1.5" PointX="14.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Structure_SLType" Width="1.5" PointX="14.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Structure_TunnelAxes" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Structure_TunnelAxesPoints" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_iS3_DemoProjectModel.Structure_Tunnels" Width="1.5" PointX="16.75" PointY="4.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

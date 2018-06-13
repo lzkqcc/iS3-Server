@@ -12,6 +12,7 @@ using iS3.Server.Utility;
 using iS3.Server.DTO.Geology;
 using iS3.Server.DTO;
 using IS3.Core;
+using iS3.Server.Models.Project;
 
 namespace iS3.Server.Controllers
 {
@@ -31,8 +32,10 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public BoreholeDTO getBoreholeById(string project, int id)
         {
-            Borehole b = getObjectById<Borehole>(project, id);
-            return Mapper.Map<BoreholeDTO>(b);
+            //Borehole b = getObjectById<Borehole>(project, id);
+            //return Mapper.Map<BoreholeDTO>(b);
+            GeologyRepo repo = new GeologyRepo(project);
+            return repo.getBoreholeById(id);
         }
 
         /// <summary>
@@ -45,18 +48,21 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public List<BoreholeDTO> getBoreholeByIds([FromUri]string project, [FromUri]int[] ids)
         {
+            GeologyRepo repo = new GeologyRepo(project);
             if (ids.Length == 0)
             {
-                List<Borehole> bs = getAllByProject<Borehole>(project);
-                return Mapper.Map<List<BoreholeDTO>>(bs);
+                //List<Borehole> bs = getAllByProject<Borehole>();
+                //return Mapper.Map<List<BoreholeDTO>>(bs);
+                return repo.getAllBoreholeByProject();
             }
             else
             {
-                List<Borehole> bs = getObjectByIds<Borehole>(project, ids);
-                return Mapper.Map<List<BoreholeDTO>>(bs);
+                //List<Borehole> bs = getObjectByIds<Borehole>(project, ids);
+                //return Mapper.Map<List<BoreholeDTO>>(bs);
+                return repo.getBoreholeByIds(ids);
             }
         }
-      
+
         /// <summary>
         /// 根据id获取地层数据
         /// </summary>
@@ -67,8 +73,8 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public StratumDTO getStratumById(string project, int id)
         {
-            Stratum st = getObjectById<Stratum>(project, id);
-            return Mapper.Map<StratumDTO>(st);
+            GeologyRepo repo = new GeologyRepo(project);
+            return repo.getStratumById(id);
         }
 
         /// <summary>
@@ -80,36 +86,36 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public List<StratumDTO> getStratumByProject(string project)
         {
-            List<Stratum> sts = getAllByProject<Stratum>(project);
-            return Mapper.Map<List<StratumDTO>>(sts);
+            GeologyRepo repo = new GeologyRepo(project);
+            return repo.getAllStratum();
         }
 
-        ///// <summary>
-        ///// 根据id获取地层区间
-        ///// </summary>
-        ///// <param name="project">项目名称</param>
-        ///// <param name="id">地层区间id</param>
-        ///// <returns> </returns>
-        //[Route("stratumsection")]
-        //[HttpGet]
-        //public StratumSectionDTO getStratumSectionById(string project, int id)
-        //{
-        //    StratumSection sc = getObjectById<StratumSection>(project, id);
-        //    return new StratumSectionDTO(sc);
-        //}
+        /// <summary>
+        /// 根据id获取地层区间
+        /// </summary>
+        /// <param name="project">项目名称</param>
+        /// <param name="id">地层区间id</param>
+        /// <returns> </returns>
+        [Route("stratumsection")]
+        [HttpGet]
+        public StratumSectionDTO getStratumSectionById(string project, int id)
+        {
+            GeologyRepo repo = new GeologyRepo(project);
+            return repo.getStratumSectionById(id);
+        }
 
-        ///// <summary>
-        ///// 获取Project工程的所有地层区间
-        ///// </summary>
-        ///// <param name="project">工程名称</param>
-        ///// <returns></returns>
-        //[Route("stratumsection")]
-        //[HttpGet]
-        //public List<StratumSectionDTO> getBoreholeByProject(string project)
-        //{
-        //    List<StratumSection> sts = getAllByProject<StratumSection>(project);
-        //    return StratumSectionDTO.transferList(sts);
-        //}
+        /// <summary>
+        /// 获取Project工程的所有地层区间
+        /// </summary>
+        /// <param name="project">工程名称</param>
+        /// <returns></returns>
+        [Route("stratumsection")]
+        [HttpGet]
+        public List<StratumSectionDTO> getStratumSectionByProject(string project)
+        {
+            GeologyRepo repo = new GeologyRepo(project);
+            return repo.getAllStratumSection();
+        }
 
         /// <summary>
         /// 根据id获取土层参数
@@ -121,8 +127,8 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public SoilPropertyDTO getSoilPropertyById(string project, int id)
         {
-            SoilProperty sp = getObjectById<SoilProperty>(project, id);
-            return Mapper.Map<SoilPropertyDTO>(sp);
+            GeologyRepo repo = new GeologyRepo(project);
+            return repo.getSoilPropertyById(id);
         }
 
         /// <summary>
@@ -134,8 +140,8 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public List<SoilPropertyDTO> getSoilPropertyByProject(string project)
         {
-            List<SoilProperty> sps = getAllByProject<SoilProperty>(project);
-            return Mapper.Map<List<SoilPropertyDTO>>(sps);
+            GeologyRepo repo = new GeologyRepo(project);
+            return repo.getAllSoilProperty();
         }
 
         /// <summary>
@@ -148,10 +154,8 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public PhreaticWaterDTO getPhreaticWaterById(string project, int id)
         {
-            throw new iS3Exception("NOT Implementation");
-
-            PhreaticWater pw = getObjectById<PhreaticWater>(project, id);
-            return Mapper.Map<PhreaticWaterDTO>(pw);
+            GeologyRepo repo = new GeologyRepo(project);
+            return repo.getPhreaticWaterById(id);
         }
 
         /// <summary>
@@ -163,10 +167,8 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public List<PhreaticWaterDTO> getPhreaticWaterByProject(string project)
         {
-            throw new iS3Exception("NOT Implementation");
-
-            List<PhreaticWater> pws = getAllByProject<PhreaticWater>(project);
-            return Mapper.Map<List<PhreaticWaterDTO>>(pws);
+            GeologyRepo repo = new GeologyRepo(project);
+            return repo.getAllPhreaticWater();
         }
 
         /// <summary>
@@ -179,10 +181,8 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public ConfinedWaterDTO getConfinedWaterById(string project, int id)
         {
-            throw new iS3Exception("NOT Implementation");
-
-            ConfinedWater cw = getObjectById<ConfinedWater>(project, id);
-            return Mapper.Map<ConfinedWaterDTO>(cw);
+            GeologyRepo repo = new GeologyRepo(project);
+            return repo.getConfinedWaterById(id);
         }
 
         /// <summary>
@@ -194,10 +194,8 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public List<ConfinedWaterDTO> getConfinedWaterByProject(string project)
         {
-            throw new iS3Exception("NOT Implementation");
-
-            List<ConfinedWater> cws = getAllByProject<ConfinedWater>(project);
-            return Mapper.Map<List<ConfinedWaterDTO>>(cws);
+            GeologyRepo repo = new GeologyRepo(project);
+            return repo.getAllConfinedWater();
         }
 
         /// <summary>
@@ -210,10 +208,8 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public WaterPropertyDTO getWaterPropertyById(string project, int id)
         {
-            throw new iS3Exception("NOT Implementation");
-
-            WaterProperty wp = getObjectById<WaterProperty>(project, id);
-            return Mapper.Map<WaterPropertyDTO>(wp);
+            GeologyRepo repo = new GeologyRepo(project);
+            return repo.getWaterPropertyById(id);
         }
 
         /// <summary>
@@ -225,63 +221,63 @@ namespace iS3.Server.Controllers
         [HttpGet]
         public List<WaterPropertyDTO> getWaterPropertyByProject(string project)
         {
-            throw new iS3Exception("NOT Implementation");
-
-            List<WaterProperty> wps = getAllByProject<WaterProperty>(project);
-            return Mapper.Map<List<WaterPropertyDTO>>(wps);
+            GeologyRepo repo = new GeologyRepo(project);
+            return repo.getAllWaterProperty();
         }
 
-        private T getObjectById<T>(string project, int id) 
-            where T : DGObject
-        {
-            if (!FileUtil.projectExit(project))
-                throw new iS3Exception(string.Format("{0}工程不存在", project));
+        // Code used for iS3 core. By now, customed EF is used.
 
-            GeologyRepo repo = new GeologyRepo(project);
-            T obj = repo.getObjectById<T>(id);
+        //private T getObjectById<T>(string project, int id) 
+        //    where T : DGObject
+        //{
+        //    if (!FileUtil.projectExit(project))
+        //        throw new iS3Exception(string.Format("{0}工程不存在", project));
 
-            if (obj == null)
-                throw new iS3Exception(string.Format("没有找到id={0}的对象", id));
+        //    GeologyRepo repo = new GeologyRepo(project);
+        //    T obj = repo.getObjectById<T>(id);
+
+        //    if (obj == null)
+        //        throw new iS3Exception(string.Format("没有找到id={0}的对象", id));
             
-            return obj;
-        }
+        //    return obj;
+        //}
 
-        private List<T> getObjectByIds<T>(string project, int[] ids)
-          where T : DGObject, new()
-        {
-            if (!FileUtil.projectExit(project))
-                throw new iS3Exception(string.Format("{0}工程不存在", project));
+        //private List<T> getObjectByIds<T>(string project, int[] ids)
+        //  where T : DGObject, new()
+        //{
+        //    if (!FileUtil.projectExit(project))
+        //        throw new iS3Exception(string.Format("{0}工程不存在", project));
 
-            GeologyRepo repo = new GeologyRepo(project);
+        //    GeologyRepo repo = new GeologyRepo(project);
 
-            List<T> objs = new List<T>();
-            foreach (int id in ids)
-            {
-                T obj = repo.getObjectById<T>(id);
-                if (obj == null)
-                {
-                    T obj1 = new T();
-                    obj1.id = id;
-                    objs.Add((T)obj1);
-                }
-                else
-                    objs.Add((T)obj);
-            }
-            return objs;
-        }
+        //    List<T> objs = new List<T>();
+        //    foreach (int id in ids)
+        //    {
+        //        T obj = repo.getObjectById<T>(id);
+        //        if (obj == null)
+        //        {
+        //            T obj1 = new T();
+        //            obj1.id = id;
+        //            objs.Add((T)obj1);
+        //        }
+        //        else
+        //            objs.Add((T)obj);
+        //    }
+        //    return objs;
+        //}
 
-        private List<T> getAllByProject<T>(string project)
-            where T : DGObject
-        {
-            if (!FileUtil.projectExit(project))
-                throw new iS3Exception(string.Format("{0}工程不存在", project));
+        //private List<T> getAllByProject<T>(string project)
+        //    where T : DGObject
+        //{
+        //    if (!FileUtil.projectExit(project))
+        //        throw new iS3Exception(string.Format("{0}工程不存在", project));
 
-            GeologyRepo repo = new GeologyRepo(project);
-            List<T> objs = repo.getAllObjects<T>();
+        //    GeologyRepo repo = new GeologyRepo(project);
+        //    List<T> objs = repo.getAllObjects<T>();
 
-            if (objs == null)
-                throw new iS3Exception(string.Format("没有找到{0}工程的钻孔数据", project));
-            return objs;
-        }
+        //    if (objs == null)
+        //        throw new iS3Exception(string.Format("没有找到{0}工程的钻孔数据", project));
+        //    return objs;
+        //}
     }
 }

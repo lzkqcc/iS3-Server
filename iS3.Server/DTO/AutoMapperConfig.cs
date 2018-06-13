@@ -24,9 +24,9 @@ namespace iS3.Server.DTO
                 config.CreateMap<string, List<int>>().ConvertUsing(new StringToListConvertert());
             });
 
+            // For iS3 core
             // DGObject DTO
             Mapper.CreateMap<DGObject, DGObjectDTO>().ReverseMap();
-
             // Project DTO
             Mapper.CreateMap<Project_ProjectInfo, Project_ProjectInfoDTO>().ReverseMap();
             Mapper.CreateMap<Tree, TreeDTO>().ReverseMap();
@@ -35,7 +35,6 @@ namespace iS3.Server.DTO
             Mapper.CreateMap<ProjectInformation, ProjectInformationDTO>().ReverseMap();
             Mapper.CreateMap<EngineeringMap, EngineeringMapDTO>().ReverseMap();
             Mapper.CreateMap<LayerDef, LayerDefDTO>().ReverseMap();
-
             // Geology DTO
             Mapper.CreateMap<BoreholeGeology, BoreholeGeologyDTO>().ReverseMap();
             Mapper.CreateMap<Borehole, BoreholeDTO>().ReverseMap();
@@ -49,9 +48,31 @@ namespace iS3.Server.DTO
             Mapper.CreateMap<PhreaticWater, PhreaticWaterDTO>().ReverseMap();
             Mapper.CreateMap<ConfinedWater, ConfinedWaterDTO>().ReverseMap();
             Mapper.CreateMap<WaterProperty, WaterPropertyDTO>().ReverseMap();
-
             // Structure DTO
             Mapper.CreateMap<Pillar, PillarDTO>().ReverseMap();
+
+            // For EF
+            // Geology DTO
+            Mapper.CreateMap<Geology_Boreholes, BoreholeDTO>()
+                .ForMember(dest => dest.Top, opt => opt.MapFrom(src => src.TopElevation))
+                .ForMember(dest => dest.Base, opt => opt.MapFrom(src => src.TopElevation - src.BoreholeLength))
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.BoreholeType))
+                .ReverseMap();
+            Mapper.CreateMap<Geology_BoreholeStrataInfo, BoreholeGeologyDTO>()
+                .ForMember(dest => dest.Base, opt => opt.MapFrom(src => src.ElevationOfStratumBottom))
+                .ReverseMap();
+            Mapper.CreateMap<Geology_Strata, StratumDTO>()
+                .ForMember(dest => dest.GeologyAge, opt => opt.MapFrom(src => src.GeologicalAge))
+                .ForMember(dest => dest.ThicknessRange, opt => opt.MapFrom(src => src.Thickness))
+                .ForMember(dest => dest.ElevationRange, opt => opt.MapFrom(src => src.ElevationOfStratumBottom))
+                .ReverseMap();
+            Mapper.CreateMap<StratumSectionDTO, Geology_StrataSection>().ReverseMap();
+            Mapper.CreateMap<SoilPropertyDTO, Geology_SoilProperties>().ReverseMap();
+            Mapper.CreateMap<SoilStaticPropertyDTO, Geology_SoilProperties>().ReverseMap();
+            Mapper.CreateMap<SoilDynamicPropertyDTO, Geology_SoilProperties>().ReverseMap();
+            Mapper.CreateMap<PhreaticWaterDTO, Geology_PhreaticWater>().ReverseMap();
+            Mapper.CreateMap<ConfinedWaterDTO, Geology_ConfinedWater>().ReverseMap();
+            Mapper.CreateMap<WaterPropertyDTO, Geology_WaterProperties>().ReverseMap();
         }
 
         class ListToStringConvertert : ITypeConverter<List<int>, string>

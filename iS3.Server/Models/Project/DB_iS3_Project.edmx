@@ -27,6 +27,177 @@
           <Property Name="CODE" Type="varchar" MaxLength="20" />
           <Property Name="Remark" Type="varchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Geology_Boreholes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Geology_Boreholes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OBJECTID" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="StratumSection" Type="int" />
+          <Property Name="SectionSequence" Type="int" />
+          <Property Name="BoreholeType" Type="nvarchar" MaxLength="255" />
+          <Property Name="TopElevation" Type="float" />
+          <Property Name="BoreholeLength" Type="float" />
+          <Property Name="Mileage" Type="nvarchar" MaxLength="255" />
+          <Property Name="Xcoordinate" Type="float" />
+          <Property Name="Ycoordinate" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Geology_BoreholeStrataInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Geology_BoreholeStrataInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OBJECTID" Type="varchar" MaxLength="50" />
+          <Property Name="StratumSequenceInBorehole" Type="int" />
+          <Property Name="StratumSectionID" Type="int" />
+          <Property Name="SectionSequenceBorhole" Type="int" />
+          <Property Name="SectionSequenceStrata" Type="nvarchar" MaxLength="255" />
+          <Property Name="ElevationOfStratumBottom" Type="float" />
+          <Property Name="BoreholeID" Type="int" />
+          <Property Name="StratumID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Geology_ConfinedWater' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Geology_ConfinedWater">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BoreholeName" Type="nvarchar" MaxLength="255" />
+          <Property Name="SiteName" Type="nvarchar" MaxLength="255" />
+          <Property Name="StrataSectionID" Type="int" />
+          <Property Name="TopElevation" Type="float" />
+          <Property Name="ObservationDepth" Type="float" />
+          <Property Name="StatumName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Layer" Type="float" />
+          <Property Name="WaterTable" Type="float" />
+          <Property Name="ObservationDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Geology_PhreaticWater' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Geology_PhreaticWater">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteName" Type="nvarchar" MaxLength="255" />
+          <Property Name="AvBuriedDepth" Type="float" />
+          <Property Name="AvElevation" Type="float" />
+          <Property Name="StratumSectionID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Geology_RiverWater' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Geology_RiverWater">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObservationLocation" Type="nvarchar" MaxLength="255" />
+          <Property Name="HighestTidalLevel" Type="float" />
+          <Property Name="HighestTidalLevelDate" Type="datetime" />
+          <Property Name="LowestTidalLevel" Type="float" />
+          <Property Name="LowestTidalLevelDate" Type="datetime" />
+          <Property Name="AvHighTidalLevel" Type="float" />
+          <Property Name="AvLowTidalLevel" Type="float" />
+          <Property Name="AvTidalRange" Type="float" />
+          <Property Name="DurationOfRise" Type="nvarchar" MaxLength="255" />
+          <Property Name="DurationOfFall" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Geology_SoilProperties' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Geology_SoilProperties">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="StratumSectionID" Type="int" />
+          <Property Name="StratumID" Type="int" />
+          <Property Name="w" Type="float" />
+          <Property Name="gama" Type="float" />
+          <Property Name="Kv" Type="float" />
+          <Property Name="Kh" Type="float" />
+          <Property Name="ccq" Type="float" />
+          <Property Name="faicq" Type="float" />
+          <Property Name="c_s" Type="float" />
+          <Property Name="fais" Type="float" />
+          <Property Name="a01_02" Type="float" />
+          <Property Name="Es01_02" Type="float" />
+          <Property Name="qu" Type="float" />
+          <Property Name="K0" Type="float" />
+          <Property Name="cuu" Type="float" />
+          <Property Name="faiuu" Type="float" />
+          <Property Name="ccu" Type="float" />
+          <Property Name="faicu" Type="float" />
+          <Property Name="cprime" Type="float" />
+          <Property Name="faiprime" Type="float" />
+          <Property Name="E015_0025" Type="float" />
+          <Property Name="E02_0025" Type="float" />
+          <Property Name="E04_0025" Type="float" />
+          <Property Name="Cu" Type="float" />
+          <Property Name="c" Type="float" />
+          <Property Name="fai" Type="float" />
+          <Property Name="Cs" Type="float" />
+          <Property Name="e" Type="float" />
+          <Property Name="av" Type="float" />
+          <Property Name="G0" Type="float" />
+          <Property Name="ar" Type="float" />
+          <Property Name="br" Type="float" />
+          <Property Name="G" Type="float" />
+          <Property Name="Sr" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Geology_Strata' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Geology_Strata">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="255" />
+          <Property Name="GeologicalAge" Type="nvarchar" MaxLength="255" />
+          <Property Name="FormationType" Type="nvarchar" MaxLength="255" />
+          <Property Name="Compaction" Type="nvarchar" MaxLength="255" />
+          <Property Name="ElevationOfStratumBottom" Type="nvarchar" MaxLength="255" />
+          <Property Name="Thickness" Type="nvarchar" MaxLength="255" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Geology_StrataSection' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Geology_StrataSection">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="StartMileage" Type="nvarchar" MaxLength="255" />
+          <Property Name="EndMileage" Type="nvarchar" MaxLength="255" />
+          <Property Name="StratumSectionID" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Geology_WaterProperties' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Geology_WaterProperties">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BoreholeName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Cl" Type="float" />
+          <Property Name="SO4" Type="float" />
+          <Property Name="Mg" Type="float" />
+          <Property Name="NH" Type="float" />
+          <Property Name="pH" Type="float" />
+          <Property Name="CO2" Type="float" />
+          <Property Name="Corrosion" Type="nvarchar(max)" />
+          <Property Name="StratumSectionID" Type="int" />
+        </EntityType>
         <EntityType Name="Monitoring_InstrumentInfo">
           <Key>
             <PropertyRef Name="ID" />
@@ -125,6 +296,265 @@ warning 6013: The table/view 'DB_iS3_DemoProject.dbo.Project_TreeDefinition' doe
           <Property Name="RefObjID" Type="int" />
           <Property Name="Description" Type="varchar" MaxLength="60" />
         </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_SegmentLinings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Structure_SegmentLinings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OBJECTID" Type="smallint" />
+          <Property Name="Centroid_Z" Type="float" />
+          <Property Name="LineNo" Type="int" />
+          <Property Name="RingNo" Type="int" />
+          <Property Name="MilageAsDesign" Type="float" />
+          <Property Name="DesignX" Type="float" />
+          <Property Name="DesignY" Type="float" />
+          <Property Name="DesignH" Type="float" />
+          <Property Name="SLTypeIDAsDesign" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_Segments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Structure_Segments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SLBaseTypeID" Type="int" />
+          <Property Name="StartAngle" Type="float" />
+          <Property Name="CentralAngle" Type="float" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_SLBaseType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Structure_SLBaseType">
+          <Key>
+            <PropertyRef Name="OBJECTID" />
+          </Key>
+          <Property Name="OBJECTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SLBaseTypeID" Type="int" />
+          <Property Name="SLCategory" Type="nvarchar" MaxLength="255" />
+          <Property Name="SLShape" Type="nvarchar" MaxLength="50" />
+          <Property Name="SLNumOfSegments" Type="int" />
+          <Property Name="SLConicity" Type="float" />
+          <Property Name="SLThickness" Type="float" />
+          <Property Name="SLWidth" Type="float" />
+          <Property Name="SLOutDiameter" Type="float" />
+          <Property Name="SLInnerDiameter" Type="float" />
+          <Property Name="SLTotalKeyPos" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_SLConstructionRecords' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Structure_SLConstructionRecords">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OBJECTID" Type="int" />
+          <Property Name="LineNo" Type="smallint" />
+          <Property Name="MilageAsBuilt" Type="float" />
+          <Property Name="SLTypeIDAsBuilt" Type="int" />
+          <Property Name="ConstructionDate" Type="datetime" />
+          <Property Name="KeySegementPositionNum" Type="int" />
+          <Property Name="IsDataMissing" Type="smallint" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="255" />
+          <Property Name="RingNo" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_SLConvergence' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Structure_SLConvergence">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObjectID" Type="int" />
+          <Property Name="Milage" Type="float" />
+          <Property Name="LineNo" Type="float" />
+          <Property Name="RingNo" Type="int" />
+          <Property Name="HorizontalRad" Type="float" />
+          <Property Name="HorizontalDeviation" Type="float" />
+          <Property Name="VerticalRad" Type="float" />
+          <Property Name="VerticalDeviation" Type="float" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_SLCrack' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Structure_SLCrack">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OBJECTID" Type="nvarchar" MaxLength="255" />
+          <Property Name="StartMilage" Type="nvarchar" MaxLength="255" />
+          <Property Name="EndMilage" Type="nvarchar" MaxLength="255" />
+          <Property Name="MetroLine" Type="int" />
+          <Property Name="LineNo" Type="int" />
+          <Property Name="StartRingNo" Type="int" />
+          <Property Name="EndRingNo" Type="int" />
+          <Property Name="SLCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Direction" Type="nvarchar" MaxLength="255" />
+          <Property Name="Length" Type="float" />
+          <Property Name="Width" Type="float" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Document" Type="nvarchar" MaxLength="255" />
+          <Property Name="Discription" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_SLPostureRecords' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Structure_SLPostureRecords">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OBJECTID" Type="int" />
+          <Property Name="OBJECTID_1" Type="int" />
+          <Property Name="LineNo" Type="int" />
+          <Property Name="RingNo" Type="int" />
+          <Property Name="SLHorizontalDeviation" Type="float" />
+          <Property Name="SLElevationalDeviation" Type="float" />
+          <Property Name="SLGapUp" Type="float" />
+          <Property Name="SLGapDown" Type="float" />
+          <Property Name="SLGapLeft" Type="float" />
+          <Property Name="SLGapRight" Type="float" />
+          <Property Name="SLGap1" Type="float" />
+          <Property Name="SLGap2" Type="float" />
+          <Property Name="SLGap3" Type="float" />
+          <Property Name="SLGap4" Type="float" />
+          <Property Name="SLGap5" Type="float" />
+          <Property Name="SLGap6" Type="float" />
+          <Property Name="SLGap7" Type="float" />
+          <Property Name="SLGap8" Type="float" />
+          <Property Name="HorizontalDiameter" Type="float" />
+          <Property Name="VerticalDiameter" Type="float" />
+          <Property Name="Diamter1" Type="float" />
+          <Property Name="Diamter2" Type="float" />
+          <Property Name="DeformationDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="SLDate" Type="datetime" />
+          <Property Name="Uploader" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_SLQualityRecords' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Structure_SLQualityRecords">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OBJECTID" Type="int" />
+          <Property Name="OBJECTID_1" Type="int" />
+          <Property Name="LineNo" Type="int" />
+          <Property Name="RingNo" Type="int" />
+          <Property Name="QualityDescription" Type="nvarchar(max)" />
+          <Property Name="InspectionDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="Repairment" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_SLSettlement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Structure_SLSettlement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObjectID" Type="int" />
+          <Property Name="Milage" Type="float" />
+          <Property Name="LineNo" Type="int" />
+          <Property Name="RingNo" Type="int" />
+          <Property Name="InitialElev" Type="float" />
+          <Property Name="Elevation" Type="float" />
+          <Property Name="Increasement" Type="float" />
+          <Property Name="Total" Type="float" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_SLSpall' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Structure_SLSpall">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OBJECTID" Type="nvarchar" MaxLength="255" />
+          <Property Name="StartMilage" Type="nvarchar" MaxLength="255" />
+          <Property Name="EndMilage" Type="nvarchar" MaxLength="255" />
+          <Property Name="MetroLine" Type="int" />
+          <Property Name="LineNo" Type="int" />
+          <Property Name="StartRingNo" Type="int" />
+          <Property Name="EndRingNo" Type="int" />
+          <Property Name="SLCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="LocalX" Type="nvarchar" MaxLength="255" />
+          <Property Name="LocalY" Type="nvarchar" MaxLength="255" />
+          <Property Name="Shape" Type="nvarchar" MaxLength="255" />
+          <Property Name="Area" Type="float" />
+          <Property Name="Length" Type="float" />
+          <Property Name="Width" Type="nvarchar" MaxLength="255" />
+          <Property Name="Depth" Type="float" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Document" Type="nvarchar" MaxLength="255" />
+          <Property Name="Discription" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_SLType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Structure_SLType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SLTypeID" Type="int" />
+          <Property Name="SLTypeName" Type="nvarchar" MaxLength="255" />
+          <Property Name="SLTypeDescription_CN" Type="nvarchar" MaxLength="255" />
+          <Property Name="SLBaseTypeID" Type="int" />
+          <Property Name="SLTypeDescription" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_TunnelAxes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Structure_TunnelAxes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="LineNo" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_TunnelAxesPoints' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Structure_TunnelAxesPoints">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OBJECTID" Type="int" />
+          <Property Name="Shape" Type="image" />
+          <Property Name="LineNo" Type="int" />
+          <Property Name="Milage" Type="float" />
+          <Property Name="X" Type="float" />
+          <Property Name="Y" Type="float" />
+          <Property Name="Z" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_Tunnels' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Structure_Tunnels">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OBJECTID" Type="int" />
+          <Property Name="Shape" Type="image" />
+          <Property Name="Shape_Length" Type="float" />
+          <Property Name="Shape_Area" Type="float" />
+          <Property Name="LineNo" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartMileage" Type="float" />
+          <Property Name="EndMileage" Type="float" />
+          <Property Name="Width" Type="float" />
+          <Property Name="Height" Type="float" />
+          <Property Name="ShapeDesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ConBeginDate" Type="datetime" />
+          <Property Name="ConEndDate" Type="datetime" />
+        </EntityType>
         <EntityContainer Name="DB_iS3_DemoProjectModelStoreContainer">
           <EntitySet Name="Base_DataSourceInfo" EntityType="Self.Base_DataSourceInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Base_DataSourceType" EntityType="Self.Base_DataSourceType" Schema="dbo" store:Type="Tables" />
@@ -134,6 +564,367 @@ warning 6013: The table/view 'DB_iS3_DemoProject.dbo.Project_TreeDefinition' doe
           <EntitySet Name="Monitoring_MonProjectInfo" EntityType="Self.Monitoring_MonProjectInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Project_ObjectsDefinition" EntityType="Self.Project_ObjectsDefinition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Project_ProjectInfo" EntityType="Self.Project_ProjectInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Geology_Boreholes" EntityType="Self.Geology_Boreholes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Geology_Boreholes].[ID] AS [ID], 
+    [Geology_Boreholes].[OBJECTID] AS [OBJECTID], 
+    [Geology_Boreholes].[Name] AS [Name], 
+    [Geology_Boreholes].[FullName] AS [FullName], 
+    [Geology_Boreholes].[Description] AS [Description], 
+    [Geology_Boreholes].[StratumSection] AS [StratumSection], 
+    [Geology_Boreholes].[SectionSequence] AS [SectionSequence], 
+    [Geology_Boreholes].[BoreholeType] AS [BoreholeType], 
+    [Geology_Boreholes].[TopElevation] AS [TopElevation], 
+    [Geology_Boreholes].[BoreholeLength] AS [BoreholeLength], 
+    [Geology_Boreholes].[Mileage] AS [Mileage], 
+    [Geology_Boreholes].[Xcoordinate] AS [Xcoordinate], 
+    [Geology_Boreholes].[Ycoordinate] AS [Ycoordinate]
+    FROM [dbo].[Geology_Boreholes] AS [Geology_Boreholes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Geology_BoreholeStrataInfo" EntityType="Self.Geology_BoreholeStrataInfo" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Geology_BoreholeStrataInfo].[ID] AS [ID], 
+    [Geology_BoreholeStrataInfo].[OBJECTID] AS [OBJECTID], 
+    [Geology_BoreholeStrataInfo].[StratumSequenceInBorehole] AS [StratumSequenceInBorehole], 
+    [Geology_BoreholeStrataInfo].[StratumSectionID] AS [StratumSectionID], 
+    [Geology_BoreholeStrataInfo].[SectionSequenceBorhole] AS [SectionSequenceBorhole], 
+    [Geology_BoreholeStrataInfo].[SectionSequenceStrata] AS [SectionSequenceStrata], 
+    [Geology_BoreholeStrataInfo].[ElevationOfStratumBottom] AS [ElevationOfStratumBottom], 
+    [Geology_BoreholeStrataInfo].[BoreholeID] AS [BoreholeID], 
+    [Geology_BoreholeStrataInfo].[StratumID] AS [StratumID]
+    FROM [dbo].[Geology_BoreholeStrataInfo] AS [Geology_BoreholeStrataInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Geology_ConfinedWater" EntityType="Self.Geology_ConfinedWater" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Geology_ConfinedWater].[ID] AS [ID], 
+    [Geology_ConfinedWater].[BoreholeName] AS [BoreholeName], 
+    [Geology_ConfinedWater].[SiteName] AS [SiteName], 
+    [Geology_ConfinedWater].[StrataSectionID] AS [StrataSectionID], 
+    [Geology_ConfinedWater].[TopElevation] AS [TopElevation], 
+    [Geology_ConfinedWater].[ObservationDepth] AS [ObservationDepth], 
+    [Geology_ConfinedWater].[StatumName] AS [StatumName], 
+    [Geology_ConfinedWater].[Layer] AS [Layer], 
+    [Geology_ConfinedWater].[WaterTable] AS [WaterTable], 
+    [Geology_ConfinedWater].[ObservationDate] AS [ObservationDate]
+    FROM [dbo].[Geology_ConfinedWater] AS [Geology_ConfinedWater]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Geology_PhreaticWater" EntityType="Self.Geology_PhreaticWater" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Geology_PhreaticWater].[ID] AS [ID], 
+    [Geology_PhreaticWater].[SiteName] AS [SiteName], 
+    [Geology_PhreaticWater].[AvBuriedDepth] AS [AvBuriedDepth], 
+    [Geology_PhreaticWater].[AvElevation] AS [AvElevation], 
+    [Geology_PhreaticWater].[StratumSectionID] AS [StratumSectionID]
+    FROM [dbo].[Geology_PhreaticWater] AS [Geology_PhreaticWater]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Geology_RiverWater" EntityType="Self.Geology_RiverWater" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Geology_RiverWater].[ID] AS [ID], 
+    [Geology_RiverWater].[ObservationLocation] AS [ObservationLocation], 
+    [Geology_RiverWater].[HighestTidalLevel] AS [HighestTidalLevel], 
+    [Geology_RiverWater].[HighestTidalLevelDate] AS [HighestTidalLevelDate], 
+    [Geology_RiverWater].[LowestTidalLevel] AS [LowestTidalLevel], 
+    [Geology_RiverWater].[LowestTidalLevelDate] AS [LowestTidalLevelDate], 
+    [Geology_RiverWater].[AvHighTidalLevel] AS [AvHighTidalLevel], 
+    [Geology_RiverWater].[AvLowTidalLevel] AS [AvLowTidalLevel], 
+    [Geology_RiverWater].[AvTidalRange] AS [AvTidalRange], 
+    [Geology_RiverWater].[DurationOfRise] AS [DurationOfRise], 
+    [Geology_RiverWater].[DurationOfFall] AS [DurationOfFall]
+    FROM [dbo].[Geology_RiverWater] AS [Geology_RiverWater]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Geology_SoilProperties" EntityType="Self.Geology_SoilProperties" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Geology_SoilProperties].[ID] AS [ID], 
+    [Geology_SoilProperties].[Name] AS [Name], 
+    [Geology_SoilProperties].[StratumSectionID] AS [StratumSectionID], 
+    [Geology_SoilProperties].[StratumID] AS [StratumID], 
+    [Geology_SoilProperties].[w] AS [w], 
+    [Geology_SoilProperties].[gama] AS [gama], 
+    [Geology_SoilProperties].[Kv] AS [Kv], 
+    [Geology_SoilProperties].[Kh] AS [Kh], 
+    [Geology_SoilProperties].[ccq] AS [ccq], 
+    [Geology_SoilProperties].[faicq] AS [faicq], 
+    [Geology_SoilProperties].[c_s] AS [c_s], 
+    [Geology_SoilProperties].[fais] AS [fais], 
+    [Geology_SoilProperties].[a01_02] AS [a01_02], 
+    [Geology_SoilProperties].[Es01_02] AS [Es01_02], 
+    [Geology_SoilProperties].[qu] AS [qu], 
+    [Geology_SoilProperties].[K0] AS [K0], 
+    [Geology_SoilProperties].[cuu] AS [cuu], 
+    [Geology_SoilProperties].[faiuu] AS [faiuu], 
+    [Geology_SoilProperties].[ccu] AS [ccu], 
+    [Geology_SoilProperties].[faicu] AS [faicu], 
+    [Geology_SoilProperties].[cprime] AS [cprime], 
+    [Geology_SoilProperties].[faiprime] AS [faiprime], 
+    [Geology_SoilProperties].[E015_0025] AS [E015_0025], 
+    [Geology_SoilProperties].[E02_0025] AS [E02_0025], 
+    [Geology_SoilProperties].[E04_0025] AS [E04_0025], 
+    [Geology_SoilProperties].[Cu] AS [Cu], 
+    [Geology_SoilProperties].[c] AS [c], 
+    [Geology_SoilProperties].[fai] AS [fai], 
+    [Geology_SoilProperties].[Cs] AS [Cs], 
+    [Geology_SoilProperties].[e] AS [e], 
+    [Geology_SoilProperties].[av] AS [av], 
+    [Geology_SoilProperties].[G0] AS [G0], 
+    [Geology_SoilProperties].[ar] AS [ar], 
+    [Geology_SoilProperties].[br] AS [br], 
+    [Geology_SoilProperties].[G] AS [G], 
+    [Geology_SoilProperties].[Sr] AS [Sr]
+    FROM [dbo].[Geology_SoilProperties] AS [Geology_SoilProperties]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Geology_Strata" EntityType="Self.Geology_Strata" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Geology_Strata].[ID] AS [ID], 
+    [Geology_Strata].[Name] AS [Name], 
+    [Geology_Strata].[FullName] AS [FullName], 
+    [Geology_Strata].[GeologicalAge] AS [GeologicalAge], 
+    [Geology_Strata].[FormationType] AS [FormationType], 
+    [Geology_Strata].[Compaction] AS [Compaction], 
+    [Geology_Strata].[ElevationOfStratumBottom] AS [ElevationOfStratumBottom], 
+    [Geology_Strata].[Thickness] AS [Thickness], 
+    [Geology_Strata].[Description] AS [Description]
+    FROM [dbo].[Geology_Strata] AS [Geology_Strata]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Geology_StrataSection" EntityType="Self.Geology_StrataSection" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Geology_StrataSection].[ID] AS [ID], 
+    [Geology_StrataSection].[Name] AS [Name], 
+    [Geology_StrataSection].[StartMileage] AS [StartMileage], 
+    [Geology_StrataSection].[EndMileage] AS [EndMileage], 
+    [Geology_StrataSection].[StratumSectionID] AS [StratumSectionID]
+    FROM [dbo].[Geology_StrataSection] AS [Geology_StrataSection]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Geology_WaterProperties" EntityType="Self.Geology_WaterProperties" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Geology_WaterProperties].[ID] AS [ID], 
+    [Geology_WaterProperties].[BoreholeName] AS [BoreholeName], 
+    [Geology_WaterProperties].[Cl] AS [Cl], 
+    [Geology_WaterProperties].[SO4] AS [SO4], 
+    [Geology_WaterProperties].[Mg] AS [Mg], 
+    [Geology_WaterProperties].[NH] AS [NH], 
+    [Geology_WaterProperties].[pH] AS [pH], 
+    [Geology_WaterProperties].[CO2] AS [CO2], 
+    [Geology_WaterProperties].[Corrosion] AS [Corrosion], 
+    [Geology_WaterProperties].[StratumSectionID] AS [StratumSectionID]
+    FROM [dbo].[Geology_WaterProperties] AS [Geology_WaterProperties]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Structure_SegmentLinings" EntityType="Self.Structure_SegmentLinings" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Structure_SegmentLinings].[ID] AS [ID], 
+    [Structure_SegmentLinings].[OBJECTID] AS [OBJECTID], 
+    [Structure_SegmentLinings].[Centroid_Z] AS [Centroid_Z], 
+    [Structure_SegmentLinings].[LineNo] AS [LineNo], 
+    [Structure_SegmentLinings].[RingNo] AS [RingNo], 
+    [Structure_SegmentLinings].[MilageAsDesign] AS [MilageAsDesign], 
+    [Structure_SegmentLinings].[DesignX] AS [DesignX], 
+    [Structure_SegmentLinings].[DesignY] AS [DesignY], 
+    [Structure_SegmentLinings].[DesignH] AS [DesignH], 
+    [Structure_SegmentLinings].[SLTypeIDAsDesign] AS [SLTypeIDAsDesign], 
+    [Structure_SegmentLinings].[Name] AS [Name], 
+    [Structure_SegmentLinings].[FullName] AS [FullName], 
+    [Structure_SegmentLinings].[Description] AS [Description]
+    FROM [dbo].[Structure_SegmentLinings] AS [Structure_SegmentLinings]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Structure_Segments" EntityType="Self.Structure_Segments" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Structure_Segments].[ID] AS [ID], 
+    [Structure_Segments].[SLBaseTypeID] AS [SLBaseTypeID], 
+    [Structure_Segments].[StartAngle] AS [StartAngle], 
+    [Structure_Segments].[CentralAngle] AS [CentralAngle], 
+    [Structure_Segments].[Code] AS [Code]
+    FROM [dbo].[Structure_Segments] AS [Structure_Segments]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Structure_SLBaseType" EntityType="Self.Structure_SLBaseType" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Structure_SLBaseType].[OBJECTID] AS [OBJECTID], 
+    [Structure_SLBaseType].[SLBaseTypeID] AS [SLBaseTypeID], 
+    [Structure_SLBaseType].[SLCategory] AS [SLCategory], 
+    [Structure_SLBaseType].[SLShape] AS [SLShape], 
+    [Structure_SLBaseType].[SLNumOfSegments] AS [SLNumOfSegments], 
+    [Structure_SLBaseType].[SLConicity] AS [SLConicity], 
+    [Structure_SLBaseType].[SLThickness] AS [SLThickness], 
+    [Structure_SLBaseType].[SLWidth] AS [SLWidth], 
+    [Structure_SLBaseType].[SLOutDiameter] AS [SLOutDiameter], 
+    [Structure_SLBaseType].[SLInnerDiameter] AS [SLInnerDiameter], 
+    [Structure_SLBaseType].[SLTotalKeyPos] AS [SLTotalKeyPos]
+    FROM [dbo].[Structure_SLBaseType] AS [Structure_SLBaseType]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Structure_SLConstructionRecords" EntityType="Self.Structure_SLConstructionRecords" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Structure_SLConstructionRecords].[ID] AS [ID], 
+    [Structure_SLConstructionRecords].[OBJECTID] AS [OBJECTID], 
+    [Structure_SLConstructionRecords].[LineNo] AS [LineNo], 
+    [Structure_SLConstructionRecords].[MilageAsBuilt] AS [MilageAsBuilt], 
+    [Structure_SLConstructionRecords].[SLTypeIDAsBuilt] AS [SLTypeIDAsBuilt], 
+    [Structure_SLConstructionRecords].[ConstructionDate] AS [ConstructionDate], 
+    [Structure_SLConstructionRecords].[KeySegementPositionNum] AS [KeySegementPositionNum], 
+    [Structure_SLConstructionRecords].[IsDataMissing] AS [IsDataMissing], 
+    [Structure_SLConstructionRecords].[Remarks] AS [Remarks], 
+    [Structure_SLConstructionRecords].[RingNo] AS [RingNo]
+    FROM [dbo].[Structure_SLConstructionRecords] AS [Structure_SLConstructionRecords]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Structure_SLConvergence" EntityType="Self.Structure_SLConvergence" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Structure_SLConvergence].[ID] AS [ID], 
+    [Structure_SLConvergence].[ObjectID] AS [ObjectID], 
+    [Structure_SLConvergence].[Milage] AS [Milage], 
+    [Structure_SLConvergence].[LineNo] AS [LineNo], 
+    [Structure_SLConvergence].[RingNo] AS [RingNo], 
+    [Structure_SLConvergence].[HorizontalRad] AS [HorizontalRad], 
+    [Structure_SLConvergence].[HorizontalDeviation] AS [HorizontalDeviation], 
+    [Structure_SLConvergence].[VerticalRad] AS [VerticalRad], 
+    [Structure_SLConvergence].[VerticalDeviation] AS [VerticalDeviation], 
+    [Structure_SLConvergence].[Date] AS [Date]
+    FROM [dbo].[Structure_SLConvergence] AS [Structure_SLConvergence]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Structure_SLCrack" EntityType="Self.Structure_SLCrack" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Structure_SLCrack].[ID] AS [ID], 
+    [Structure_SLCrack].[OBJECTID] AS [OBJECTID], 
+    [Structure_SLCrack].[StartMilage] AS [StartMilage], 
+    [Structure_SLCrack].[EndMilage] AS [EndMilage], 
+    [Structure_SLCrack].[MetroLine] AS [MetroLine], 
+    [Structure_SLCrack].[LineNo] AS [LineNo], 
+    [Structure_SLCrack].[StartRingNo] AS [StartRingNo], 
+    [Structure_SLCrack].[EndRingNo] AS [EndRingNo], 
+    [Structure_SLCrack].[SLCode] AS [SLCode], 
+    [Structure_SLCrack].[Direction] AS [Direction], 
+    [Structure_SLCrack].[Length] AS [Length], 
+    [Structure_SLCrack].[Width] AS [Width], 
+    [Structure_SLCrack].[Date] AS [Date], 
+    [Structure_SLCrack].[Document] AS [Document], 
+    [Structure_SLCrack].[Discription] AS [Discription]
+    FROM [dbo].[Structure_SLCrack] AS [Structure_SLCrack]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Structure_SLPostureRecords" EntityType="Self.Structure_SLPostureRecords" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Structure_SLPostureRecords].[ID] AS [ID], 
+    [Structure_SLPostureRecords].[OBJECTID] AS [OBJECTID], 
+    [Structure_SLPostureRecords].[OBJECTID_1] AS [OBJECTID_1], 
+    [Structure_SLPostureRecords].[LineNo] AS [LineNo], 
+    [Structure_SLPostureRecords].[RingNo] AS [RingNo], 
+    [Structure_SLPostureRecords].[SLHorizontalDeviation] AS [SLHorizontalDeviation], 
+    [Structure_SLPostureRecords].[SLElevationalDeviation] AS [SLElevationalDeviation], 
+    [Structure_SLPostureRecords].[SLGapUp] AS [SLGapUp], 
+    [Structure_SLPostureRecords].[SLGapDown] AS [SLGapDown], 
+    [Structure_SLPostureRecords].[SLGapLeft] AS [SLGapLeft], 
+    [Structure_SLPostureRecords].[SLGapRight] AS [SLGapRight], 
+    [Structure_SLPostureRecords].[SLGap1] AS [SLGap1], 
+    [Structure_SLPostureRecords].[SLGap2] AS [SLGap2], 
+    [Structure_SLPostureRecords].[SLGap3] AS [SLGap3], 
+    [Structure_SLPostureRecords].[SLGap4] AS [SLGap4], 
+    [Structure_SLPostureRecords].[SLGap5] AS [SLGap5], 
+    [Structure_SLPostureRecords].[SLGap6] AS [SLGap6], 
+    [Structure_SLPostureRecords].[SLGap7] AS [SLGap7], 
+    [Structure_SLPostureRecords].[SLGap8] AS [SLGap8], 
+    [Structure_SLPostureRecords].[HorizontalDiameter] AS [HorizontalDiameter], 
+    [Structure_SLPostureRecords].[VerticalDiameter] AS [VerticalDiameter], 
+    [Structure_SLPostureRecords].[Diamter1] AS [Diamter1], 
+    [Structure_SLPostureRecords].[Diamter2] AS [Diamter2], 
+    [Structure_SLPostureRecords].[DeformationDescription] AS [DeformationDescription], 
+    [Structure_SLPostureRecords].[SLDate] AS [SLDate], 
+    [Structure_SLPostureRecords].[Uploader] AS [Uploader]
+    FROM [dbo].[Structure_SLPostureRecords] AS [Structure_SLPostureRecords]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Structure_SLQualityRecords" EntityType="Self.Structure_SLQualityRecords" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Structure_SLQualityRecords].[ID] AS [ID], 
+    [Structure_SLQualityRecords].[OBJECTID] AS [OBJECTID], 
+    [Structure_SLQualityRecords].[OBJECTID_1] AS [OBJECTID_1], 
+    [Structure_SLQualityRecords].[LineNo] AS [LineNo], 
+    [Structure_SLQualityRecords].[RingNo] AS [RingNo], 
+    [Structure_SLQualityRecords].[QualityDescription] AS [QualityDescription], 
+    [Structure_SLQualityRecords].[InspectionDate] AS [InspectionDate], 
+    [Structure_SLQualityRecords].[Repairment] AS [Repairment]
+    FROM [dbo].[Structure_SLQualityRecords] AS [Structure_SLQualityRecords]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Structure_SLSettlement" EntityType="Self.Structure_SLSettlement" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Structure_SLSettlement].[ID] AS [ID], 
+    [Structure_SLSettlement].[ObjectID] AS [ObjectID], 
+    [Structure_SLSettlement].[Milage] AS [Milage], 
+    [Structure_SLSettlement].[LineNo] AS [LineNo], 
+    [Structure_SLSettlement].[RingNo] AS [RingNo], 
+    [Structure_SLSettlement].[InitialElev] AS [InitialElev], 
+    [Structure_SLSettlement].[Elevation] AS [Elevation], 
+    [Structure_SLSettlement].[Increasement] AS [Increasement], 
+    [Structure_SLSettlement].[Total] AS [Total], 
+    [Structure_SLSettlement].[Rate] AS [Rate], 
+    [Structure_SLSettlement].[Date] AS [Date], 
+    [Structure_SLSettlement].[Name] AS [Name]
+    FROM [dbo].[Structure_SLSettlement] AS [Structure_SLSettlement]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Structure_SLSpall" EntityType="Self.Structure_SLSpall" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Structure_SLSpall].[ID] AS [ID], 
+    [Structure_SLSpall].[OBJECTID] AS [OBJECTID], 
+    [Structure_SLSpall].[StartMilage] AS [StartMilage], 
+    [Structure_SLSpall].[EndMilage] AS [EndMilage], 
+    [Structure_SLSpall].[MetroLine] AS [MetroLine], 
+    [Structure_SLSpall].[LineNo] AS [LineNo], 
+    [Structure_SLSpall].[StartRingNo] AS [StartRingNo], 
+    [Structure_SLSpall].[EndRingNo] AS [EndRingNo], 
+    [Structure_SLSpall].[SLCode] AS [SLCode], 
+    [Structure_SLSpall].[LocalX] AS [LocalX], 
+    [Structure_SLSpall].[LocalY] AS [LocalY], 
+    [Structure_SLSpall].[Shape] AS [Shape], 
+    [Structure_SLSpall].[Area] AS [Area], 
+    [Structure_SLSpall].[Length] AS [Length], 
+    [Structure_SLSpall].[Width] AS [Width], 
+    [Structure_SLSpall].[Depth] AS [Depth], 
+    [Structure_SLSpall].[Date] AS [Date], 
+    [Structure_SLSpall].[Document] AS [Document], 
+    [Structure_SLSpall].[Discription] AS [Discription]
+    FROM [dbo].[Structure_SLSpall] AS [Structure_SLSpall]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Structure_SLType" EntityType="Self.Structure_SLType" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Structure_SLType].[ID] AS [ID], 
+    [Structure_SLType].[SLTypeID] AS [SLTypeID], 
+    [Structure_SLType].[SLTypeName] AS [SLTypeName], 
+    [Structure_SLType].[SLTypeDescription_CN] AS [SLTypeDescription_CN], 
+    [Structure_SLType].[SLBaseTypeID] AS [SLBaseTypeID], 
+    [Structure_SLType].[SLTypeDescription] AS [SLTypeDescription]
+    FROM [dbo].[Structure_SLType] AS [Structure_SLType]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Structure_TunnelAxes" EntityType="Self.Structure_TunnelAxes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Structure_TunnelAxes].[ID] AS [ID], 
+    [Structure_TunnelAxes].[Name] AS [Name], 
+    [Structure_TunnelAxes].[LineNo] AS [LineNo]
+    FROM [dbo].[Structure_TunnelAxes] AS [Structure_TunnelAxes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Structure_TunnelAxesPoints" EntityType="Self.Structure_TunnelAxesPoints" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Structure_TunnelAxesPoints].[ID] AS [ID], 
+    [Structure_TunnelAxesPoints].[OBJECTID] AS [OBJECTID], 
+    [Structure_TunnelAxesPoints].[Shape] AS [Shape], 
+    [Structure_TunnelAxesPoints].[LineNo] AS [LineNo], 
+    [Structure_TunnelAxesPoints].[Milage] AS [Milage], 
+    [Structure_TunnelAxesPoints].[X] AS [X], 
+    [Structure_TunnelAxesPoints].[Y] AS [Y], 
+    [Structure_TunnelAxesPoints].[Z] AS [Z]
+    FROM [dbo].[Structure_TunnelAxesPoints] AS [Structure_TunnelAxesPoints]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Structure_Tunnels" EntityType="Self.Structure_Tunnels" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Structure_Tunnels].[ID] AS [ID], 
+    [Structure_Tunnels].[OBJECTID] AS [OBJECTID], 
+    [Structure_Tunnels].[Shape] AS [Shape], 
+    [Structure_Tunnels].[Shape_Length] AS [Shape_Length], 
+    [Structure_Tunnels].[Shape_Area] AS [Shape_Area], 
+    [Structure_Tunnels].[LineNo] AS [LineNo], 
+    [Structure_Tunnels].[Description] AS [Description], 
+    [Structure_Tunnels].[StartMileage] AS [StartMileage], 
+    [Structure_Tunnels].[EndMileage] AS [EndMileage], 
+    [Structure_Tunnels].[Width] AS [Width], 
+    [Structure_Tunnels].[Height] AS [Height], 
+    [Structure_Tunnels].[ShapeDesc] AS [ShapeDesc], 
+    [Structure_Tunnels].[Name] AS [Name], 
+    [Structure_Tunnels].[ConBeginDate] AS [ConBeginDate], 
+    [Structure_Tunnels].[ConEndDate] AS [ConEndDate]
+    FROM [dbo].[Structure_Tunnels] AS [Structure_Tunnels]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -250,6 +1041,390 @@ warning 6013: The table/view 'DB_iS3_DemoProject.dbo.Project_TreeDefinition' doe
           <Property Name="ContractPeriod" Type="Int32" />
           <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Geology_Boreholes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OBJECTID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="StratumSection" Type="Int32" />
+          <Property Name="SectionSequence" Type="Int32" />
+          <Property Name="BoreholeType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TopElevation" Type="Double" />
+          <Property Name="BoreholeLength" Type="Double" />
+          <Property Name="Mileage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Xcoordinate" Type="Double" />
+          <Property Name="Ycoordinate" Type="Double" />
+        </EntityType>
+        <EntityType Name="Geology_BoreholeStrataInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OBJECTID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StratumSequenceInBorehole" Type="Int32" />
+          <Property Name="StratumSectionID" Type="Int32" />
+          <Property Name="SectionSequenceBorhole" Type="Int32" />
+          <Property Name="SectionSequenceStrata" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ElevationOfStratumBottom" Type="Double" />
+          <Property Name="BoreholeID" Type="Int32" />
+          <Property Name="StratumID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Geology_ConfinedWater">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BoreholeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SiteName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="StrataSectionID" Type="Int32" />
+          <Property Name="TopElevation" Type="Double" />
+          <Property Name="ObservationDepth" Type="Double" />
+          <Property Name="StatumName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Layer" Type="Double" />
+          <Property Name="WaterTable" Type="Double" />
+          <Property Name="ObservationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Geology_PhreaticWater">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AvBuriedDepth" Type="Double" />
+          <Property Name="AvElevation" Type="Double" />
+          <Property Name="StratumSectionID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Geology_RiverWater">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ObservationLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HighestTidalLevel" Type="Double" />
+          <Property Name="HighestTidalLevelDate" Type="DateTime" Precision="3" />
+          <Property Name="LowestTidalLevel" Type="Double" />
+          <Property Name="LowestTidalLevelDate" Type="DateTime" Precision="3" />
+          <Property Name="AvHighTidalLevel" Type="Double" />
+          <Property Name="AvLowTidalLevel" Type="Double" />
+          <Property Name="AvTidalRange" Type="Double" />
+          <Property Name="DurationOfRise" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DurationOfFall" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Geology_SoilProperties">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="StratumSectionID" Type="Int32" />
+          <Property Name="StratumID" Type="Int32" />
+          <Property Name="w" Type="Double" />
+          <Property Name="gama" Type="Double" />
+          <Property Name="Kv" Type="Double" />
+          <Property Name="Kh" Type="Double" />
+          <Property Name="ccq" Type="Double" />
+          <Property Name="faicq" Type="Double" />
+          <Property Name="c_s" Type="Double" />
+          <Property Name="fais" Type="Double" />
+          <Property Name="a01_02" Type="Double" />
+          <Property Name="Es01_02" Type="Double" />
+          <Property Name="qu" Type="Double" />
+          <Property Name="K0" Type="Double" />
+          <Property Name="cuu" Type="Double" />
+          <Property Name="faiuu" Type="Double" />
+          <Property Name="ccu" Type="Double" />
+          <Property Name="faicu" Type="Double" />
+          <Property Name="cprime" Type="Double" />
+          <Property Name="faiprime" Type="Double" />
+          <Property Name="E015_0025" Type="Double" />
+          <Property Name="E02_0025" Type="Double" />
+          <Property Name="E04_0025" Type="Double" />
+          <Property Name="Cu" Type="Double" />
+          <Property Name="c" Type="Double" />
+          <Property Name="fai" Type="Double" />
+          <Property Name="Cs" Type="Double" />
+          <Property Name="e" Type="Double" />
+          <Property Name="av" Type="Double" />
+          <Property Name="G0" Type="Double" />
+          <Property Name="ar" Type="Double" />
+          <Property Name="br" Type="Double" />
+          <Property Name="G" Type="Double" />
+          <Property Name="Sr" Type="Double" />
+        </EntityType>
+        <EntityType Name="Geology_Strata">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GeologicalAge" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FormationType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Compaction" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ElevationOfStratumBottom" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Thickness" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Geology_StrataSection">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="StartMileage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EndMileage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="StratumSectionID" Type="Double" />
+        </EntityType>
+        <EntityType Name="Geology_WaterProperties">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BoreholeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Cl" Type="Double" />
+          <Property Name="SO4" Type="Double" />
+          <Property Name="Mg" Type="Double" />
+          <Property Name="NH" Type="Double" />
+          <Property Name="pH" Type="Double" />
+          <Property Name="CO2" Type="Double" />
+          <Property Name="Corrosion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StratumSectionID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Structure_SegmentLinings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OBJECTID" Type="Int16" />
+          <Property Name="Centroid_Z" Type="Double" />
+          <Property Name="LineNo" Type="Int32" />
+          <Property Name="RingNo" Type="Int32" />
+          <Property Name="MilageAsDesign" Type="Double" />
+          <Property Name="DesignX" Type="Double" />
+          <Property Name="DesignY" Type="Double" />
+          <Property Name="DesignH" Type="Double" />
+          <Property Name="SLTypeIDAsDesign" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Structure_Segments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SLBaseTypeID" Type="Int32" />
+          <Property Name="StartAngle" Type="Double" />
+          <Property Name="CentralAngle" Type="Double" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Structure_SLBaseType">
+          <Key>
+            <PropertyRef Name="OBJECTID" />
+          </Key>
+          <Property Name="OBJECTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SLBaseTypeID" Type="Int32" />
+          <Property Name="SLCategory" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SLShape" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SLNumOfSegments" Type="Int32" />
+          <Property Name="SLConicity" Type="Double" />
+          <Property Name="SLThickness" Type="Double" />
+          <Property Name="SLWidth" Type="Double" />
+          <Property Name="SLOutDiameter" Type="Double" />
+          <Property Name="SLInnerDiameter" Type="Double" />
+          <Property Name="SLTotalKeyPos" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Structure_SLConstructionRecords">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OBJECTID" Type="Int32" />
+          <Property Name="LineNo" Type="Int16" />
+          <Property Name="MilageAsBuilt" Type="Double" />
+          <Property Name="SLTypeIDAsBuilt" Type="Int32" />
+          <Property Name="ConstructionDate" Type="DateTime" Precision="3" />
+          <Property Name="KeySegementPositionNum" Type="Int32" />
+          <Property Name="IsDataMissing" Type="Int16" />
+          <Property Name="Remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RingNo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Structure_SLConvergence">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ObjectID" Type="Int32" />
+          <Property Name="Milage" Type="Double" />
+          <Property Name="LineNo" Type="Double" />
+          <Property Name="RingNo" Type="Int32" />
+          <Property Name="HorizontalRad" Type="Double" />
+          <Property Name="HorizontalDeviation" Type="Double" />
+          <Property Name="VerticalRad" Type="Double" />
+          <Property Name="VerticalDeviation" Type="Double" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Structure_SLCrack">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OBJECTID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="StartMilage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EndMilage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MetroLine" Type="Int32" />
+          <Property Name="LineNo" Type="Int32" />
+          <Property Name="StartRingNo" Type="Int32" />
+          <Property Name="EndRingNo" Type="Int32" />
+          <Property Name="SLCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Direction" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Length" Type="Double" />
+          <Property Name="Width" Type="Double" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Document" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Discription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Structure_SLPostureRecords">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OBJECTID" Type="Int32" />
+          <Property Name="OBJECTID_1" Type="Int32" />
+          <Property Name="LineNo" Type="Int32" />
+          <Property Name="RingNo" Type="Int32" />
+          <Property Name="SLHorizontalDeviation" Type="Double" />
+          <Property Name="SLElevationalDeviation" Type="Double" />
+          <Property Name="SLGapUp" Type="Double" />
+          <Property Name="SLGapDown" Type="Double" />
+          <Property Name="SLGapLeft" Type="Double" />
+          <Property Name="SLGapRight" Type="Double" />
+          <Property Name="SLGap1" Type="Double" />
+          <Property Name="SLGap2" Type="Double" />
+          <Property Name="SLGap3" Type="Double" />
+          <Property Name="SLGap4" Type="Double" />
+          <Property Name="SLGap5" Type="Double" />
+          <Property Name="SLGap6" Type="Double" />
+          <Property Name="SLGap7" Type="Double" />
+          <Property Name="SLGap8" Type="Double" />
+          <Property Name="HorizontalDiameter" Type="Double" />
+          <Property Name="VerticalDiameter" Type="Double" />
+          <Property Name="Diamter1" Type="Double" />
+          <Property Name="Diamter2" Type="Double" />
+          <Property Name="DeformationDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SLDate" Type="DateTime" Precision="3" />
+          <Property Name="Uploader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Structure_SLQualityRecords">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OBJECTID" Type="Int32" />
+          <Property Name="OBJECTID_1" Type="Int32" />
+          <Property Name="LineNo" Type="Int32" />
+          <Property Name="RingNo" Type="Int32" />
+          <Property Name="QualityDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InspectionDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Repairment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Structure_SLSettlement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ObjectID" Type="Int32" />
+          <Property Name="Milage" Type="Double" />
+          <Property Name="LineNo" Type="Int32" />
+          <Property Name="RingNo" Type="Int32" />
+          <Property Name="InitialElev" Type="Double" />
+          <Property Name="Elevation" Type="Double" />
+          <Property Name="Increasement" Type="Double" />
+          <Property Name="Total" Type="Double" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Structure_SLSpall">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OBJECTID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="StartMilage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EndMilage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MetroLine" Type="Int32" />
+          <Property Name="LineNo" Type="Int32" />
+          <Property Name="StartRingNo" Type="Int32" />
+          <Property Name="EndRingNo" Type="Int32" />
+          <Property Name="SLCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LocalX" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LocalY" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Shape" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Area" Type="Double" />
+          <Property Name="Length" Type="Double" />
+          <Property Name="Width" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Depth" Type="Double" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Document" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Discription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Structure_SLType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SLTypeID" Type="Int32" />
+          <Property Name="SLTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SLTypeDescription_CN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SLBaseTypeID" Type="Int32" />
+          <Property Name="SLTypeDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Structure_TunnelAxes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LineNo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Structure_TunnelAxesPoints">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OBJECTID" Type="Int32" />
+          <Property Name="Shape" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LineNo" Type="Int32" />
+          <Property Name="Milage" Type="Double" />
+          <Property Name="X" Type="Double" />
+          <Property Name="Y" Type="Double" />
+          <Property Name="Z" Type="Double" />
+        </EntityType>
+        <EntityType Name="Structure_Tunnels">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OBJECTID" Type="Int32" />
+          <Property Name="Shape" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Shape_Length" Type="Double" />
+          <Property Name="Shape_Area" Type="Double" />
+          <Property Name="LineNo" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartMileage" Type="Double" />
+          <Property Name="EndMileage" Type="Double" />
+          <Property Name="Width" Type="Double" />
+          <Property Name="Height" Type="Double" />
+          <Property Name="ShapeDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConBeginDate" Type="DateTime" Precision="3" />
+          <Property Name="ConEndDate" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Base_DataSourceInfo" EntityType="Self.Base_DataSourceInfo" />
           <EntitySet Name="Base_DataSourceType" EntityType="Self.Base_DataSourceType" />
@@ -259,6 +1434,29 @@ warning 6013: The table/view 'DB_iS3_DemoProject.dbo.Project_TreeDefinition' doe
           <EntitySet Name="Monitoring_MonProjectInfo" EntityType="Self.Monitoring_MonProjectInfo" />
           <EntitySet Name="Project_ObjectsDefinition" EntityType="Self.Project_ObjectsDefinition" />
           <EntitySet Name="Project_ProjectInfo" EntityType="Self.Project_ProjectInfo" />
+          <EntitySet Name="Geology_Boreholes" EntityType="Self.Geology_Boreholes" />
+          <EntitySet Name="Geology_BoreholeStrataInfo" EntityType="Self.Geology_BoreholeStrataInfo" />
+          <EntitySet Name="Geology_ConfinedWater" EntityType="Self.Geology_ConfinedWater" />
+          <EntitySet Name="Geology_PhreaticWater" EntityType="Self.Geology_PhreaticWater" />
+          <EntitySet Name="Geology_RiverWater" EntityType="Self.Geology_RiverWater" />
+          <EntitySet Name="Geology_SoilProperties" EntityType="Self.Geology_SoilProperties" />
+          <EntitySet Name="Geology_Strata" EntityType="Self.Geology_Strata" />
+          <EntitySet Name="Geology_StrataSection" EntityType="Self.Geology_StrataSection" />
+          <EntitySet Name="Geology_WaterProperties" EntityType="Self.Geology_WaterProperties" />
+          <EntitySet Name="Structure_SegmentLinings" EntityType="Self.Structure_SegmentLinings" />
+          <EntitySet Name="Structure_Segments" EntityType="Self.Structure_Segments" />
+          <EntitySet Name="Structure_SLBaseType" EntityType="Self.Structure_SLBaseType" />
+          <EntitySet Name="Structure_SLConstructionRecords" EntityType="Self.Structure_SLConstructionRecords" />
+          <EntitySet Name="Structure_SLConvergence" EntityType="Self.Structure_SLConvergence" />
+          <EntitySet Name="Structure_SLCrack" EntityType="Self.Structure_SLCrack" />
+          <EntitySet Name="Structure_SLPostureRecords" EntityType="Self.Structure_SLPostureRecords" />
+          <EntitySet Name="Structure_SLQualityRecords" EntityType="Self.Structure_SLQualityRecords" />
+          <EntitySet Name="Structure_SLSettlement" EntityType="Self.Structure_SLSettlement" />
+          <EntitySet Name="Structure_SLSpall" EntityType="Self.Structure_SLSpall" />
+          <EntitySet Name="Structure_SLType" EntityType="Self.Structure_SLType" />
+          <EntitySet Name="Structure_TunnelAxes" EntityType="Self.Structure_TunnelAxes" />
+          <EntitySet Name="Structure_TunnelAxesPoints" EntityType="Self.Structure_TunnelAxesPoints" />
+          <EntitySet Name="Structure_Tunnels" EntityType="Self.Structure_Tunnels" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -384,6 +1582,413 @@ warning 6013: The table/view 'DB_iS3_DemoProject.dbo.Project_TreeDefinition' doe
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Geology_Boreholes">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Geology_Boreholes">
+              <MappingFragment StoreEntitySet="Geology_Boreholes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StratumSection" ColumnName="StratumSection" />
+                <ScalarProperty Name="SectionSequence" ColumnName="SectionSequence" />
+                <ScalarProperty Name="BoreholeType" ColumnName="BoreholeType" />
+                <ScalarProperty Name="TopElevation" ColumnName="TopElevation" />
+                <ScalarProperty Name="BoreholeLength" ColumnName="BoreholeLength" />
+                <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+                <ScalarProperty Name="Xcoordinate" ColumnName="Xcoordinate" />
+                <ScalarProperty Name="Ycoordinate" ColumnName="Ycoordinate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geology_BoreholeStrataInfo">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Geology_BoreholeStrataInfo">
+              <MappingFragment StoreEntitySet="Geology_BoreholeStrataInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="StratumSequenceInBorehole" ColumnName="StratumSequenceInBorehole" />
+                <ScalarProperty Name="StratumSectionID" ColumnName="StratumSectionID" />
+                <ScalarProperty Name="SectionSequenceBorhole" ColumnName="SectionSequenceBorhole" />
+                <ScalarProperty Name="SectionSequenceStrata" ColumnName="SectionSequenceStrata" />
+                <ScalarProperty Name="ElevationOfStratumBottom" ColumnName="ElevationOfStratumBottom" />
+                <ScalarProperty Name="BoreholeID" ColumnName="BoreholeID" />
+                <ScalarProperty Name="StratumID" ColumnName="StratumID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geology_ConfinedWater">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Geology_ConfinedWater">
+              <MappingFragment StoreEntitySet="Geology_ConfinedWater">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BoreholeName" ColumnName="BoreholeName" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+                <ScalarProperty Name="StrataSectionID" ColumnName="StrataSectionID" />
+                <ScalarProperty Name="TopElevation" ColumnName="TopElevation" />
+                <ScalarProperty Name="ObservationDepth" ColumnName="ObservationDepth" />
+                <ScalarProperty Name="StatumName" ColumnName="StatumName" />
+                <ScalarProperty Name="Layer" ColumnName="Layer" />
+                <ScalarProperty Name="WaterTable" ColumnName="WaterTable" />
+                <ScalarProperty Name="ObservationDate" ColumnName="ObservationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geology_PhreaticWater">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Geology_PhreaticWater">
+              <MappingFragment StoreEntitySet="Geology_PhreaticWater">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+                <ScalarProperty Name="AvBuriedDepth" ColumnName="AvBuriedDepth" />
+                <ScalarProperty Name="AvElevation" ColumnName="AvElevation" />
+                <ScalarProperty Name="StratumSectionID" ColumnName="StratumSectionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geology_RiverWater">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Geology_RiverWater">
+              <MappingFragment StoreEntitySet="Geology_RiverWater">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ObservationLocation" ColumnName="ObservationLocation" />
+                <ScalarProperty Name="HighestTidalLevel" ColumnName="HighestTidalLevel" />
+                <ScalarProperty Name="HighestTidalLevelDate" ColumnName="HighestTidalLevelDate" />
+                <ScalarProperty Name="LowestTidalLevel" ColumnName="LowestTidalLevel" />
+                <ScalarProperty Name="LowestTidalLevelDate" ColumnName="LowestTidalLevelDate" />
+                <ScalarProperty Name="AvHighTidalLevel" ColumnName="AvHighTidalLevel" />
+                <ScalarProperty Name="AvLowTidalLevel" ColumnName="AvLowTidalLevel" />
+                <ScalarProperty Name="AvTidalRange" ColumnName="AvTidalRange" />
+                <ScalarProperty Name="DurationOfRise" ColumnName="DurationOfRise" />
+                <ScalarProperty Name="DurationOfFall" ColumnName="DurationOfFall" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geology_SoilProperties">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Geology_SoilProperties">
+              <MappingFragment StoreEntitySet="Geology_SoilProperties">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StratumSectionID" ColumnName="StratumSectionID" />
+                <ScalarProperty Name="StratumID" ColumnName="StratumID" />
+                <ScalarProperty Name="w" ColumnName="w" />
+                <ScalarProperty Name="gama" ColumnName="gama" />
+                <ScalarProperty Name="Kv" ColumnName="Kv" />
+                <ScalarProperty Name="Kh" ColumnName="Kh" />
+                <ScalarProperty Name="ccq" ColumnName="ccq" />
+                <ScalarProperty Name="faicq" ColumnName="faicq" />
+                <ScalarProperty Name="c_s" ColumnName="c_s" />
+                <ScalarProperty Name="fais" ColumnName="fais" />
+                <ScalarProperty Name="a01_02" ColumnName="a01_02" />
+                <ScalarProperty Name="Es01_02" ColumnName="Es01_02" />
+                <ScalarProperty Name="qu" ColumnName="qu" />
+                <ScalarProperty Name="K0" ColumnName="K0" />
+                <ScalarProperty Name="cuu" ColumnName="cuu" />
+                <ScalarProperty Name="faiuu" ColumnName="faiuu" />
+                <ScalarProperty Name="ccu" ColumnName="ccu" />
+                <ScalarProperty Name="faicu" ColumnName="faicu" />
+                <ScalarProperty Name="cprime" ColumnName="cprime" />
+                <ScalarProperty Name="faiprime" ColumnName="faiprime" />
+                <ScalarProperty Name="E015_0025" ColumnName="E015_0025" />
+                <ScalarProperty Name="E02_0025" ColumnName="E02_0025" />
+                <ScalarProperty Name="E04_0025" ColumnName="E04_0025" />
+                <ScalarProperty Name="Cu" ColumnName="Cu" />
+                <ScalarProperty Name="c" ColumnName="c" />
+                <ScalarProperty Name="fai" ColumnName="fai" />
+                <ScalarProperty Name="Cs" ColumnName="Cs" />
+                <ScalarProperty Name="e" ColumnName="e" />
+                <ScalarProperty Name="av" ColumnName="av" />
+                <ScalarProperty Name="G0" ColumnName="G0" />
+                <ScalarProperty Name="ar" ColumnName="ar" />
+                <ScalarProperty Name="br" ColumnName="br" />
+                <ScalarProperty Name="G" ColumnName="G" />
+                <ScalarProperty Name="Sr" ColumnName="Sr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geology_Strata">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Geology_Strata">
+              <MappingFragment StoreEntitySet="Geology_Strata">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="GeologicalAge" ColumnName="GeologicalAge" />
+                <ScalarProperty Name="FormationType" ColumnName="FormationType" />
+                <ScalarProperty Name="Compaction" ColumnName="Compaction" />
+                <ScalarProperty Name="ElevationOfStratumBottom" ColumnName="ElevationOfStratumBottom" />
+                <ScalarProperty Name="Thickness" ColumnName="Thickness" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geology_StrataSection">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Geology_StrataSection">
+              <MappingFragment StoreEntitySet="Geology_StrataSection">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StartMileage" ColumnName="StartMileage" />
+                <ScalarProperty Name="EndMileage" ColumnName="EndMileage" />
+                <ScalarProperty Name="StratumSectionID" ColumnName="StratumSectionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geology_WaterProperties">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Geology_WaterProperties">
+              <MappingFragment StoreEntitySet="Geology_WaterProperties">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BoreholeName" ColumnName="BoreholeName" />
+                <ScalarProperty Name="Cl" ColumnName="Cl" />
+                <ScalarProperty Name="SO4" ColumnName="SO4" />
+                <ScalarProperty Name="Mg" ColumnName="Mg" />
+                <ScalarProperty Name="NH" ColumnName="NH" />
+                <ScalarProperty Name="pH" ColumnName="pH" />
+                <ScalarProperty Name="CO2" ColumnName="CO2" />
+                <ScalarProperty Name="Corrosion" ColumnName="Corrosion" />
+                <ScalarProperty Name="StratumSectionID" ColumnName="StratumSectionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Structure_SegmentLinings">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Structure_SegmentLinings">
+              <MappingFragment StoreEntitySet="Structure_SegmentLinings">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="Centroid_Z" ColumnName="Centroid_Z" />
+                <ScalarProperty Name="LineNo" ColumnName="LineNo" />
+                <ScalarProperty Name="RingNo" ColumnName="RingNo" />
+                <ScalarProperty Name="MilageAsDesign" ColumnName="MilageAsDesign" />
+                <ScalarProperty Name="DesignX" ColumnName="DesignX" />
+                <ScalarProperty Name="DesignY" ColumnName="DesignY" />
+                <ScalarProperty Name="DesignH" ColumnName="DesignH" />
+                <ScalarProperty Name="SLTypeIDAsDesign" ColumnName="SLTypeIDAsDesign" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Structure_Segments">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Structure_Segments">
+              <MappingFragment StoreEntitySet="Structure_Segments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SLBaseTypeID" ColumnName="SLBaseTypeID" />
+                <ScalarProperty Name="StartAngle" ColumnName="StartAngle" />
+                <ScalarProperty Name="CentralAngle" ColumnName="CentralAngle" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Structure_SLBaseType">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Structure_SLBaseType">
+              <MappingFragment StoreEntitySet="Structure_SLBaseType">
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="SLBaseTypeID" ColumnName="SLBaseTypeID" />
+                <ScalarProperty Name="SLCategory" ColumnName="SLCategory" />
+                <ScalarProperty Name="SLShape" ColumnName="SLShape" />
+                <ScalarProperty Name="SLNumOfSegments" ColumnName="SLNumOfSegments" />
+                <ScalarProperty Name="SLConicity" ColumnName="SLConicity" />
+                <ScalarProperty Name="SLThickness" ColumnName="SLThickness" />
+                <ScalarProperty Name="SLWidth" ColumnName="SLWidth" />
+                <ScalarProperty Name="SLOutDiameter" ColumnName="SLOutDiameter" />
+                <ScalarProperty Name="SLInnerDiameter" ColumnName="SLInnerDiameter" />
+                <ScalarProperty Name="SLTotalKeyPos" ColumnName="SLTotalKeyPos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Structure_SLConstructionRecords">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Structure_SLConstructionRecords">
+              <MappingFragment StoreEntitySet="Structure_SLConstructionRecords">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="LineNo" ColumnName="LineNo" />
+                <ScalarProperty Name="MilageAsBuilt" ColumnName="MilageAsBuilt" />
+                <ScalarProperty Name="SLTypeIDAsBuilt" ColumnName="SLTypeIDAsBuilt" />
+                <ScalarProperty Name="ConstructionDate" ColumnName="ConstructionDate" />
+                <ScalarProperty Name="KeySegementPositionNum" ColumnName="KeySegementPositionNum" />
+                <ScalarProperty Name="IsDataMissing" ColumnName="IsDataMissing" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="RingNo" ColumnName="RingNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Structure_SLConvergence">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Structure_SLConvergence">
+              <MappingFragment StoreEntitySet="Structure_SLConvergence">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="Milage" ColumnName="Milage" />
+                <ScalarProperty Name="LineNo" ColumnName="LineNo" />
+                <ScalarProperty Name="RingNo" ColumnName="RingNo" />
+                <ScalarProperty Name="HorizontalRad" ColumnName="HorizontalRad" />
+                <ScalarProperty Name="HorizontalDeviation" ColumnName="HorizontalDeviation" />
+                <ScalarProperty Name="VerticalRad" ColumnName="VerticalRad" />
+                <ScalarProperty Name="VerticalDeviation" ColumnName="VerticalDeviation" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Structure_SLCrack">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Structure_SLCrack">
+              <MappingFragment StoreEntitySet="Structure_SLCrack">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="StartMilage" ColumnName="StartMilage" />
+                <ScalarProperty Name="EndMilage" ColumnName="EndMilage" />
+                <ScalarProperty Name="MetroLine" ColumnName="MetroLine" />
+                <ScalarProperty Name="LineNo" ColumnName="LineNo" />
+                <ScalarProperty Name="StartRingNo" ColumnName="StartRingNo" />
+                <ScalarProperty Name="EndRingNo" ColumnName="EndRingNo" />
+                <ScalarProperty Name="SLCode" ColumnName="SLCode" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Document" ColumnName="Document" />
+                <ScalarProperty Name="Discription" ColumnName="Discription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Structure_SLPostureRecords">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Structure_SLPostureRecords">
+              <MappingFragment StoreEntitySet="Structure_SLPostureRecords">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="OBJECTID_1" ColumnName="OBJECTID_1" />
+                <ScalarProperty Name="LineNo" ColumnName="LineNo" />
+                <ScalarProperty Name="RingNo" ColumnName="RingNo" />
+                <ScalarProperty Name="SLHorizontalDeviation" ColumnName="SLHorizontalDeviation" />
+                <ScalarProperty Name="SLElevationalDeviation" ColumnName="SLElevationalDeviation" />
+                <ScalarProperty Name="SLGapUp" ColumnName="SLGapUp" />
+                <ScalarProperty Name="SLGapDown" ColumnName="SLGapDown" />
+                <ScalarProperty Name="SLGapLeft" ColumnName="SLGapLeft" />
+                <ScalarProperty Name="SLGapRight" ColumnName="SLGapRight" />
+                <ScalarProperty Name="SLGap1" ColumnName="SLGap1" />
+                <ScalarProperty Name="SLGap2" ColumnName="SLGap2" />
+                <ScalarProperty Name="SLGap3" ColumnName="SLGap3" />
+                <ScalarProperty Name="SLGap4" ColumnName="SLGap4" />
+                <ScalarProperty Name="SLGap5" ColumnName="SLGap5" />
+                <ScalarProperty Name="SLGap6" ColumnName="SLGap6" />
+                <ScalarProperty Name="SLGap7" ColumnName="SLGap7" />
+                <ScalarProperty Name="SLGap8" ColumnName="SLGap8" />
+                <ScalarProperty Name="HorizontalDiameter" ColumnName="HorizontalDiameter" />
+                <ScalarProperty Name="VerticalDiameter" ColumnName="VerticalDiameter" />
+                <ScalarProperty Name="Diamter1" ColumnName="Diamter1" />
+                <ScalarProperty Name="Diamter2" ColumnName="Diamter2" />
+                <ScalarProperty Name="DeformationDescription" ColumnName="DeformationDescription" />
+                <ScalarProperty Name="SLDate" ColumnName="SLDate" />
+                <ScalarProperty Name="Uploader" ColumnName="Uploader" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Structure_SLQualityRecords">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Structure_SLQualityRecords">
+              <MappingFragment StoreEntitySet="Structure_SLQualityRecords">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="OBJECTID_1" ColumnName="OBJECTID_1" />
+                <ScalarProperty Name="LineNo" ColumnName="LineNo" />
+                <ScalarProperty Name="RingNo" ColumnName="RingNo" />
+                <ScalarProperty Name="QualityDescription" ColumnName="QualityDescription" />
+                <ScalarProperty Name="InspectionDate" ColumnName="InspectionDate" />
+                <ScalarProperty Name="Repairment" ColumnName="Repairment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Structure_SLSettlement">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Structure_SLSettlement">
+              <MappingFragment StoreEntitySet="Structure_SLSettlement">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="Milage" ColumnName="Milage" />
+                <ScalarProperty Name="LineNo" ColumnName="LineNo" />
+                <ScalarProperty Name="RingNo" ColumnName="RingNo" />
+                <ScalarProperty Name="InitialElev" ColumnName="InitialElev" />
+                <ScalarProperty Name="Elevation" ColumnName="Elevation" />
+                <ScalarProperty Name="Increasement" ColumnName="Increasement" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Structure_SLSpall">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Structure_SLSpall">
+              <MappingFragment StoreEntitySet="Structure_SLSpall">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="StartMilage" ColumnName="StartMilage" />
+                <ScalarProperty Name="EndMilage" ColumnName="EndMilage" />
+                <ScalarProperty Name="MetroLine" ColumnName="MetroLine" />
+                <ScalarProperty Name="LineNo" ColumnName="LineNo" />
+                <ScalarProperty Name="StartRingNo" ColumnName="StartRingNo" />
+                <ScalarProperty Name="EndRingNo" ColumnName="EndRingNo" />
+                <ScalarProperty Name="SLCode" ColumnName="SLCode" />
+                <ScalarProperty Name="LocalX" ColumnName="LocalX" />
+                <ScalarProperty Name="LocalY" ColumnName="LocalY" />
+                <ScalarProperty Name="Shape" ColumnName="Shape" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Document" ColumnName="Document" />
+                <ScalarProperty Name="Discription" ColumnName="Discription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Structure_SLType">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Structure_SLType">
+              <MappingFragment StoreEntitySet="Structure_SLType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SLTypeID" ColumnName="SLTypeID" />
+                <ScalarProperty Name="SLTypeName" ColumnName="SLTypeName" />
+                <ScalarProperty Name="SLTypeDescription_CN" ColumnName="SLTypeDescription_CN" />
+                <ScalarProperty Name="SLBaseTypeID" ColumnName="SLBaseTypeID" />
+                <ScalarProperty Name="SLTypeDescription" ColumnName="SLTypeDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Structure_TunnelAxes">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Structure_TunnelAxes">
+              <MappingFragment StoreEntitySet="Structure_TunnelAxes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LineNo" ColumnName="LineNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Structure_TunnelAxesPoints">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Structure_TunnelAxesPoints">
+              <MappingFragment StoreEntitySet="Structure_TunnelAxesPoints">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="Shape" ColumnName="Shape" />
+                <ScalarProperty Name="LineNo" ColumnName="LineNo" />
+                <ScalarProperty Name="Milage" ColumnName="Milage" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+                <ScalarProperty Name="Z" ColumnName="Z" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Structure_Tunnels">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Structure_Tunnels">
+              <MappingFragment StoreEntitySet="Structure_Tunnels">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="Shape" ColumnName="Shape" />
+                <ScalarProperty Name="Shape_Length" ColumnName="Shape_Length" />
+                <ScalarProperty Name="Shape_Area" ColumnName="Shape_Area" />
+                <ScalarProperty Name="LineNo" ColumnName="LineNo" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StartMileage" ColumnName="StartMileage" />
+                <ScalarProperty Name="EndMileage" ColumnName="EndMileage" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="ShapeDesc" ColumnName="ShapeDesc" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ConBeginDate" ColumnName="ConBeginDate" />
+                <ScalarProperty Name="ConEndDate" ColumnName="ConEndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -399,7 +2004,7 @@ warning 6013: The table/view 'DB_iS3_DemoProject.dbo.Project_TreeDefinition' doe
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

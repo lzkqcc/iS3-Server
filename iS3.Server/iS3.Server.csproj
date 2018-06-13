@@ -256,6 +256,33 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DB_iS3_Project.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Project\Geology_Boreholes.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Geology_BoreholeStrataInfo.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Geology_ConfinedWater.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Geology_PhreaticWater.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Geology_RiverWater.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Geology_SoilProperties.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Geology_Strata.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Geology_StrataSection.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Geology_WaterProperties.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Project\Monitoring_InstrumentInfo.cs">
       <DependentUpon>DB_iS3_Project.tt</DependentUpon>
     </Compile>
@@ -291,6 +318,48 @@
     </Compile>
     <Compile Include="Models\Project\Project_UnitInfo.cs">
       <DependentUpon>DB_iS3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Structure_SegmentLinings.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Structure_Segments.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Structure_SLBaseType.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Structure_SLConstructionRecords.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Structure_SLConvergence.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Structure_SLCrack.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Structure_SLPostureRecords.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Structure_SLQualityRecords.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Structure_SLSettlement.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Structure_SLSpall.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Structure_SLType.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Structure_TunnelAxes.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Structure_TunnelAxesPoints.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Structure_Tunnels.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Project\System_ModuleInfo.cs">
       <DependentUpon>DB_iS3.tt</DependentUpon>

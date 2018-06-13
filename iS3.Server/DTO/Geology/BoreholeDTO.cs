@@ -19,6 +19,6 @@ namespace iS3.Server.DTO.Geology
         public double Base { get; set; }
         public double? Mileage { get; set; }
         public string Type { get; set; }
-        public List<BoreholeGeologyDTO> geologies { get; set; }
+        public List<BoreholeGeologyDTO> Geologies { get; set; }
     }
 }
