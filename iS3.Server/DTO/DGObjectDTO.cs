@@ -8,9 +8,9 @@ namespace iS3.Server.DTO
 {
     public class DGObjectDTO
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string fullName { get; set; }
-        public string description { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string FullName { get; set; }
+        public string Description { get; set; }
     }
 }

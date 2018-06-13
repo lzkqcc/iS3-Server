@@ -526,6 +526,12 @@
             工程概况相关接口
             </summary>
         </member>
+        <member name="M:iS3.Server.Controllers.ProjectController.getProjectList">
+            <summary>
+            获取所有工程信息
+            </summary>
+            <returns> </returns>
+        </member>
         <member name="M:iS3.Server.Controllers.ProjectController.getProjectListById(System.String)">
             <summary>
             根据CODE获取工程信息

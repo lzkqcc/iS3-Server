@@ -17,7 +17,19 @@ namespace iS3.Server.Controllers
     /// </summary>
     [RoutePrefix("api/project")]
     public class ProjectController : ApiController
-    {   
+    {
+        /// <summary>
+        /// 获取所有工程信息
+        /// </summary>
+        /// <returns> </returns>
+        [Route("list")]
+        [HttpGet]
+        public List<System_ProjectList> getProjectList()
+        {
+            ProjectRepo repo = new ProjectRepo();
+            return repo.GetProjectList();
+        }
+        
         /// <summary>
         /// 根据CODE获取工程信息
         /// </summary>

@@ -21,6 +21,11 @@ namespace iS3.Server.Repository
             db = new DB_iS3Context();
         }
 
+        public List<System_ProjectList> GetProjectList()
+        {
+            return db.System_ProjectList.ToList();
+        }
+
         public System_ProjectList GetProjectListByCode(string code)
         {   
             var query = from p in db.System_ProjectList
