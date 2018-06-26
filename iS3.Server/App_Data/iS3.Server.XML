@@ -536,6 +536,35 @@
             <param name="project">工程名称</param>
             <returns></returns>
         </member>
+        <member name="T:iS3.Server.Controllers.MonitoringController">
+            <summary>
+            地质数据相关接口
+            </summary>
+        </member>
+        <member name="M:iS3.Server.Controllers.MonitoringController.getMonPointById(System.String,System.Int32)">
+            <summary>
+            根据id获取监测点
+            </summary>
+            <param name="project">项目名称</param>
+            <param name="id">监测点id</param>
+            <returns> </returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.MonitoringController.getMonGroupById(System.String,System.Int32)">
+            <summary>
+            根据id获取监测组
+            </summary>
+            <param name="project">项目名称</param>
+            <param name="id">监测组id</param>
+            <returns> </returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.MonitoringController.getMonProjectById(System.String,System.Int32)">
+            <summary>
+            根据id获取监测项目
+            </summary>
+            <param name="project">项目名称</param>
+            <param name="id">监测项目id</param>
+            <returns> </returns>
+        </member>
         <member name="T:iS3.Server.Controllers.ProjectController">
             <summary>
             工程概况相关接口

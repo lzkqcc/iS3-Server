@@ -195,6 +195,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\GeologyController.cs" />
+    <Compile Include="Controllers\MonitoringController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\StructureController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -204,6 +205,9 @@
     <Compile Include="DTO\Geology\SoilPropertyDTO.cs" />
     <Compile Include="DTO\Geology\StratumDTO.cs" />
     <Compile Include="DTO\Geology\WaterDTO.cs" />
+    <Compile Include="DTO\Monitoring\MonGroupDTO.cs" />
+    <Compile Include="DTO\Monitoring\MonPointDTO.cs" />
+    <Compile Include="DTO\Monitoring\MonProjectDTO.cs" />
     <Compile Include="DTO\Project\DomainDTO.cs" />
     <Compile Include="DTO\Project\EngineeringMapDTO.cs" />
     <Compile Include="DTO\Project\LayerDefDTO.cs" />
@@ -372,12 +376,14 @@
     <Compile Include="Repository\CentralRepo.cs" />
     <Compile Include="Repository\DGObjectRepo.cs" />
     <Compile Include="Repository\GeologyRepo.cs" />
+    <Compile Include="Repository\MonitoringRepo.cs" />
     <Compile Include="Repository\ProjectRepo.cs" />
     <Compile Include="Repository\StructureRepo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utility\DBUtil.cs" />
     <Compile Include="Utility\FileUtil.cs" />
     <Compile Include="Utility\iS3Exception.cs" />
+    <Compile Include="Utility\TransferUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\iS3.Server.XML" />

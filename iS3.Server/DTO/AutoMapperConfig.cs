@@ -7,6 +7,7 @@ using iS3.Server.Models.Project;
 using iS3.Server.DTO.Project;
 using iS3.Server.DTO.Geology;
 using iS3.Server.DTO.Structure;
+using iS3.Server.DTO.Monitoring;
 using IS3.Core;
 using IS3.Geology;
 using IS3.Structure;
@@ -73,6 +74,9 @@ namespace iS3.Server.DTO
             Mapper.CreateMap<PhreaticWaterDTO, Geology_PhreaticWater>().ReverseMap();
             Mapper.CreateMap<ConfinedWaterDTO, Geology_ConfinedWater>().ReverseMap();
             Mapper.CreateMap<WaterPropertyDTO, Geology_WaterProperties>().ReverseMap();
+            Mapper.CreateMap<MonPointDTO, Monitoring_MonPointInfo>().ReverseMap();
+            Mapper.CreateMap<MonGroupDTO, Monitoring_MonGroupInfo>().ReverseMap();
+            Mapper.CreateMap<MonProjectDTO, Monitoring_MonProjectInfo>().ReverseMap();
         }
 
         class ListToStringConvertert : ITypeConverter<List<int>, string>
