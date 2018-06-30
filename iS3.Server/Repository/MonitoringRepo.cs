@@ -31,6 +31,18 @@ namespace iS3.Server.Repository
             MonPointDTO res = Mapper.Map<MonPointDTO>(item);
             return res;
         }
+
+        public List<MonPointDataDTO> getMonPointDataById(int id)
+        {
+            var query = from m in db.Monitoring_MonData
+                        where m.MonPointID == id
+                        orderby m.DataTime ascending
+                        select m;
+            var items = query.ToList();
+
+            List<MonPointDataDTO> res = Mapper.Map<List<MonPointDataDTO>>(items);
+            return res;
+        }
  
         public MonGroupDTO getMonGroupById(int id)
         {

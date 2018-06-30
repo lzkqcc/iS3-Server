@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_iS3_DemoProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_iS3_DemoProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Base_DataSourceInfo">
           <Key>
             <PropertyRef Name="ID" />
@@ -207,6 +207,19 @@ warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Geology_WaterProperties' do
           <Property Name="UnitID" Type="int" />
           <Property Name="Remark" Type="varchar" MaxLength="100" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Monitoring_MonData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Monitoring_MonData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="MonPointID" Type="int" />
+          <Property Name="Reading" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="Value" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="DataTime" Type="datetime" />
+          <Property Name="SysTime" Type="datetime" />
+        </EntityType>
         <EntityType Name="Monitoring_MonGroupInfo">
           <Key>
             <PropertyRef Name="ID" />
@@ -233,7 +246,7 @@ warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Geology_WaterProperties' do
           <Property Name="ZCoordinate" Type="decimal" Precision="11" Scale="2" />
           <Property Name="MonGroupID" Type="int" />
           <Property Name="SensorName" Type="varchar" MaxLength="50" />
-          <Property Name="IniValue" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="IniValue" Type="decimal" Precision="20" Scale="2" />
           <Property Name="STime" Type="datetime" />
           <Property Name="PerInfoID" Type="int" />
           <Property Name="Remark" Type="varchar" MaxLength="100" />
@@ -286,16 +299,6 @@ warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Geology_WaterProperties' do
           <Property Name="ContractPeriod" Type="int" />
           <Property Name="Remark" Type="varchar(max)" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DB_iS3_DemoProject.dbo.Project_TreeDefinition' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Project_TreeDefinition">
-          <Property Name="ID" Type="int" />
-          <Property Name="Name_Chs" Type="varchar" MaxLength="20" />
-          <Property Name="Name_En" Type="varchar" MaxLength="20" />
-          <Property Name="ParentID" Type="int" />
-          <Property Name="RefObjID" Type="int" />
-          <Property Name="Description" Type="varchar" MaxLength="60" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_SegmentLinings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Structure_SegmentLinings">
@@ -708,6 +711,16 @@ warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_Tunnels' does not
     [Geology_WaterProperties].[StratumSectionID] AS [StratumSectionID]
     FROM [dbo].[Geology_WaterProperties] AS [Geology_WaterProperties]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="Monitoring_MonData" EntityType="Self.Monitoring_MonData" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Monitoring_MonData].[ID] AS [ID], 
+    [Monitoring_MonData].[MonPointID] AS [MonPointID], 
+    [Monitoring_MonData].[Reading] AS [Reading], 
+    [Monitoring_MonData].[Value] AS [Value], 
+    [Monitoring_MonData].[DataTime] AS [DataTime], 
+    [Monitoring_MonData].[SysTime] AS [SysTime]
+    FROM [dbo].[Monitoring_MonData] AS [Monitoring_MonData]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Structure_SegmentLinings" EntityType="Self.Structure_SegmentLinings" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Structure_SegmentLinings].[ID] AS [ID], 
@@ -926,8 +939,7 @@ warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_Tunnels' does not
     FROM [dbo].[Structure_Tunnels] AS [Structure_Tunnels]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_iS3_DemoProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -988,7 +1000,7 @@ warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_Tunnels' does not
           <Property Name="ZCoordinate" Type="Decimal" Precision="11" Scale="2" />
           <Property Name="MonGroupID" Type="Int32" />
           <Property Name="SensorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IniValue" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="IniValue" Type="Decimal" Precision="20" Scale="2" />
           <Property Name="STime" Type="DateTime" Precision="3" />
           <Property Name="PerInfoID" Type="Int32" />
           <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -1457,7 +1469,19 @@ warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_Tunnels' does not
           <EntitySet Name="Structure_TunnelAxes" EntityType="Self.Structure_TunnelAxes" />
           <EntitySet Name="Structure_TunnelAxesPoints" EntityType="Self.Structure_TunnelAxesPoints" />
           <EntitySet Name="Structure_Tunnels" EntityType="Self.Structure_Tunnels" />
+          <EntitySet Name="Monitoring_MonData" EntityType="DB_iS3_DemoProjectModel.Monitoring_MonData" />
         </EntityContainer>
+        <EntityType Name="Monitoring_MonData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="MonPointID" Type="Int32" />
+          <Property Name="Reading" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="Value" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="DataTime" Type="DateTime" Precision="3" />
+          <Property Name="SysTime" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1986,6 +2010,18 @@ warning 6002: The table/view 'DB_iS3_DemoProject.dbo.Structure_Tunnels' does not
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ConBeginDate" ColumnName="ConBeginDate" />
                 <ScalarProperty Name="ConEndDate" ColumnName="ConEndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Monitoring_MonData">
+            <EntityTypeMapping TypeName="DB_iS3_DemoProjectModel.Monitoring_MonData">
+              <MappingFragment StoreEntitySet="Monitoring_MonData">
+                <ScalarProperty Name="SysTime" ColumnName="SysTime" />
+                <ScalarProperty Name="DataTime" ColumnName="DataTime" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Reading" ColumnName="Reading" />
+                <ScalarProperty Name="MonPointID" ColumnName="MonPointID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

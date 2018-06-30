@@ -77,6 +77,7 @@ namespace iS3.Server.DTO
             Mapper.CreateMap<MonPointDTO, Monitoring_MonPointInfo>().ReverseMap();
             Mapper.CreateMap<MonGroupDTO, Monitoring_MonGroupInfo>().ReverseMap();
             Mapper.CreateMap<MonProjectDTO, Monitoring_MonProjectInfo>().ReverseMap();
+            Mapper.CreateMap<MonPointDataDTO, Monitoring_MonData>().ReverseMap();
         }
 
         class ListToStringConvertert : ITypeConverter<List<int>, string>

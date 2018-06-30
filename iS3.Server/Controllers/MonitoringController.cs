@@ -34,6 +34,20 @@ namespace iS3.Server.Controllers
         }
 
         /// <summary>
+        /// 根据id获取监测点数据
+        /// </summary>
+        /// <param name="project">项目名称</param>
+        /// <param name="id">监测点id</param>
+        /// <returns> 监测点数据按时间升序排序</returns>
+        [Route("monpoint/data")]
+        [HttpGet]
+        public List<MonPointDataDTO> getMonPointDataById(string project, int id)
+        {
+            MonitoringRepo repo = new MonitoringRepo(project);
+            return repo.getMonPointDataById(id);
+        }
+
+        /// <summary>
         /// 根据id获取监测组
         /// </summary>
         /// <param name="project">项目名称</param>

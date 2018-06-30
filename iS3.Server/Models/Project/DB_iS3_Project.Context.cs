@@ -12,7 +12,7 @@ namespace iS3.Server.Models.Project
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class DB_iS3_ProjectContext : iS3Context
     {
         public DB_iS3_ProjectContext(string project)
@@ -56,5 +56,6 @@ namespace iS3.Server.Models.Project
         public virtual DbSet<Structure_TunnelAxes> Structure_TunnelAxes { get; set; }
         public virtual DbSet<Structure_TunnelAxesPoints> Structure_TunnelAxesPoints { get; set; }
         public virtual DbSet<Structure_Tunnels> Structure_Tunnels { get; set; }
+        public virtual DbSet<Monitoring_MonData> Monitoring_MonData { get; set; }
     }
 }

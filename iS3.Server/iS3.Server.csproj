@@ -206,6 +206,7 @@
     <Compile Include="DTO\Geology\StratumDTO.cs" />
     <Compile Include="DTO\Geology\WaterDTO.cs" />
     <Compile Include="DTO\Monitoring\MonGroupDTO.cs" />
+    <Compile Include="DTO\Monitoring\MonPointDataDTO.cs" />
     <Compile Include="DTO\Monitoring\MonPointDTO.cs" />
     <Compile Include="DTO\Monitoring\MonProjectDTO.cs" />
     <Compile Include="DTO\Project\DomainDTO.cs" />
@@ -288,6 +289,9 @@
       <DependentUpon>DB_iS3_Project.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Project\Monitoring_InstrumentInfo.cs">
+      <DependentUpon>DB_iS3_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project\Monitoring_MonData.cs">
       <DependentUpon>DB_iS3_Project.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Project\Monitoring_MonGroupInfo.cs">

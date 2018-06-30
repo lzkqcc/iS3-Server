@@ -549,6 +549,14 @@
             <param name="id">监测点id</param>
             <returns> </returns>
         </member>
+        <member name="M:iS3.Server.Controllers.MonitoringController.getMonPointDataById(System.String,System.Int32)">
+            <summary>
+            根据id获取监测点数据
+            </summary>
+            <param name="project">项目名称</param>
+            <param name="id">监测点id</param>
+            <returns> 监测点数据按时间升序排序</returns>
+        </member>
         <member name="M:iS3.Server.Controllers.MonitoringController.getMonGroupById(System.String,System.Int32)">
             <summary>
             根据id获取监测组
