@@ -224,7 +224,23 @@ namespace iS3.Server.Controllers
             GeologyRepo repo = new GeologyRepo(project);
             return repo.getAllWaterProperty();
         }
+        #region 对象组API
 
+        /// <summary>
+        /// 根据对象组筛选条件获取Project工程钻孔
+        /// </summary>
+        /// <param name="project">工程</param>
+        /// <param name="filter">筛选条件</param>
+        /// <returns></returns>
+        [Route("borehole")]
+        [HttpGet]
+        public List<BoreholeDTO> getBoreholeByObjs([FromUri]string project, [FromUri]string filter)
+        {
+            GeologyRepo repo = new GeologyRepo(project);
+            return repo.getAllBoreholeByObjs(filter);
+        }
+
+        #endregion
         // Code used for iS3 core. By now, customed EF is used.
 
         //private T getObjectById<T>(string project, int id) 
@@ -238,7 +254,7 @@ namespace iS3.Server.Controllers
 
         //    if (obj == null)
         //        throw new iS3Exception(string.Format("没有找到id={0}的对象", id));
-            
+
         //    return obj;
         //}
 

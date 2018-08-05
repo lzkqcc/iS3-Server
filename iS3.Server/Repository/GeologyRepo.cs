@@ -13,6 +13,7 @@ using IS3.Geology;
 
 using iS3.Server.DTO;
 using iS3.Server.DTO.Geology;
+using System.Data.Entity.Infrastructure;
 
 namespace iS3.Server.Repository
 {
@@ -219,5 +220,26 @@ namespace iS3.Server.Repository
             List<WaterPropertyDTO> res = Mapper.Map<List<WaterPropertyDTO>>(item);
             return res;
         }
+        #region 对象组方法
+        public List<BoreholeDTO> getAllBoreholeByObjs(string filter)
+        {
+            string sql = DGObjectsFilter.GetDGObjectsSQL("Geology_Boreholes", filter);
+            var result = ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<Geology_Boreholes>(sql).ToList();
+            var query = from b in result
+                        join g in db.Geology_BoreholeStrataInfo on new { c1 = (int?)b.StratumSection, c2 = (int?)b.SectionSequence }
+                        equals new { c1 = (int?)g.StratumSectionID, c2 = (int?)g.SectionSequenceBorhole } into bg
+                        select new { Borehole = b, Geologies = bg };
+            var tmps = query.ToList();
+            List<BoreholeDTO> res = new List<BoreholeDTO>();
+            foreach (var tmp in tmps)
+            {
+                BoreholeDTO b = Mapper.Map<BoreholeDTO>(tmp.Borehole);
+                b.Geologies = Mapper.Map<List<BoreholeGeologyDTO>>(tmp.Geologies);
+                setBoreholeGeologyTop(b);
+                res.Add(b);
+            }
+            return res;
+        }
+        #endregion
     }
 }

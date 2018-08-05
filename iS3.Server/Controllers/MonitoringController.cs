@@ -74,5 +74,47 @@ namespace iS3.Server.Controllers
             MonitoringRepo repo = new MonitoringRepo(project);
             return repo.getMonProjectById(id);
         }
+
+        #region 对象组API
+        /// <summary>
+        /// 根据对象组获取监测点
+        /// </summary>
+        /// <param name="project">项目名称</param>
+        /// <param name="filter">筛选条件</param>
+        /// <returns> </returns>
+        [Route("monpoint")]
+        [HttpGet]
+        public List<MonPointDTO> getMonPointByObjs(string project, string filter)
+        {
+            MonitoringRepo repo = new MonitoringRepo(project);
+            return repo.getMonPointByObjs(filter);
+        }
+        /// <summary>
+        /// 根据对象组获取监测组
+        /// </summary>
+        /// <param name="project">项目名称</param>
+        /// <param name="filter">筛选条件</param>
+        /// <returns> </returns>
+        [Route("mongroup")]
+        [HttpGet]
+        public List<MonGroupDTO> getMonGroupByObjs(string project, string filter)
+        {
+            MonitoringRepo repo = new MonitoringRepo(project);
+            return repo.getMonGroupByObjs(filter);
+        }
+        /// <summary>
+        /// 根据对象组获取监测项目
+        /// </summary>
+        /// <param name="project">项目名称</param>
+        /// <param name="filter">筛选条件</param>
+        /// <returns> </returns>
+        [Route("monproject")]
+        [HttpGet]
+        public List<MonProjectDTO> getMonProjectByObjs(string project, string filter)
+        {
+            MonitoringRepo repo = new MonitoringRepo(project);
+            return repo.getMonProjectByObjs(filter);
+        }
+        #endregion
     }
 }

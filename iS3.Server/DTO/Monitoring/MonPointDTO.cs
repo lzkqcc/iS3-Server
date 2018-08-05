@@ -19,5 +19,7 @@ namespace iS3.Server.DTO.Monitoring
         public Nullable<System.DateTime> STime { get; set; }
         public Nullable<int> PerInfoID { get; set; }
         public string Remark { get; set; }
+
+        public List<MonPointDataDTO> MonDatas { get; set; }
     }
 }

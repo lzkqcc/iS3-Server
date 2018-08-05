@@ -194,6 +194,21 @@
             Initializes a new instance of the <see cref="T:iS3.Server.Areas.HelpPage.HelpPageSampleGenerator"/> class.
             </summary>
         </member>
+        <member name="P:iS3.Server.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:iS3.Server.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:iS3.Server.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
         <member name="M:iS3.Server.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
             <summary>
             Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
@@ -257,21 +272,6 @@
             <param name="type">The type.</param>
             <param name="mediaType">Type of the media.</param>
             <returns></returns>
-        </member>
-        <member name="P:iS3.Server.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
-            <summary>
-            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
-            </summary>
-        </member>
-        <member name="P:iS3.Server.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
-            <summary>
-            Gets the objects that are used directly as samples for certain actions.
-            </summary>
-        </member>
-        <member name="P:iS3.Server.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
-            <summary>
-            Gets the objects that are serialized as samples by the supported formatters.
-            </summary>
         </member>
         <member name="T:iS3.Server.Areas.HelpPage.HelpPageSampleKey">
             <summary>
@@ -536,6 +536,14 @@
             <param name="project">工程名称</param>
             <returns></returns>
         </member>
+        <member name="M:iS3.Server.Controllers.GeologyController.getBoreholeByObjs(System.String,System.String)">
+            <summary>
+            根据对象组筛选条件获取Project工程钻孔
+            </summary>
+            <param name="project">工程</param>
+            <param name="filter">筛选条件</param>
+            <returns></returns>
+        </member>
         <member name="T:iS3.Server.Controllers.MonitoringController">
             <summary>
             地质数据相关接口
@@ -571,6 +579,30 @@
             </summary>
             <param name="project">项目名称</param>
             <param name="id">监测项目id</param>
+            <returns> </returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.MonitoringController.getMonPointByObjs(System.String,System.String)">
+            <summary>
+            根据对象组获取监测点
+            </summary>
+            <param name="project">项目名称</param>
+            <param name="filter">筛选条件</param>
+            <returns> </returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.MonitoringController.getMonGroupByObjs(System.String,System.String)">
+            <summary>
+            根据对象组获取监测组
+            </summary>
+            <param name="project">项目名称</param>
+            <param name="filter">筛选条件</param>
+            <returns> </returns>
+        </member>
+        <member name="M:iS3.Server.Controllers.MonitoringController.getMonProjectByObjs(System.String,System.String)">
+            <summary>
+            根据对象组获取监测项目
+            </summary>
+            <param name="project">项目名称</param>
+            <param name="filter">筛选条件</param>
             <returns> </returns>
         </member>
         <member name="T:iS3.Server.Controllers.ProjectController">

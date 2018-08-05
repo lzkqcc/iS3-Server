@@ -9,6 +9,7 @@ using iS3.Server.Models.Project;
 using iS3.Server.Utility;
 using iS3.Server.DTO.Project;
 using AutoMapper;
+using System.Data.Entity.Infrastructure;
 
 namespace iS3.Server.Repository
 {
@@ -29,6 +30,14 @@ namespace iS3.Server.Repository
             var item = query.FirstOrDefault();
 
             MonPointDTO res = Mapper.Map<MonPointDTO>(item);
+            var query2 = from m in db.Monitoring_MonData
+                        where m.MonPointID == id
+                        orderby m.DataTime ascending
+                        select m;
+            var items = query2.ToList();
+
+            List<MonPointDataDTO> res2 = Mapper.Map<List<MonPointDataDTO>>(items);
+            res.MonDatas = res2;
             return res;
         }
 
@@ -75,6 +84,27 @@ namespace iS3.Server.Repository
             }
             return res;
         }
+
+        #region 对象组方法
+        public List<MonPointDTO> getMonPointByObjs(string filter)
+        {
+            string sql = DGObjectsFilter.GetDGObjectsSQL("Monitoring_MonPointInfo", filter);
+            var result = ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<Monitoring_MonPointInfo>(sql).ToList();
+            return Mapper.Map<List<MonPointDTO>>(result.ToList());
+        }
+        public List<MonGroupDTO> getMonGroupByObjs(string filter)
+        {
+            string sql = DGObjectsFilter.GetDGObjectsSQL("Monitoring_MonGroupInfo", filter);
+            var result = ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<Monitoring_MonGroupInfo>(sql).ToList();
+            return Mapper.Map<List<MonGroupDTO>>(result.ToList());
+        }
+        public List<MonProjectDTO> getMonProjectByObjs(string filter)
+        {
+            string sql = DGObjectsFilter.GetDGObjectsSQL("Monitoring_MonProjectInfo", filter);
+            var result = ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<Monitoring_MonProjectInfo>(sql).ToList();
+            return Mapper.Map<List<MonProjectDTO>>(result.ToList());
+        }
+        #endregion
 
     }
 }
